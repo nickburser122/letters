@@ -365,7 +365,7 @@ body{background:#fff;border:none}
 <details id="clean-report"><summary id="cr-sum"></summary><div id="cr-body"></div></details>
 </section>
 <section id="v-cl" class="view" hidden>
-<div class="tools"><label class="searchbox" data-i="se"><input id="q-cl" type="text" placeholder="جهة أو مستخدم"></label><button type="button" id="btn-unc" class="chip" hidden></button><span class="cnt" id="cnt-cl"></span></div>
+<div class="tools"><label class="searchbox" data-i="se"><input id="q-cl" type="text" placeholder="جهة أو مستخدم"></label><button type="button" id="btn-unc" class="chip" hidden></button><button type="button" id="btn-copy-unc" class="chip" hidden>نسخ للتصنيف</button><span class="cnt" id="cnt-cl"></span></div>
 <div class="tblwrap"><table class="tbl"><thead id="th-cl"></thead><tbody id="tb-cl"></tbody></table></div>
 </section>
 <section id="v-pe" class="view" hidden>
@@ -384,7 +384,7 @@ body{background:#fff;border:none}
 <div class="rp-grid">
 <aside class="rp-side">
 <div class="card"><h2 class="ct">التقرير</h2><div id="rp-form"></div><button class="btn dark big full" id="rp-print" type="button" data-i="pr">طباعة / PDF</button></div>
-<div class="card"><h2 class="ct">تصدير البيانات</h2><div id="ex-form"></div><div class="g2"><button class="btn" id="ex-xlsx" type="button" data-i="dl">Excel</button><button class="btn" id="ex-csv" type="button" data-i="dl">CSV</button></div><p class="note">التقرير والتصدير يتبعان التصفية الحالية.</p></div>
+<div class="card"><h2 class="ct">تصدير البيانات</h2><div id="ex-form"></div><div class="g2"><button class="btn" id="ex-xlsx" type="button" data-i="dl">Excel</button><button class="btn" id="ex-csv" type="button" data-i="dl">CSV</button><button class="btn full" id="ex-copy" type="button" style="grid-column:1/-1">نسخ كجدول للصق في Excel</button></div><p class="note">التقرير والتصدير يتبعان التصفية الحالية.</p></div>
 </aside>
 <div class="paper" id="preview"></div>
 </div>
@@ -708,7 +708,7 @@ const bar='<td class="num"><span class="mb"><i style="width:'+(e.n/mx*100).toFix
 if(cl)return '<tr data-key="'+esc(e.key)+'"><td class="num c-i">'+(i+1)+'</td><td class="c-f">'+esc(e.name)+'</td>'+bar+'<td>'+tagCls(e.cls)+'</td><td>'+(e.type?esc(e.type):'—')+'</td><td class="num">'+e.users.size+'</td><td>'+(e.topUser?esc(e.topUser.name)+' <span class="sub num">'+fmtPct(e.topUser.n/e.n)+'</span>':'—')+'</td></tr>';
 return '<tr data-key="'+esc(e.key)+'"><td class="num c-i">'+(i+1)+'</td><td class="c-f">'+esc(e.name)+'</td>'+bar+'<td class="num">'+e.list.length+'</td><td>'+esc(e.list[0].name)+' <span class="sub num">'+fmtPct(e.list[0].n/e.n)+'</span></td></tr>';}).join(''):'<tr><td colspan="9" class="empty">لا نتائج.</td></tr>';
 $('#cnt-'+kind).textContent=fmt(a.length)+' من '+fmt(all.length);
-if(cl){const u=state.facs.filter(incomplete).length,bt=$('#btn-unc');bt.hidden=!u;bt.textContent='ناقصة التصنيف · '+fmt(u);bt.classList.toggle('on',state.onlyUnc);}}
+if(cl){const u=state.facs.filter(incomplete).length,bt=$('#btn-unc');bt.hidden=!u;$('#btn-copy-unc').hidden=!u;bt.textContent='ناقصة التصنيف · '+fmt(u);bt.classList.toggle('on',state.onlyUnc);}}
 function entity(kind,key){if(kind==='cl')return state.facs.find(f=>f.key===key);if(kind==='ce'){for(const B of state.locs){const C=B.clist.find(c=>c.key===key);if(C)return C;}return null;}return state.people.find(p=>p.key===key);}
 function breakdown(kind,e){return kind==='cl'?e.ulist:e.list;}
 const CHEV='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>';
@@ -1009,6 +1009,17 @@ $('#rp-form').addEventListener('ddchange',readRp);
 $('#rp-form').addEventListener('click',e=>{const a=e.target.closest('#rp-all,#rp-none');if(!a)return;document.querySelectorAll('[data-sec]:not(:disabled)').forEach(c=>{c.checked=a.id==='rp-all';});readRp();});
 $('#ex-form').addEventListener('change',e=>{const c=e.target.closest('[data-ex]');if(c)state.ex[c.dataset.ex]=c.checked?1:0;});
 $('#rp-print').addEventListener('click',()=>printHTML(buildReport(state.rep),state.rep.orient));
+function copyText(t){
+if(navigator.clipboard&&window.isSecureContext)return navigator.clipboard.writeText(t);
+return new Promise((res,rej)=>{const a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy')?res():rej();}catch(e){rej(e);}a.remove();});}
+const tsvOf=aoa=>aoa.map(r=>r.map(v=>String(v??'').replace(/[\t\r\n]+/g,' ')).join('\t')).join('\n');
+$('#ex-copy').addEventListener('click',()=>{
+const on=EXS.filter(x=>state.ex[x[0]]);
+if(!on.length){toast('اختر بياناً واحداً على الأقل');return;}
+copyText(tsvOf(exAoa(on[0][0]))).then(()=>toast('تم نسخ «'+on[0][1]+'»'+(on.length>1?' (الأول فقط)':'')),()=>toast('تعذّر النسخ'));});
+$('#btn-copy-unc').addEventListener('click',()=>{
+const a=state.facs.filter(incomplete);
+copyText(tsvOf([['الجهة','التصنيف','النوع'],...a.map(f=>[f.name,f.cls||'',f.type||''])])).then(()=>toast('تم نسخ '+fmt(a.length)+' جهة'),()=>toast('تعذّر النسخ'));});
 $('#ex-xlsx').addEventListener('click',()=>runExport('xlsx'));
 $('#ex-csv').addEventListener('click',()=>runExport('csv'));
 $('#btn-browse').addEventListener('click',()=>$('#file-input').click());
