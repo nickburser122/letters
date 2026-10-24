@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body><iframe id="f" src="index.html" style="width:1280px;height:800px"></iframe><script>
+const f=document.getElementById('f');
+f.onload=async()=>{const w=f.contentWindow,d=f.contentDocument;w.localStorage.clear();
+w.addEventListener('error',e=>console.error('ERR',e.message,e.lineno));
+const s=ms=>new Promise(r=>setTimeout(r,ms));
+const L=['عدد الجوابات\tالجهه\tاسم المستخدم\tالمركز\tالفرع'];
+const B=['فرع البحيرة','فرع القاهرة','فرع الجيزة'],F=['مستشفى دمنهور العام','مستشفي دمنهور العام','مستشفى دمنهور  العامه','معمل البرج','معمل البرج للتحاليل','رمد طنطا','مركز الاشعة 1','مركز الاشعة 2'];
+for(let i=0;i<4000;i++){const b=B[i%3];L.push((i%9+1)+'\t'+F[i%8]+' '+(i%40)+'\tمستخدم '+(i%37)+'\tمركز '+(i%11)+'\t'+(i%50===0?'':b));}
+L.push('5\tرمد طنطا\t\t\t');
+try{d.getElementById('data-input').value=L.join('\n');d.getElementById('btn-analyze').click();await s(1500);
+console.log('v0',JSON.stringify(d.getElementById('data-input').value.slice(0,80)));console.log('err',d.getElementById('input-error').textContent,'dash',d.getElementById('view-dash').hidden,'acts',d.getElementById('tr-act').innerHTML.slice(0,200));
+d.querySelector('[data-tab="tr"]').click();await s(300);console.log('acts2',d.getElementById('tr-act').innerHTML.slice(0,300));
+d.querySelector('#tr-act [data-dp="4"]').click();await s(400);
+console.log('cnt',d.getElementById('cnt-tr').textContent,'dom rows',d.querySelectorAll('#tr-body .tn').length,'pad h',d.getElementById('tr-body').style.height);
+const sc=d.getElementById('tr-scroll');sc.scrollTop=20000;sc.dispatchEvent(new Event('scroll'));await s(200);
+console.log('head',d.getElementById('tr-head').innerText.replace(/\s+/g,' '));
+const q=d.getElementById('q-tr');q.value='دمنهور';q.dispatchEvent(new Event('input',{bubbles:true}));await s(400);
+console.log('search',d.getElementById('cnt-tr').textContent,'marks',d.querySelectorAll('#tr-body mark').length);
+q.value='';q.dispatchEvent(new Event('input',{bubbles:true}));await s(300);
+const fr=d.querySelector('#tr-body .tn-r');fr.focus();
+const k=key=>d.activeElement.dispatchEvent(new KeyboardEvent('keydown',{key,bubbles:true}));
+k('ArrowDown');k('ArrowDown');await s(50);console.log('cur after down',d.querySelector('#tr-body .tn-r.cur').innerText.replace(/\s+/g,' ').slice(0,40));
+k('ArrowRight');await s(50);console.log('after right(close in rtl?)',d.querySelector('#tr-body .tn-r.cur').closest('.tn').getAttribute('aria-expanded'));
+k('ArrowLeft');await s(50);console.log('after left',d.querySelector('#tr-body .tn-r.cur').closest('.tn').getAttribute('aria-expanded'));
+d.querySelector('[data-tab="qa"]').click();await s(800);
+console.log('qa',d.getElementById('qa-body').innerText.replace(/\s+/g,' ').slice(0,700));
+const mb=d.querySelector('[data-qmerge]');if(mb){mb.click();await s(800);console.log('after merge',d.querySelector('.qcards').innerText.replace(/\s+/g,' '));}
+d.querySelector('[data-tab="fw"]').click();await s(500);console.log('fw',d.getElementById('cnt-fw').textContent);
+d.querySelector('[data-tab="rp"]').click();await s(400);
+d.getElementById('rp-toc').click();d.getElementById('rp-bre').click();d.getElementById('rp-trw').click();await s(400);
+const pv=d.getElementById('preview');console.log('rp toc',pv.querySelectorAll('.rp-toc li').length,'br sections',pv.querySelectorAll('.rp-brh').length,'wide',pv.querySelectorAll('.rsec.wide').length);
+console.log('scope after report',d.getElementById('scope').innerText);
+d.querySelector('[data-tab="fw"]').click();
+}catch(e){console.error('TEST',e.stack)}console.log('done');};
+</script></body></html>

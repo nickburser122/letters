@@ -427,7 +427,7 @@ body{background:#fff!important;border:none}
 .tr-act .chip{padding:.15rem .65rem}
 .tr-path{font-size:.8rem;color:var(--ink2);margin:.2rem 0 .8rem}
 .tr-path b{color:var(--clay-ink);font-weight:600}
-.tr-path span{color:var(--faint);padding-inline:.4rem}
+.tr-path .sep{color:var(--faint);padding-inline:.4rem}
 .tree{background:var(--card);border:1px solid var(--line2);border-radius:var(--r-l);box-shadow:var(--shadow-s);overflow:hidden}
 .tn-r{position:relative;display:grid;grid-template-columns:22px auto minmax(0,1fr) auto 84px auto auto;gap:.6rem;align-items:center;padding:.5rem .8rem;padding-inline-start:calc(.8rem + var(--lv,0)*1.35rem);border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s}
 .tn:last-child .tn-r{border-bottom:none}
@@ -459,6 +459,74 @@ body{background:#fff!important;border:none}
 .rt-tree .dn{display:inline-block;font-size:9.5px;font-weight:600;color:#7C766C}
 @media (max-width:700px){.tn-r{grid-template-columns:22px auto minmax(0,1fr) auto auto}.tn-k,.tn-b{display:none}}
 .ic{display:inline-flex}
+mark{background:var(--clay-soft);color:var(--clay-ink);border-radius:3px;padding:0 1px;font-weight:700}
+.tabs .badge{margin-inline-start:.35rem;vertical-align:1px}
+.tr-path{display:flex;flex-wrap:wrap;gap:.3rem 1rem;align-items:center}
+.tr-keys{margin-inline-start:auto;font-size:.72rem;color:var(--muted);display:inline-flex;gap:.6rem;flex-wrap:wrap}
+.tr-keys kbd{font-size:.64rem}
+.tr-head{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem 1rem;padding:.45rem .8rem;border-bottom:1px solid var(--line2);background:var(--sand-soft);font-size:.75rem;color:var(--muted);min-height:40px}
+.th-lv{display:flex;gap:.3rem;flex-wrap:wrap}
+.th-cr{display:flex;align-items:center;gap:.25rem;flex:1;min-width:0;overflow:hidden;white-space:nowrap}
+.th-c{display:inline-flex;align-items:center;gap:.35rem;padding:.1rem .45rem;border-radius:6px;color:var(--ink2);font-size:.76rem;max-width:240px;overflow:hidden;text-overflow:ellipsis;transition:background .15s}
+.th-c:hover{background:var(--hover);color:var(--ink)}
+.th-s{color:var(--faint)}
+.th-col{display:flex;gap:1.2rem;font-size:.7rem}
+.tr-scroll{position:relative;overflow-y:auto;max-height:min(68vh,760px);overscroll-behavior:contain}
+.tr-pad{position:relative}
+.tn{position:absolute;inset-inline:0;height:44px}
+.tn-r{height:44px;padding-block:0}
+.tn-n{flex-wrap:nowrap;overflow:hidden}
+.tn-n>span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.tn-r.cur{box-shadow:inset 3px 0 0 var(--clay)}
+[dir=rtl] .tn-r.cur{box-shadow:inset -3px 0 0 var(--clay)}
+.vrow{display:flex;gap:.4rem .5rem;flex-wrap:wrap;align-items:center;flex-basis:100%;padding-top:.6rem;border-top:1px dashed var(--line)}
+.vchip{display:inline-flex;align-items:center;border:1px solid var(--line2);border-radius:99px;overflow:hidden}
+.vchip .chip{border:0;border-radius:0}
+.vx{width:24px;align-self:stretch;color:var(--muted);border-inline-start:1px solid var(--line);transition:color .15s,background .15s}
+.vx:hover{color:var(--clay);background:var(--hover)}
+.resume{display:flex;align-items:center;gap:.6rem 1rem;flex-wrap:wrap;padding:.8rem 1rem;border:1px solid var(--line2);border-radius:var(--r-m);background:var(--card);margin-bottom:1.4rem;box-shadow:var(--shadow-s);animation:rise .4s var(--ease)}
+.resume b{font-weight:600}
+.resume .sub{flex:1;min-width:200px}
+.flow{background:var(--card);border:1px solid var(--line2);border-radius:var(--r-l);box-shadow:var(--shadow-s);padding:1rem;overflow-x:auto}
+.flow svg{display:block;width:100%;min-width:760px;height:auto}
+.fl-l{fill:none;stroke-opacity:.26;transition:stroke-opacity .15s}
+.flow svg.hov .fl-l{stroke-opacity:.06}
+.flow svg.hov .fl-l.on,.flow .fl-l:hover{stroke-opacity:.6}
+.fl-n{cursor:pointer}
+.fl-n rect{transition:opacity .15s}
+.flow svg.hov .fl-n:not(.on) rect{opacity:.35}
+.fl-t{font-family:var(--font);font-size:12px;fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:4px;stroke-linejoin:round;pointer-events:none}
+.fl-t .v{fill:var(--muted);font-size:11px}
+.fl-h{font-family:var(--font);font-size:12px;font-weight:600;fill:var(--muted)}
+.qcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.8rem}
+.qc{display:flex;flex-direction:column;gap:.15rem;text-align:start;background:var(--card);border:1px solid var(--line2);border-radius:var(--r-m);padding:.8rem 1rem;box-shadow:var(--shadow-s);transition:border-color .15s,box-shadow .15s}
+button.qc:hover{border-color:var(--ink);box-shadow:var(--shadow-m)}
+.qc b{font-size:1.45rem;font-weight:600;line-height:1.3}
+.qc span{font-size:.8rem;color:var(--ink2);font-weight:500}
+.qc small{font-size:.72rem;color:var(--muted)}
+.qc.warn b{color:var(--clay)}
+.qc.ok b{color:var(--sage)}
+.dup{background:var(--card);border:1px solid var(--line2);border-radius:var(--r-m);padding:.7rem .9rem;margin-bottom:.6rem}
+.dup-m{display:flex;flex-direction:column;gap:.15rem;margin-bottom:.5rem}
+.dup-o{display:grid;grid-template-columns:18px 1fr auto;gap:.6rem;align-items:center;padding:.3rem .4rem;border-radius:6px;font-size:.86rem;text-align:start;transition:background .15s}
+.dup-o:hover{background:var(--hover)}
+.dup-o .rd{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line2);display:grid;place-items:center}
+.dup-o[aria-checked=true] .rd{border-color:var(--clay)}
+.dup-o[aria-checked=true] .rd::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--clay)}
+.dup-o[aria-checked=true]{font-weight:600}
+.dup-a{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.ccl{display:flex;flex-wrap:wrap;gap:.3rem}
+.rp-toc{break-after:page;margin-top:1rem}
+.rp-toc h2{margin-top:0}
+.rp-toc ol{list-style:none;font-size:12px}
+.rp-toc a{display:flex;justify-content:space-between;gap:1rem;color:inherit;text-decoration:none;border-bottom:1px dotted #D8D2C3;padding:.2rem 0}
+.rp-toc .t0 a{font-weight:700;margin-top:.4rem}
+.rp-toc .t1 a{padding-inline-start:1.2rem}
+.rp-toc .sn{color:#A63D28;font-weight:700;margin-inline-end:.5rem}
+.rp-brh{font-family:var(--display);font-size:22px;border-bottom:3px solid #A63D28;padding-bottom:.2rem;margin:1.2rem 0 .4rem}
+.rp-br{break-before:page}
+.rsec.wide{page:wide}
+.rp-fl svg{width:100%;height:auto;display:block}
 </style>
 </head>
 <body>
@@ -471,6 +539,7 @@ body{background:#fff!important;border:none}
 <h1 class="display in-title">جوابات</h1>
 <p class="lede">الصق الجدول كما هو. تنظيف تلقائي، ثم تحليل لكل جهة ولكل مستخدم.</p>
 </div>
+<div class="resume" id="resume" hidden></div>
 <div class="steps"><div><i>١</i><span>الصق</span></div><div><i>٢</i><span>تنظيف تلقائي</span></div><div><i>٣</i><span>حلّل · اطبع · صدّر</span></div></div>
 <div class="in-grid">
 <div class="panel paste" id="drop-main">
@@ -495,10 +564,10 @@ body{background:#fff!important;border:none}
 <header class="hdr">
 <div class="wrap bar">
 <div class="brand"><img class="brand-ico" alt=""><span>جوابات</span></div>
-<nav class="tabs" id="tabs" role="tablist"><button type="button" role="tab" data-tab="ov" class="on">نظرة عامة</button><button type="button" role="tab" data-tab="cl">الجهات</button><button type="button" role="tab" data-tab="pe">المستخدمون</button><button type="button" role="tab" data-tab="lo">المواقع</button><button type="button" role="tab" data-tab="tr">الشجرة</button><button type="button" role="tab" data-tab="rt">المسارات</button><button type="button" role="tab" data-tab="rp">تقرير وتصدير</button></nav>
+<nav class="tabs" id="tabs" role="tablist"><button type="button" role="tab" data-tab="ov" class="on">نظرة عامة</button><button type="button" role="tab" data-tab="cl">الجهات</button><button type="button" role="tab" data-tab="pe">المستخدمون</button><button type="button" role="tab" data-tab="lo">المواقع</button><button type="button" role="tab" data-tab="tr">الشجرة</button><button type="button" role="tab" data-tab="fw">التدفق</button><button type="button" role="tab" data-tab="rt">المسارات</button><button type="button" role="tab" data-tab="qa">جودة البيانات<span class="badge num" id="qa-badge" hidden></span></button><button type="button" role="tab" data-tab="rp">تقرير وتصدير</button></nav>
 <div class="acts"><div class="seg theme-seg" data-theme-seg></div><button class="btn sm" id="btn-filter" type="button" data-i="fl">تصفية<span class="badge num" id="fcount" hidden></span></button><button class="btn sm dark" id="btn-reset" type="button">بيانات جديدة</button></div>
 </div>
-<div id="fpanel" class="fpanel" hidden><div class="wrap"><div id="filters" class="fgroups"></div><button class="linkish" id="btn-clear" type="button" hidden>مسح التصفية</button></div></div>
+<div id="fpanel" class="fpanel" hidden><div class="wrap"><div id="filters" class="fgroups"></div><button class="linkish" id="btn-clear" type="button" hidden>مسح التصفية</button><div class="vrow" id="views"></div></div></div>
 </header>
 <main class="wrap">
 <p class="scope" id="scope"></p>
@@ -528,8 +597,14 @@ body{background:#fff!important;border:none}
 <div class="tools"><div class="seg" id="tr-pre"></div><label class="searchbox" data-i="se"><input id="q-tr" type="text" autocomplete="off" placeholder="ابحث في الشجرة: فرع أو مركز أو مستخدم أو جهة"><button type="button" class="sb-x" data-i="x" aria-label="مسح" hidden></button></label><span class="cnt" id="cnt-tr"></span></div>
 <div class="tr-ctl"><div class="lvls" id="tr-lvls"></div><div class="tr-act" id="tr-act"></div></div>
 <p class="tr-path" id="tr-path"></p>
-<div class="tree" id="tr-body" role="tree"></div>
+<div class="tree"><div class="tr-head" id="tr-head"></div><div class="tr-scroll" id="tr-scroll" tabindex="0"><div class="tr-pad" id="tr-body" role="tree" aria-label="شجرة الروابط"></div></div></div>
 </section>
+<section id="v-fw" class="view" hidden>
+<div class="tools"><div class="cg" id="fw-ctl"></div><span class="cnt" id="cnt-fw"></span></div>
+<p class="scope" id="fw-note"></p>
+<div class="flow" id="fw-body"></div>
+</section>
+<section id="v-qa" class="view" hidden><div id="qa-body"></div></section>
 <section id="v-rt" class="view" hidden>
 <div class="tools"><div class="seg" id="rt-mode" style="--n:2"><span class="thumb"></span><button type="button" data-m="user" class="on">حسب المرسِل</button><button type="button" data-m="fac">حسب الجهة</button></div><label class="searchbox" data-i="se"><input id="q-rt" type="text" autocomplete="off" placeholder="ابحث في المسارات"><button type="button" class="sb-x" data-i="x" aria-label="مسح" hidden></button></label><button class="linkish" id="rt-all" type="button">فتح الكل</button><span class="cnt" id="cnt-rt"></span></div>
 <div id="rt-body"></div>
@@ -561,6 +636,12 @@ const fmt=n=>nf.format(Math.round(n||0));
 function fmtPct(x){const v=(x||0)*100;if(v<=0)return'0%';if(v<0.1)return'أقل من 0.1%';if(v>=99.95)return'100%';if(v>=10)return Math.round(v)+'%';return parseFloat(v.toFixed(1))+'%';}
 function plural(n){n=Math.abs(Math.round(n));if(n===1)return'خطاب واحد';if(n===2)return'خطابان';if(n>=3&&n<=10)return'خطابات';if(n>=11&&n<=99)return'خطاباً';return'خطاب';}
 function normAr(s){return String(s??'').replace(/[\u0640\u064B-\u065F\u0670]/g,'').replace(/[أإآٱ]/g,'ا').replace(/[ىئ]/g,'ي').replace(/ة/g,'ه').replace(/ؤ/g,'و').replace(/\s+/g,' ').trim();}
+const DIA=/[\u0640\u064B-\u065F\u0670]/;
+function hlMap(s){const n=[],ix=[];let sp=true;for(let i=0;i<s.length;i++){let c=s[i];if(DIA.test(c))continue;if(/\s/.test(c)){if(sp)continue;sp=true;c=' ';}else{sp=false;c=c.replace(/[أإآٱ]/,'ا').replace(/[ىئ]/,'ي').replace('ة','ه').replace('ؤ','و');}n.push(c);ix.push(i);}return{n:n.join(''),ix};}
+function hl(s,q){s=String(s??'');if(!q)return esc(s);const m=hlMap(s),a=m.n.indexOf(q);if(a<0)return esc(s);const st=m.ix[a];let b=m.ix[a+q.length-1]+1;while(b<s.length&&DIA.test(s[b]))b++;return esc(s.slice(0,st))+'<mark>'+esc(s.slice(st,b))+'</mark>'+esc(s.slice(b));}
+function deepKey(s){return normAr(s).toLowerCase().replace(/[^\u0621-\u064Aa-z0-9 ]+/g,' ').replace(/(.)\1+/g,'$1').split(' ').map(w=>w.replace(/^(وال|بال|فال|كال|لل|ال)(?=\S{2})/,'')).filter(Boolean).join('');}
+function lev(a,b,max){if(Math.abs(a.length-b.length)>max)return max+1;let p=Array.from({length:b.length+1},(_,j)=>j);for(let i=1;i<=a.length;i++){const c=[i];let mn=i;for(let j=1;j<=b.length;j++){c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));if(c[j]<mn)mn=c[j];}if(mn>max)return max+1;p=c;}return p[b.length];}
+function sig(t){let h=0;const st=Math.max(1,t.length>>12);for(let i=0;i<t.length;i+=st)h=(h*31+t.charCodeAt(i))|0;return t.length+':'+h;}
 function toNum(v){if(v==null)return NaN;let s=String(v).trim();if(!s)return NaN;s=s.replace(/[٠-٩]/g,d=>String('٠١٢٣٤٥٦٧٨٩'.indexOf(d))).replace(/[۰-۹]/g,d=>String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d))).replace(/[\u066B\u066C, ]/g,'').replace(/٫/g,'.');return parseFloat(s);}
 function detectDelim(text){const lines=text.split('\n').slice(0,6).filter(l=>l.trim());let t=0,c=0,sc=0;lines.forEach(l=>{t+=(l.match(/\t/g)||[]).length;c+=(l.match(/,/g)||[]).length;sc+=(l.match(/;/g)||[]).length;});if(t>0)return'tab';if(c>sc&&c>0)return'comma';if(sc>0)return'semi';return'space';}
 function splitCells(line,delim){
@@ -634,7 +715,7 @@ const n=toNum(r[map.count]);
 const fac=map.facility!==undefined?(r[map.facility]||'').trim():'';
 if(!isFinite(n)||!fac||n<0){if(r.some(c=>c!==''))skipped++;return;}
 rows.push({n,facility:fac,user:map.user!==undefined?(r[map.user]||'').trim():'',center:map.center!==undefined?(r[map.center]||'').trim():'',branch:map.branch!==undefined?(r[map.branch]||'').trim():''});});
-rows.forEach(r=>{r.fk=normAr(r.facility);r.uk=normAr(r.user);});
+rows.forEach(r=>{r.f0=r.facility;r.u0=r.user;r.fk=normAr(r.facility);r.uk=normAr(r.user);});
 if(!rows.length)throw new Error('لم يتبقَّ أي صف بيانات صالح بعد التنظيف — تحقّق من المحتوى الملصوق.');
 const filledNames={};
 [['facility','الجهة'],['user','اسم المستخدم'],['center','المركز'],['branch','الفرع']].forEach(pair=>{
@@ -754,11 +835,11 @@ const t0=performance.now(),dur=800;
 const step=t=>{const p=Math.min((t-t0)/dur,1);const e=1-Math.pow(1-p,3);el.textContent=fmt(to*e);if(p<1)requestAnimationFrame(step);};
 requestAnimationFrame(step);}
 const freshF=()=>({cls:new Set(),type:new Set(),branch:new Set(),center:new Set(),user:new Set(),facility:new Set()});
-const state={rows:[],classes:new Map(),manualClasses:new Map(),clsCache:new Map(),report:null,filters:freshF(),tab:'ov',fopen:false,onlyUnc:false,q:{cl:'',pe:'',lo:'',rt:''},rtMode:'user',openRt:new Set(),locs:[],sort:{cl:{key:'n',asc:false},pe:{key:'n',asc:false}},drawer:null,dstack:[],allFacs:[],frows:[],facs:[],people:[],total:0,names:{user:new Map(),facility:new Map()},avail:{branch:false,center:false,user:false,facility:true},pkOpts:{user:[],facility:[]},pkFocus:null,trIndex:new Map(),tree:{order:['branch','center','user','facility'],off:new Set(),openTr:new Set(),q:'',def:true,pend:null,hl:null,refocus:null},rep:{title:'تقرير الخطابات',by:'',charts:true,n:10,orient:'portrait',brk:false,sign:false,sec:{sum:1,ins:1,mix:1,loc:1,tr:1,cl:1,pe:1,rt:0,dpe:0,dcl:0,dce:0,qa:0}},ex:{cl:1,pe:1,loc:1,pair:1,tree:1,cls:0,raw:0}};
+const state={rows:[],classes:new Map(),manualClasses:new Map(),clsCache:new Map(),report:null,filters:freshF(),tab:'ov',fopen:false,onlyUnc:false,q:{cl:'',pe:'',lo:'',rt:''},rtMode:'user',openRt:new Set(),locs:[],sort:{cl:{key:'n',asc:false},pe:{key:'n',asc:false}},drawer:null,dstack:[],allFacs:[],frows:[],facs:[],people:[],total:0,names:{user:new Map(),facility:new Map()},avail:{branch:false,center:false,user:false,facility:true},pkOpts:{user:[],facility:[]},pkFocus:null,trIndex:new Map(),tree:{order:['branch','center','user','facility'],off:new Set(),openTr:new Set(),closedQ:new Set(),cur:null,q:'',def:true,pend:null,hl:null,refocus:null},fw:{p:'loc',n:12},views:[],trFlat:[],trQ:'',trDims:null,dupIgnore:new Set(),merges:new Map(),qaSel:{},rep:{title:'تقرير الخطابات',by:'',charts:true,n:10,orient:'portrait',brk:false,sign:false,toc:false,brPage:false,brEach:false,trWide:false,sec:{sum:1,ins:1,mix:1,loc:1,tr:1,fw:0,cl:1,pe:1,rt:0,dpe:0,dcl:0,dce:0,qa:0}},ex:{cl:1,pe:1,loc:1,pair:1,tree:1,treeg:1,cls:0,raw:0}};
 const svg=p=>'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
 const IC={dl:svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),pr:svg('<polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>'),up:svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>'),se:svg('<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/>'),fl:svg('<polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/>'),x:svg('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'),bk:svg('<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'),ch:svg('<polyline points="6 9 12 15 18 9"/>'),mo:svg('<rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'),su:svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),mn:svg('<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>')};
-const SECS=[['sum','المؤشرات الرئيسية'],['ins','القراءة التحليلية'],['mix','التركيبة (عام/خاص، النوع)'],['loc','المواقع (فرع › مركز)'],['tr','شجرة الروابط (حسب ترتيب تبويب الشجرة)'],['cl','ترتيب الجهات'],['pe','ترتيب المستخدمين'],['rt','المسارات (مرسِل ← جهة)'],['dpe','ملف كل مستخدم'],['dcl','ملف كل جهة'],['dce','ملف كل مركز'],['qa','ملحق: جودة البيانات']];
-const EXS=[['cl','الجهات'],['pe','المستخدمون'],['loc','المواقع (فرع × مركز)'],['pair','المسارات (مستخدم × جهة × مركز)'],['tree','الشجرة (فرع × مركز × مستخدم × جهة)'],['cls','جدول التصنيف (لإعادة اللصق)'],['raw','السجلات النظيفة']];
+const SECS=[['sum','المؤشرات الرئيسية'],['ins','القراءة التحليلية'],['mix','التركيبة (عام/خاص، النوع)'],['loc','المواقع (فرع › مركز)'],['tr','شجرة الروابط (حسب ترتيب تبويب الشجرة)'],['fw','مخطط التدفق'],['cl','ترتيب الجهات'],['pe','ترتيب المستخدمين'],['rt','المسارات (مرسِل ← جهة)'],['dpe','ملف كل مستخدم'],['dcl','ملف كل جهة'],['dce','ملف كل مركز'],['qa','ملحق: جودة البيانات']];
+const EXS=[['cl','الجهات'],['pe','المستخدمون'],['loc','المواقع (فرع × مركز)'],['pair','المسارات (مستخدم × جهة × مركز)'],['tree','الشجرة (فرع × مركز × مستخدم × جهة)'],['treeg','الشجرة بمجموعات قابلة للطي (Excel)'],['cls','جدول التصنيف (لإعادة اللصق)'],['raw','السجلات النظيفة']];
 const COLS={cl:[['#',''],['الجهة','name'],['العدد','n'],['الحصة',''],['التصنيف',''],['النوع',''],['المستخدمون','k'],['أعلى مستخدم',''],['الموقع','']],pe:[['#',''],['المستخدم','name'],['العدد','n'],['الحصة',''],['الجهات','k'],['أعلى جهة',''],['الموقع','']]};
 const pc=(a,b)=>b?Math.round(a/b*1000)/10:0;
 const tagCls=c=>c?'<span class="tag '+(c==='عام'?'tag-pub':c==='خاص'?'tag-priv':'tag-other')+'">'+esc(c)+'</span>':'<span class="tag tag-none">غير مصنّف</span>';
@@ -786,7 +867,7 @@ const labelOf=(k,v)=>(k==='user'||k==='facility')?(state.names[k].get(v)||v||NA)
 const treeDims=()=>{const d=state.tree.order.filter(x=>!state.tree.off.has(x)&&state.avail[x]);return d.length?d:['facility'];};
 const presetDims=p=>p[2].filter(d=>!p[3].includes(d)&&state.avail[d]).join();
 function curPreset(){const c=treeDims().join(),p=PRESETS.find(x=>presetDims(x)===c);return p?p[0]:'custom';}
-function applyPreset(id){const p=PRESETS.find(x=>x[0]===id);if(!p)return;state.tree.order=p[2].slice();state.tree.off=new Set(p[3]);state.tree.openTr=new Set();state.tree.def=true;state.tree.pend=null;state.tree.hl=null;}
+function applyPreset(id){const p=PRESETS.find(x=>x[0]===id);if(!p)return;state.tree.order=p[2].slice();state.tree.off=new Set(p[3]);state.tree.openTr=new Set();state.tree.closedQ=new Set();state.tree.def=true;state.tree.pend=null;state.tree.hl=null;}
 function dimInfo(d,r){
 if(d==='branch'){const v=r.branch||NA;return{key:v,name:v,val:v};}
 if(d==='center'){const b=r.branch||NA,c=r.center||NA;return{key:b+' › '+c,name:c,val:c,br:b};}
@@ -802,7 +883,7 @@ let c=cur.m.get(x.key);
 if(!c){c={id:cur.id+'/'+d+':'+x.key,dim:d,key:x.key,name:x.name,val:x.val,br:x.br,depth:i,n:0,m:new Map(),path:cur.path.concat([{dim:d,val:x.val,br:x.br,name:x.name,key:x.key}])};cur.m.set(x.key,c);}
 c.n+=r.n;cur=c;});});
 const idx=new Map();
-const fin=node=>{node.list=[...node.m.values()].sort((a,b)=>b.n-a.n);node.m=null;node.list.forEach(c=>{c.parent=node;c.nk=normAr(c.name+' '+(c.dim==='center'&&c.br?c.br:''));idx.set(c.id,c);fin(c);});};
+const fin=node=>{node.list=[...node.m.values()].sort((a,b)=>b.n-a.n);node.m=null;node.list.forEach((c,i)=>{c.pos=i+1;c.parent=node;c.nk=normAr(c.name+' '+(c.dim==='center'&&c.br?c.br:''));idx.set(c.id,c);fin(c);});};
 fin(root);
 return{root,idx,dims};}
 const trSub=c=>c.dim==='center'&&c.br&&c.br!==NA&&!c.path.some(p=>p.dim==='branch')?c.br:'';
@@ -1047,19 +1128,73 @@ const T=state.tree,dims=treeDims(),cur=curPreset();
 $('#tr-lvls').innerHTML=T.order.map((d,i)=>{const on=dims.includes(d),av=state.avail[d];
 return '<span class="lv'+(on?' on':' off')+'"><button type="button" class="lv-mv" data-mv="prev" data-d="'+d+'" aria-label="تقديم" data-tip="تقديم"'+(i?'':' disabled')+'>'+IC.bk+'</button><button type="button" class="lv-t" data-d="'+d+'" aria-pressed="'+on+'"'+(av?'':' disabled')+'>'+DIMP[d]+'</button><button type="button" class="lv-mv nx" data-mv="next" data-d="'+d+'" aria-label="تأخير" data-tip="تأخير"'+(i<T.order.length-1?'':' disabled')+'>'+IC.bk+'</button></span>';}).join('');
 $('#tr-act').innerHTML='<span class="cg-t">افتح حتى</span>'+dims.map((d,i)=>'<button type="button" class="chip" data-dp="'+(i+1)+'">'+DIMP[d]+'</button>').join('');
-$('#tr-path').innerHTML='<b>'+dims.map(d=>DIMP[d]).join('</b><span>←</span><b>')+'</b>';
+$('#tr-path').innerHTML='<span><b>'+dims.map(d=>DIMP[d]).join('</b><span class="sep">←</span><b>')+'</b></span><span class="tr-keys"><span><kbd>↑</kbd><kbd>↓</kbd> تنقّل</span><span><kbd>←</kbd><kbd>→</kbd> فتح وطي</span><span><kbd>Enter</kbd> الملف</span><span><kbd>*</kbd> فتح الإخوة</span><span><kbd>I</kbd> عزل</span></span>';
 document.querySelectorAll('#tr-pre button').forEach(b=>b.classList.toggle('on',b.dataset.p===cur));
 const seg=$('#tr-pre');seg.classList.toggle('none',cur==='custom');syncSeg(seg);}
-function trRow(c,pn,mx,open,kids,q,dims){
-const sub=trSub(c);
-return '<div class="tn" role="treeitem" aria-level="'+(c.depth+1)+'"'+(kids?' aria-expanded="'+open+'"':'')+'><div class="tn-r'+(open?' open':'')+((q&&c.hs)||state.tree.hl===c.id?' hit':'')+'" tabindex="0" data-id="'+esc(c.id)+'" style="--lv:'+c.depth+'">'
+const ROW=44;
+function trRow(x,i,q,dims){
+const c=x.c,kids=x.kids,open=x.open,sub=trSub(c),T=state.tree,cur=T.cur===c.id;
+return '<div class="tn" role="treeitem" aria-level="'+(c.depth+1)+'" aria-setsize="'+c.parent.list.length+'" aria-posinset="'+c.pos+'"'+(kids?' aria-expanded="'+open+'"':'')+' style="top:'+(i*ROW)+'px"><div class="tn-r'+(open?' open':'')+((q&&c.hs)||T.hl===c.id?' hit':'')+(cur?' cur':'')+'" tabindex="'+(cur?0:-1)+'" data-id="'+esc(c.id)+'" style="--lv:'+c.depth+'">'
 +'<span class="tn-c">'+(kids?'<span class="chev"></span>':'')+'</span>'
 +'<span class="tn-d d-'+c.dim+'">'+DIMS[c.dim]+'</span>'
-+'<span class="tn-n"><span>'+esc(c.name)+'</span>'+(sub?'<span class="tag">'+esc(sub)+'</span>':'')+'</span>'
++'<span class="tn-n"><span title="'+esc(c.name)+'">'+hl(c.name,q)+'</span>'+(sub?'<span class="tag">'+hl(sub,q)+'</span>':'')+'</span>'
 +'<span class="tn-k num">'+(kids?fmt(kids)+' '+DIMS[dims[c.depth+1]]:'')+'</span>'
-+'<span class="tn-b"><i style="width:'+(c.n/mx*100).toFixed(1)+'%"></i></span>'
-+'<span class="tn-v"><b class="num">'+fmt(c.n)+'</b><small class="num">'+fmtPct(c.n/pn)+'</small></span>'
-+'<span class="tn-a"><button type="button" class="ib" data-act="iso" data-tip="اعزل هذا المسار في كل الشاشات" aria-label="اعزل هذا المسار">'+IC.fl+'</button>'+(trHasDet(c)?'<button type="button" class="ib" data-act="det" data-tip="افتح الملف" aria-label="افتح الملف">'+IC.bk+'</button>':'')+'</span></div></div>';}
++'<span class="tn-b"><i style="width:'+(c.n/x.mx*100).toFixed(1)+'%"></i></span>'
++'<span class="tn-v"><b class="num">'+fmt(c.n)+'</b><small class="num">'+fmtPct(c.n/x.pn)+'</small></span>'
++'<span class="tn-a"><button type="button" class="ib" tabindex="-1" data-act="iso" data-tip="اعزل هذا المسار في كل الشاشات" aria-label="اعزل هذا المسار">'+IC.fl+'</button>'+(trHasDet(c)?'<button type="button" class="ib" tabindex="-1" data-act="det" data-tip="افتح الملف" aria-label="افتح الملف">'+IC.bk+'</button>':'')+'</span></div></div>';}
+function paintTree(){
+const sc=$('#tr-scroll'),el=$('#tr-body'),F=state.trFlat||[];
+if(!F.length)return;
+const ae=document.activeElement,fid=ae&&el.contains(ae)&&ae.dataset?ae.dataset.id:null;
+const a=Math.max(0,Math.floor(sc.scrollTop/ROW)-10),b=Math.min(F.length,Math.ceil((sc.scrollTop+(sc.clientHeight||600))/ROW)+10);
+let h='';for(let i=a;i<b;i++)h+=trRow(F[i],i,state.trQ,state.trDims);
+el.innerHTML=h;
+if(fid){const r=[...el.querySelectorAll('.tn-r')].find(x=>x.dataset.id===fid);if(r)r.focus({preventScroll:true});else sc.focus({preventScroll:true});}
+renderTrHead();}
+function trScrollTo(j,mode){
+const sc=$('#tr-scroll'),t=j*ROW,h=sc.clientHeight||600;
+if(mode==='top')sc.scrollTop=t;
+else if(mode==='center')sc.scrollTop=t-h/2+ROW/2;
+else if(t<sc.scrollTop)sc.scrollTop=t;
+else if(t+ROW>sc.scrollTop+h)sc.scrollTop=t+ROW-h;}
+function trFocusCur(){const r=[...$('#tr-body').querySelectorAll('.tn-r')].find(x=>x.dataset.id===state.tree.cur);if(r)r.focus({preventScroll:true});}
+let thKey='';
+function renderTrHead(){
+const F=state.trFlat||[],dims=state.trDims||treeDims(),sc=$('#tr-scroll'),top=F[Math.min(F.length-1,Math.floor(sc.scrollTop/ROW))];
+const anc=[];if(top)for(let n=top.c.parent;n&&n.id;n=n.parent)anc.unshift(n);
+const key=dims.join()+'|'+anc.map(n=>n.id).join('|');
+if(key===thKey)return;thKey=key;
+$('#tr-head').innerHTML='<span class="th-lv">'+dims.map((d,i)=>'<span class="tn-d d-'+d+'">'+(i+1)+' · '+DIMP[d]+'</span>').join('')+'</span><span class="th-cr">'+(anc.length?'<span>داخل</span>'+anc.map(n=>'<button type="button" class="th-c" data-tid="'+esc(n.id)+'" data-tip="انتقل إلى «'+esc(n.name)+'»"><span class="tn-d d-'+n.dim+'">'+DIMS[n.dim]+'</span>'+esc(n.name)+'</button>').join('<span class="th-s">‹</span>'):'<span>المستوى الأول · '+DIMP[dims[0]]+'</span>')+'</span>';}
+function trSet(n,open){
+const T=state.tree,x=(state.trFlat||[]).find(y=>y.c.id===n.id),was=x?x.open:T.openTr.has(n.id);
+if(open===undefined)open=!was;
+if(open){T.openTr.add(n.id);T.closedQ.delete(n.id);}else{T.openTr.delete(n.id);if(T.q)T.closedQ.add(n.id);}
+T.cur=n.id;T.refocus=n.id;renderTree();}
+function trActivate(n){
+state.tree.cur=n.id;
+if(n.list.length)trSet(n);
+else if(trHasDet(n))openDrawer(trKind(n),n.key,false);}
+function trKey(e){
+const T=state.tree,F=state.trFlat||[];
+if(!F.length||e.altKey||e.ctrlKey||e.metaKey)return;
+if(e.target.closest&&e.target.closest('.ib'))return;
+let i=F.findIndex(x=>x.c.id===T.cur);if(i<0)i=0;
+const x=F[i],c=x.c,rtl=document.documentElement.dir==='rtl',k=e.key,inK=rtl?'ArrowLeft':'ArrowRight',outK=rtl?'ArrowRight':'ArrowLeft';
+let j=null;
+if(k==='ArrowDown')j=Math.min(F.length-1,i+1);
+else if(k==='ArrowUp')j=Math.max(0,i-1);
+else if(k==='Home')j=0;
+else if(k==='End')j=F.length-1;
+else if(k==='PageDown')j=Math.min(F.length-1,i+10);
+else if(k==='PageUp')j=Math.max(0,i-10);
+else if(k===inK){e.preventDefault();if(x.kids&&!x.open){trSet(c,true);return;}if(x.open)j=i+1;else return;}
+else if(k===outK){e.preventDefault();if(x.open){trSet(c,false);return;}if(c.parent&&c.parent.id)j=F.findIndex(y=>y.c.id===c.parent.id);else return;}
+else if(k==='*'){e.preventDefault();c.parent.list.forEach(s=>{if(s.list.length){T.openTr.add(s.id);T.closedQ.delete(s.id);}});T.refocus=c.id;renderTree();return;}
+else if(k==='Enter'||k===' '){e.preventDefault();trActivate(c);return;}
+else if(k==='i'||k==='ن'){e.preventDefault();isolate(c.path,c.id);return;}
+else return;
+if(j==null||j<0)return;
+e.preventDefault();T.cur=F[j].c.id;trScrollTo(j);paintTree();trFocusCur();}
 function renderTree(){
 const T=state.tree,el=$('#tr-body'),dims=treeDims(),tr=buildTree(state.frows,dims);
 state.trIndex=tr.idx;
@@ -1074,26 +1209,29 @@ T.pend=null;}
 const q=normAr(T.q);
 if(q){const mark=(n,anc)=>{n.hs=!!n.nk&&n.nk.includes(q);n.an=anc;let d=false;n.list.forEach(c=>{if(mark(c,anc||n.hs))d=true;});n.hd=d;return n.hs||d;};mark(tr.root,false);}
 renderLevels();
-$('#cnt-tr').textContent=fmt(tr.idx.size)+' عقدة';
-if(!state.frows.length){el.innerHTML='<div class="empty" style="padding:1rem">لا نتائج.</div>';return;}
-const out=[];let cnt=0,cap=false;
+const F=[];let hits=0;
 const walk=n=>{
 const mx=n.list.length?n.list[0].n||1:1;
 n.list.forEach(c=>{
-if(cap)return;
 if(q&&!(c.hs||c.hd||c.an))return;
-if(cnt>=3000){cap=true;return;}
-cnt++;
-const kids=c.list.length,open=!!kids&&(T.openTr.has(c.id)||!!(q&&c.hd));
-out.push(trRow(c,n.n||1,mx,open,kids,q,dims));
+if(q&&c.hs)hits++;
+const kids=c.list.length,open=!!kids&&(T.openTr.has(c.id)||!!(q&&c.hd&&!T.closedQ.has(c.id)));
+F.push({c,kids,open,mx,pn:n.n||1});
 if(open)walk(c);});};
 walk(tr.root);
-el.innerHTML=out.length?out.join('')+(cap?'<div class="tr-cap">اقتُصر العرض على أول 3000 صف — ضيّق النتائج بالبحث أو التصفية.</div>':''):'<div class="empty" style="padding:1rem">لا نتائج.</div>';
+state.trFlat=F;state.trQ=q;state.trDims=dims;thKey='';
+$('#cnt-tr').textContent=(q?fmt(hits)+' مطابقة · ':'')+fmt(F.length)+' صف ظاهر · '+fmt(tr.idx.size)+' عقدة';
+el.style.height=(F.length*ROW)+'px';
+if(!F.length){el.style.height='';el.innerHTML='<div class="empty" style="padding:1rem">لا نتائج.</div>';renderTrHead();return;}
+if(!F.some(x=>x.c.id===T.cur))T.cur=F[0].c.id;
 const want=T.refocus||T.scroll;
-if(want){const r=[...el.querySelectorAll('.tn-r')].find(x=>x.dataset.id===want);if(r){if(T.refocus)r.focus({preventScroll:true});else r.scrollIntoView({block:'center'});}}
-T.refocus=null;T.scroll=null;}
+if(want){const j=F.findIndex(x=>x.c.id===want);if(j>=0){T.cur=want;trScrollTo(j,T.refocus?null:'center');}}
+paintTree();
+if(T.refocus)trFocusCur();
+T.refocus=null;T.scroll=null;
+saveSession();}
 function openDepth(k){
-const T=state.tree;T.openTr=new Set();
+const T=state.tree;T.openTr=new Set();T.closedQ=new Set();
 state.trIndex.forEach(n=>{if(n.depth<k-1&&n.list.length)T.openTr.add(n.id);});
 renderTree();}
 function isolate(path,id){
@@ -1167,10 +1305,19 @@ function rtbl(heads,rows,fr,ch){
 const b=ch&&fr;
 return '<table class="rt"><thead><tr>'+heads.map(h=>'<th class="'+h[1]+'">'+h[0]+'</th>').join('')+(b?'<th class="bh"></th>':'')+'</tr></thead><tbody>'+rows.map((r,i)=>'<tr>'+r.map((c,j)=>'<td class="'+heads[j][1]+'">'+c+'</td>').join('')+(b?'<td class="bc"><i style="width:'+(fr[i]*100).toFixed(1)+'%"></i></td>':'')+'</tr>').join('')+'</tbody></table>';}
 function buildReport(o){
-const s=o.sec,ch=o.charts,N=o.n||Infinity,T=state.total||1,cp=(a,all)=>a.length<all?' — أعلى '+a.length+' من '+all:'';
 if(!state.facs.length)return repWrap(o.title,'تقرير تحليلي','<p>لا بيانات ضمن التحديد.</p>',o);
-let h='',sn=0;const H=t=>{sn++;return '<h2><span class="sn num">'+String(sn).padStart(2,'0')+'</span>'+t+'</h2>';};
-const S=x=>{if(x)h+='<section class="rsec">'+x+'</section>';};
+const hasB=state.avail.branch&&state.locs.length>1;
+if(!(o.brEach&&hasB)){const r=reportBody(o,'s');return repWrap(o.title,'تقرير تحليلي · '+(anyFilter()?'نطاق مُصفّى':'كامل البيانات'),r.h?(o.toc?tocHTML(r.toc):'')+r.h:'<p>لم تُحدَّد أقسام.</p>',o);}
+const f0=state.filters.branch,names=state.locs.map(B=>B.name),parts=[],toc=[];
+try{names.forEach((b,i)=>{state.filters.branch=new Set([b]);compute();const r=reportBody(o,'b'+i);toc.push({t:b,id:'b'+i,lv:0});r.toc.forEach(x=>toc.push(Object.assign({},x,{lv:1})));parts.push('<section class="'+(i?'rp-br':'')+'" id="b'+i+'"><h2 class="rp-brh">'+esc(b)+' <small class="num" style="font-size:13px;color:#7C766C">'+fmt(state.total)+' '+plural(state.total)+'</small></h2>'+(r.h||'<p>لم تُحدَّد أقسام.</p>')+'</section>');});}
+finally{state.filters.branch=f0;compute();}
+return repWrap(o.title,'تقرير لكل فرع · '+fmt(names.length)+' فرع',(o.toc?tocHTML(toc):'')+parts.join(''),o);}
+function tocHTML(t){return t.length?'<nav class="rp-toc"><h2>المحتويات</h2><ol>'+t.map(x=>'<li class="t'+(x.lv||0)+'"><a href="#'+x.id+'"><span>'+(x.sn?'<span class="sn num">'+x.sn+'</span>':'')+esc(x.t)+'</span></a></li>').join('')+'</ol></nav>':'';}
+function reportBody(o,pfx){
+const s=o.sec,ch=o.charts,N=o.n||Infinity,T=state.total||1,cp=(a,all)=>a.length<all?' — أعلى '+a.length+' من '+all:'',toc=[];
+if(!state.facs.length)return{h:'<p>لا بيانات ضمن التحديد.</p>',toc};
+let h='',sn=0,wide=false;const H=t=>{sn++;const n=String(sn).padStart(2,'0'),id=pfx+'-'+sn;toc.push({t:t.replace(/<[^>]+>/g,''),sn:n,id});return '<h2 id="'+id+'"><span class="sn num">'+n+'</span>'+t+'</h2>';};
+const S=x=>{if(x)h+='<section class="rsec'+(wide?' wide':'')+'">'+x+'</section>';wide=false;};
 if(s.sum)S(H('المؤشرات الرئيسية')+'<div class="rk2">'+kpiItems().map(k=>'<div><b class="num">'+k[0]+'</b><span>'+k[1]+'</span></div>').join('')+'</div>');
 if(s.ins)S(H('القراءة التحليلية')+'<ul class="rins">'+insightLines(true).map(t=>'<li>'+t+'</li>').join('')+'</ul>');
 if(s.mix){
@@ -1180,9 +1327,10 @@ if(s.loc&&state.frows.some(r=>r.branch||r.center)){
 let x=H('المواقع: الفروع والمراكز');
 const bmx=state.locs[0].n||1;
 x+='<h3>ملخص الفروع</h3>'+rtbl([['الفرع',''],['المراكز','n'],['الجهات','n'],['المستخدمون','n'],['العدد','n'],['الحصة','n']],state.locs.map(B=>[esc(B.name),B.clist.length,B.facs.size,B.users.size,fmt(B.n),fmtPct(B.n/T)]),state.locs.map(B=>B.n/bmx),ch);
-state.locs.forEach(B=>{const mx=B.clist[0].n||1;x+='<section class="rp-ent" style="margin-top:.8rem"><h3><span>'+esc(B.name)+'</span><span class="num">'+fmt(B.n)+' · '+fmtPct(B.n/T)+'</span></h3>'+rtbl([['المركز',''],['الجهات','n'],['المستخدمون','n'],['العدد','n'],['% من الفرع','n'],['% من الإجمالي','n']],B.clist.map(C=>[esc(C.name),C.list.length,C.ulist.length,fmt(C.n),fmtPct(C.n/B.n),fmtPct(C.n/T)]),B.clist.map(C=>C.n/mx),ch)+'</section>';});
+state.locs.forEach((B,bi)=>{const mx=B.clist[0].n||1;x+='<section class="rp-ent'+(o.brPage&&state.locs.length>1?' rp-br':'')+'" style="margin-top:.8rem">'+(o.brPage&&state.locs.length>1?'<h3 class="rp-brh">'+esc(B.name)+'</h3>':'')+'<h3><span>'+esc(B.name)+'</span><span class="num">'+fmt(B.n)+' · '+fmtPct(B.n/T)+'</span></h3>'+rtbl([['المركز',''],['الجهات','n'],['المستخدمون','n'],['العدد','n'],['% من الفرع','n'],['% من الإجمالي','n']],B.clist.map(C=>[esc(C.name),C.list.length,C.ulist.length,fmt(C.n),fmtPct(C.n/B.n),fmtPct(C.n/T)]),B.clist.map(C=>C.n/mx),ch)+'</section>';});
 S(x);}
-if(s.tr&&state.frows.some(r=>r.user||r.branch||r.center))S(H('شجرة الروابط')+treeReport(N,ch));
+if(s.tr&&state.frows.some(r=>r.user||r.branch||r.center)){wide=!!o.trWide;S(H('شجرة الروابط')+treeReport(N,ch));}
+if(s.fw&&fwDims().length>1){const f=flowSVG(state.frows,fwDims(),Math.min(state.fw.n,15),false);wide=true;S(H('مخطط التدفق')+'<p class="rp-meta">'+fwDims().map(d=>DIMP[d]).join(' ← ')+'</p><div class="rp-fl">'+f.svg+'</div>');}
 if(s.cl){
 const a=state.facs.slice(0,N),mx=a[0].n||1;
 h+='<section class="rsec">'+H('ترتيب الجهات'+cp(a,state.facs.length))+rtbl([['#','n'],['الجهة',''],['التصنيف',''],['النوع',''],['الموقع',''],['المستخدمون','n'],['العدد','n'],['الحصة','n']],a.map((f,i)=>[i+1,esc(f.name),esc(f.cls||'—'),esc(f.type||'—'),esc(locPlain(f.locs)),f.ulist.length,fmt(f.n),fmtPct(f.n/T)]),a.map(f=>f.n/mx),ch)+'</section>';}
@@ -1205,8 +1353,8 @@ if(s.dce&&state.frows.some(r=>r.branch||r.center)){
 let x=H('ملف كل مركز');
 state.locs.forEach(B=>B.clist.forEach(C=>{const mx=C.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(C.name)+' <small style="font-weight:400;color:#7C766C">'+esc(B.name)+'</small></span><span class="num">'+fmt(C.n)+' · '+fmtPct(C.n/T)+'</span></h3><div class="rmix"><div>'+rtbl([['الجهة',''],['العدد','n'],['%','n']],C.list.slice(0,N).map(f=>[esc(f.name),fmt(f.n),fmtPct(f.n/C.n)]),C.list.slice(0,N).map(f=>f.n/mx),ch)+'</div><div>'+rtbl([['المستخدم',''],['العدد','n'],['%','n']],C.ulist.slice(0,N).map(u=>[esc(u.name),fmt(u.n),fmtPct(u.n/C.n)]),null,false)+'</div></div>'+(C.plist.some(p=>p.uk)?'<div style="margin-top:.5rem">'+rtbl([['المرسِل',''],['الجهة',''],['العدد','n'],['% من المركز','n']],C.plist.slice(0,N).map(p=>[esc(p.user),esc(p.facility),fmt(p.n),fmtPct(p.n/C.n)]),null,false)+'</div>':'')+'</section>';}));
 S(x);}
-if(s.qa)S(H('ملحق: جودة البيانات')+'<ul class="rins">'+cleanItems(true).map(t=>'<li>'+t+'</li>').join('')+'</ul>');
-return repWrap(o.title,'تقرير تحليلي · '+(anyFilter()?'نطاق مُصفّى':'كامل البيانات'),h||'<p>لم تُحدَّد أقسام.</p>',o);}
+if(s.qa)S(H('ملحق: جودة البيانات')+'<ul class="rins">'+cleanItems(true).concat(qaLines()).map(t=>'<li>'+t+'</li>').join('')+'</ul>');
+return{h,toc};}
 function entityHTML(kind,e){
 const cl=kind==='cl',ce=kind==='ce',T=state.total||1,ch=state.rep.charts;
 const all=cl?state.facs:ce?state.locs.flatMap(B=>B.clist).sort((a,b)=>b.n-a.n):state.people;
@@ -1222,10 +1370,10 @@ let rpT=null;
 function renderReport(){clearTimeout(rpT);rpT=setTimeout(renderReportNow,70);}
 function renderReportNow(){if(state.tab==='rp')$('#preview').innerHTML=buildReport(state.rep);}
 function renderRpForm(){
-const r=state.rep,hasU=state.rows.some(x=>x.user),hasL=state.rows.some(x=>x.branch||x.center),off={pe:!hasU,rt:!hasU,dpe:!hasU,loc:!hasL,dce:!hasL,tr:!(hasU||hasL)};
+const r=state.rep,hasU=state.rows.some(x=>x.user),hasL=state.rows.some(x=>x.branch||x.center),off={pe:!hasU,rt:!hasU,dpe:!hasU,loc:!hasL,dce:!hasL,tr:!(hasU||hasL),fw:!(hasU||hasL)};
 const sw=swb;
 $('#rp-form').innerHTML='<label class="fl">العنوان<input id="rp-title" type="text" autocomplete="off" value="'+esc(r.title)+'"></label><label class="fl">أُعدّ بواسطة<input id="rp-by" type="text" autocomplete="off" value="'+esc(r.by)+'"></label>'
-+sw('rp-charts','الرسوم البيانية',r.charts)+sw('rp-brk','كل قسم في صفحة جديدة',r.brk)+sw('rp-sign','خانات التوقيع',r.sign)
++sw('rp-charts','الرسوم البيانية',r.charts)+sw('rp-brk','كل قسم في صفحة جديدة',r.brk)+sw('rp-sign','خانات التوقيع',r.sign)+sw('rp-toc','جدول محتويات',r.toc)+(hasL?sw('rp-bre','تقرير مستقل لكل فرع',r.brEach)+sw('rp-brp','صفحة لكل فرع في قسم المواقع',r.brPage):'')+sw('rp-trw','الشجرة والتدفق بصفحات أفقية',r.trWide)
 +'<div class="fl" style="flex-direction:row;justify-content:space-between;align-items:center"><span>الأقسام</span><span><button type="button" class="linkish" id="rp-all">تحديد الكل</button> · <button type="button" class="linkish" id="rp-none">إلغاء الكل</button></span></div>'
 +'<div class="checks">'+SECS.map(s=>ckb('data-sec="'+s[0]+'"',s[1],!off[s[0]]&&r.sec[s[0]],off[s[0]])).join('')+'</div>'
 +(Object.values(off).some(Boolean)?'<p class="note">الأقسام المعطّلة تحتاج أسماء مستخدمين أو فروعاً أو مراكز غير موجودة في البيانات.</p>':'')
@@ -1234,14 +1382,14 @@ function renderExForm(){
 $('#ex-form').innerHTML='<div class="checks">'+EXS.map(x=>ckb('data-ex="'+x[0]+'"',x[1],state.ex[x[0]],false)).join('')+'</div>';}
 function readRp(){
 const r=state.rep;
-r.title=$('#rp-title').value;r.by=$('#rp-by').value;r.charts=isOn($('#rp-charts'));r.brk=isOn($('#rp-brk'));r.sign=isOn($('#rp-sign'));
+r.title=$('#rp-title').value;r.by=$('#rp-by').value;r.charts=isOn($('#rp-charts'));r.brk=isOn($('#rp-brk'));r.sign=isOn($('#rp-sign'));r.toc=isOn($('#rp-toc'));r.trWide=isOn($('#rp-trw'));if($('#rp-bre')){r.brEach=isOn($('#rp-bre'));r.brPage=isOn($('#rp-brp'));}
 r.n=+$('#rp-n').dataset.v;r.orient=$('#rp-or').dataset.v;
 const pv=$('#rp-tr').dataset.v;if(pv!=='custom'&&pv!==curPreset())applyPreset(pv);
 document.querySelectorAll('[data-sec]').forEach(c=>{r.sec[c.dataset.sec]=isOn(c)?1:0;});
 renderReport();}
 function printHTML(html,orient){
 $('#print-root').innerHTML=html;
-$('#pg').textContent='@page{size:A4 '+(orient||'portrait')+';margin:14mm}';
+$('#pg').textContent='@page{size:A4 '+(orient||'portrait')+';margin:14mm}@page wide{size:A4 landscape;margin:12mm}';
 (document.fonts?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(()=>window.print(),60));}
 window.addEventListener('afterprint',()=>{$('#print-root').innerHTML='';});
 function dl(blob,name){
@@ -1256,6 +1404,7 @@ return loadSheetJS().then(X=>{
 const wb=X.utils.book_new();
 sheets.forEach(s=>{
 const ws=X.utils.aoa_to_sheet(s.aoa);
+if(s.rows)ws['!rows']=s.rows;
 ws['!cols']=s.aoa[0].map((_,i)=>({wch:Math.min(48,Math.max(8,...s.aoa.slice(0,200).map(r=>String(r[i]??'').length+2)))}));
 X.utils.book_append_sheet(wb,ws,s.name.replace(/[\[\]:*?\/\\]/g,' ').trim().slice(0,31)||'ورقة');});
 wb.Workbook={Views:[{RTL:true}]};
@@ -1271,8 +1420,14 @@ state.people.forEach(p=>p.list.forEach(f=>o.push([f.name,p.name,f.n,pc(f.n,fm.ge
 return o;}
 if(k==='loc'){const o=[['الفرع','المركز','العدد','% من الفرع','% من الإجمالي','عدد الجهات','عدد المستخدمين','أعلى جهة']];state.locs.forEach(B=>B.clist.forEach(C=>o.push([B.name,C.name,C.n,pc(C.n,B.n),pc(C.n,T),C.list.length,C.ulist.length,C.list[0]?C.list[0].name:''])));return o;}
 if(k==='tree'){const t=buildTree(state.frows,['branch','center','user','facility']),o=[['الفرع','المركز','المستخدم','الجهة','التصنيف','النوع','العدد','% من الإجمالي']],nz=v=>v===NA?'':v;const W=n=>n.list.forEach(c=>{if(c.dim==='facility'){const p=c.path,cl=classify(c.name)||{};o.push([nz(p[0].name),nz(p[1].name),nz(p[2].name),c.name,cl.cls||'',cl.type||'',c.n,pc(c.n,T)]);}else W(c);});W(t.root);return o;}
+if(k==='treeg')return treeGroupSheet().aoa;
 if(k==='cls')return[['الجهة','التصنيف','النوع'],...state.allFacs.map(f=>[f.name,f.cls||'',f.type||''])];
 return[['عدد الجوابات','الجهة','التصنيف','النوع','اسم المستخدم','المركز','الفرع'],...state.frows.map(r=>{const c=classify(r.facility)||{};return[r.n,r.facility,c.cls||'',c.type||'',r.user,r.center,r.branch];})];}
+function treeGroupSheet(){
+const dims=treeDims(),tr=buildTree(state.frows,dims),T=state.total||1,aoa=[['المستوى','الاسم','العدد','% من الأصل','% من الإجمالي','المسار']],rows=[{}];
+const W=(n,pn)=>n.list.forEach(c=>{if(aoa.length>=1048000)return;const sub=trSub(c);aoa.push([DIMS[c.dim],'\u00A0'.repeat(c.depth*4)+c.name+(sub?' ('+sub+')':''),c.n,pc(c.n,pn),pc(c.n,T),c.path.map(p=>p.name).join(' ← ')]);rows.push(c.depth?{level:Math.min(7,c.depth),hidden:c.depth>1}:{});W(c,c.n);});
+W(tr.root,tr.root.n||T);
+return{name:'شجرة '+dims.map(d=>DIMS[d]).join('-'),aoa,rows};}
 function entAoa(kind,e){
 const fA=()=>[['الجهة','التصنيف','النوع','العدد','% من '+(kind==='ce'?'المركز':'المستخدم')],...e.list.map(r=>{const c=classify(r.name)||{};return[r.name,c.cls||'',c.type||'',r.n,pc(r.n,e.n)];})];
 const uA=()=>[['المستخدم','العدد','% من '+(kind==='cl'?'الجهة':'المركز')],...e.ulist.map(r=>[r.name,r.n,pc(r.n,e.n)])];
@@ -1282,10 +1437,128 @@ return fA();}
 function runExport(f){
 const ds=EXS.filter(d=>state.ex[d[0]]);
 if(!ds.length){toast('اختر بياناً واحداً على الأقل');return;}
-const sheets=ds.map(d=>({name:d[1],aoa:exAoa(d[0])})),base='جوابات-'+new Date().toISOString().slice(0,10);
+const sheets=ds.map(d=>d[0]==='treeg'?treeGroupSheet():({name:d[1],aoa:exAoa(d[0])})),base='جوابات-'+new Date().toISOString().slice(0,10);
 if(f==='xlsx'){xlsx(sheets,base).then(ok=>{if(ok)toast('تم تصدير Excel');});return;}
 sheets.forEach((s,i)=>setTimeout(()=>dlCSV(s.aoa,base+'-'+s.name),i*350));
 toast('تم تصدير '+sheets.length+' ملف CSV');}
+const IGKEY='jawabat.dupign';
+const QM={user:'اسم المستخدم',center:'المركز',branch:'الفرع'};
+function dupClusters(kind){
+const m=new Map(),u=kind==='user';
+state.rows.forEach(r=>{const k=u?r.uk:r.fk;if(!k)return;let x=m.get(k);if(!x){x={key:k,name:u?r.user:r.facility,n:0};m.set(k,x);}x.n+=r.n;});
+const a=[...m.values()];a.forEach(x=>{x.dk=deepKey(x.name);x.dg=x.dk.replace(/\D/g,'');});
+const par=new Map(a.map(x=>[x.key,x.key])),find=k=>{while(par.get(k)!==k){par.set(k,par.get(par.get(k)));k=par.get(k);}return k;},uni=(p,q)=>{p=find(p);q=find(q);if(p!==q)par.set(p,q);};
+const bk=new Map(),add=(b,x)=>{let l=bk.get(b);if(!l){l=[];bk.set(b,l);}l.push(x);};
+a.forEach(x=>{if(x.dk.length<3)return;add('h'+x.dk.slice(0,3),x);add('t'+x.dk.slice(-3),x);});
+bk.forEach(l=>{if(l.length>500)return;for(let i=0;i<l.length;i++)for(let j=i+1;j<l.length;j++){const p=l[i],q=l[j];if(p.dg!==q.dg)continue;if(p.dk===q.dk){uni(p.key,q.key);continue;}const ml=Math.min(p.dk.length,q.dk.length);if(ml<5)continue;const mx=ml>=12?2:1;if(lev(p.dk,q.dk,mx)<=mx)uni(p.key,q.key);}});
+const g=new Map();a.forEach(x=>{const r=find(x.key);let l=g.get(r);if(!l){l=[];g.set(r,l);}l.push(x);});
+return[...g.values()].filter(l=>l.length>1).map(l=>{l.sort((p,q)=>q.n-p.n);return{id:kind[0]+':'+l.map(x=>x.key).sort().join('|'),kind,list:l,n:l.reduce((s,x)=>s+x.n,0)};}).filter(c=>!state.dupIgnore.has(c.id)).sort((p,q)=>q.n-p.n);}
+function qaCompute(){
+if(state.qa&&!state.qaDirty)return state.qa;
+const R=state.rows,av=state.avail,miss={};
+['user','center','branch'].forEach(k=>{if(!av[k])return;let c=0,n=0;R.forEach(r=>{if(!r[k]){c++;n+=r.n;}});miss[k]={c,n};});
+const uc=new Map(),cb=new Map();
+R.forEach(r=>{
+if(r.user&&r.center){let x=uc.get(r.uk);if(!x){x={key:r.uk,name:r.user,n:0,m:new Map()};uc.set(r.uk,x);}x.n+=r.n;const k=(r.branch?r.branch+' › ':'')+r.center;x.m.set(k,(x.m.get(k)||0)+r.n);}
+if(r.center&&r.branch){const ck=normAr(r.center);let x=cb.get(ck);if(!x){x={key:ck,name:r.center,n:0,m:new Map()};cb.set(ck,x);}x.n+=r.n;x.m.set(r.branch,(x.m.get(r.branch)||0)+r.n);}});
+const multi=m=>[...m.values()].filter(x=>x.m.size>1).map(x=>{x.list=[...x.m.entries()].map(e=>({name:e[0],n:e[1]})).sort((a,b)=>b.n-a.n);return x;}).sort((a,b)=>b.m.size-a.m.size||b.n-a.n);
+const mu=multi(uc),mc=multi(cb),dups=dupClusters('facility').concat(av.user?dupClusters('user'):[]);
+state.qaMap=new Map(dups.map(c=>[c.id,c]));
+const mt=Object.values(miss).reduce((s,x)=>s+x.c,0);
+state.qaDirty=false;
+return state.qa={miss,mt,mu,mc,dups,issues:(mt?1:0)+mu.length+mc.length+dups.length};}
+function qaLines(){
+const Q=state.qa||qaCompute(),L=[];
+Object.keys(Q.miss).forEach(k=>{const x=Q.miss[k];if(x.c)L.push(QM[k]+' فارغ في '+fmt(x.c)+' صف ('+fmt(x.n)+' خطاب)');});
+if(Q.mu.length)L.push(fmt(Q.mu.length)+' مستخدم يظهر تحت أكثر من مركز: '+Q.mu.slice(0,5).map(x=>esc(x.name)+' ('+x.m.size+')').join('، ')+(Q.mu.length>5?'…':''));
+if(Q.mc.length)L.push(fmt(Q.mc.length)+' اسم مركز مستخدم في أكثر من فرع: '+Q.mc.slice(0,5).map(x=>esc(x.name)+' ('+x.m.size+')').join('، ')+(Q.mc.length>5?'…':''));
+if(Q.dups.length)L.push(fmt(Q.dups.length)+' مجموعة أسماء متقاربة لم تُدمج بعد');
+if(state.merges.size)L.push(fmt(state.merges.size)+' دمج أسماء مطبّق');
+return L;}
+function renderQA(){
+const Q=qaCompute(),el=$('#qa-body'),mk=Object.keys(Q.miss),sel=state.qaSel;
+const qc=(id,n,t,s)=>'<button type="button" class="qc '+(n?'warn':'ok')+'" data-qgo="'+id+'"><b class="num">'+fmt(n)+'</b><span>'+t+'</span><small>'+s+'</small></button>';
+let h='<div class="qcards">'+qc('miss',Q.mt,'صفوف ناقصة الروابط',mk.length?mk.map(k=>QM[k]+' '+fmt(Q.miss[k].c)).join(' · '):'لا أعمدة روابط في البيانات')+qc('mu',Q.mu.length,'مستخدم تحت أكثر من مركز','الشجرة تكرّره تحت كل مركز')+qc('mc',Q.mc.length,'اسم مركز في أكثر من فرع','قد يكون مركزين أو خطأ إدخال')+qc('dup',Q.dups.length,'أسماء متقاربة للدمج',fmt(state.merges.size)+' دمج محفوظ')+'</div>';
+const sec=(id,t,s,b)=>'<div class="sec" id="qa-'+id+'"><div class="sh"><h2>'+t+'</h2>'+(s?'<small>'+s+'</small>':'')+'</div>'+b+'</div>';
+h+=sec('miss','صفوف بلا روابط','الشجرة والتدفق يضعانها تحت «'+NA+'»',mk.length?(Q.mt?mk.filter(k=>Q.miss[k].c).map(k=>'<div class="ins"><b>'+QM[k]+'</b> فارغ في <b class="num">'+fmt(Q.miss[k].c)+'</b> صف · <b class="num">'+fmt(Q.miss[k].n)+'</b> '+plural(Q.miss[k].n)+' <button type="button" class="linkish" data-qmiss="'+k+'">اعزلها</button></div>').join(''):'<div class="hintbox">كل الصفوف مرتبطة بمستخدم ومركز وفرع.</div>'):'<div class="hintbox">لا توجد أعمدة المستخدم أو المركز أو الفرع.</div>');
+const ml=(a,kind)=>a.length?a.slice(0,80).map(x=>'<div class="dup"><div class="dup-m"><b>'+esc(x.name)+'</b><small class="num">'+fmt(x.n)+' '+plural(x.n)+' · '+x.m.size+(kind==='u'?' مراكز':' فروع')+' <button type="button" class="linkish" data-q'+kind+'="'+esc(kind==='u'?x.key:x.name)+'">اعزل</button></small></div><div class="ccl">'+x.list.map(c=>'<span class="chip">'+esc(c.name)+'<i class="num">'+fmt(c.n)+'</i></span>').join('')+'</div></div>').join('')+(a.length>80?'<p class="note">+'+fmt(a.length-80)+' أخرى</p>':''):'<div class="hintbox">لا شيء.</div>';
+h+=sec('mu','مستخدم تحت أكثر من مركز','',ml(Q.mu,'u'));
+h+=sec('mc','اسم مركز في أكثر من فرع','',ml(Q.mc,'c'));
+const D=Q.dups.slice(0,60);
+h+=sec('dup','أسماء متقاربة','اختر الاسم المعتمد ثم «دمج» — يُحفظ الدمج ويُطبّق عند كل تحليل',(D.length?D.map(c=>{const s=sel[c.id]||c.list[0].key;return '<div class="dup" data-cid="'+esc(c.id)+'"><div class="dup-m"><b>'+(c.kind==='user'?'مستخدمون':'جهات')+' متقاربة · '+c.list.length+'</b><small class="num">'+fmt(c.n)+' '+plural(c.n)+'</small></div><div role="radiogroup">'+c.list.map(x=>'<button type="button" class="dup-o" role="radio" aria-checked="'+(x.key===s)+'" data-ck="'+esc(x.key)+'"><span class="rd"></span><span>'+esc(x.name)+'</span><span class="num sub">'+fmt(x.n)+'</span></button>').join('')+'</div><div class="dup-a"><button type="button" class="btn sm dark" data-qmerge>دمج</button><button type="button" class="linkish" data-qign>ليست مكررة</button></div></div>';}).join('')+(Q.dups.length>60?'<p class="note">+'+fmt(Q.dups.length-60)+' مجموعة أخرى — ادمج هذه أولاً.</p>':''):'<div class="hintbox">لا أسماء متقاربة غير مدموجة.</div>')
++(state.merges.size?'<div class="sh" style="margin-top:1rem"><h2>الدمج المحفوظ</h2><small><button type="button" class="linkish" data-qunall>تراجع عن الكل</button></small></div><div class="ccl">'+[...state.merges].map(e=>'<span class="vchip"><span class="chip">'+esc(e[0].slice(2))+' ← '+esc(e[1])+'</span><button type="button" class="vx" data-qun="'+esc(e[0])+'" aria-label="تراجع">×</button></span>').join('')+'</div>':'')
++(state.dupIgnore.size?'<p class="note">'+fmt(state.dupIgnore.size)+' مجموعة مُعلّمة «ليست مكررة». <button type="button" class="linkish" data-qri>إظهارها مجدداً</button></p>':''));
+el.innerHTML=h;}
+function qaRefresh(msg){state.qaDirty=true;lsSet(MKEY,[...state.merges]);lsSet(IGKEY,[...state.dupIgnore]);applyMerges();renderAll(false);if(msg)toast(msg);}
+function doMerge(c,ck){
+const to=c.list.find(x=>x.key===ck)||c.list[0],keys=new Set(c.list.map(x=>x.key)),u=c.kind==='user',p=u?'u:':'f:',tk=normAr(to.name);
+state.rows.forEach(r=>{if(!keys.has(u?r.uk:r.fk))return;const o=normAr(u?r.u0:r.f0);if(!o)return;if(o===tk)state.merges.delete(p+o);else state.merges.set(p+o,to.name);});
+state.merges.forEach((v,k)=>{if(k.startsWith(p)&&keys.has(normAr(v)))state.merges.set(k,to.name);});
+delete state.qaSel[c.id];
+qaRefresh('دُمجت '+c.list.length+' أسماء في «'+to.name+'»');}
+$('#qa-body').addEventListener('click',e=>{
+const t=e.target,g=t.closest('[data-qgo]');
+if(g){const s=$('#qa-'+g.dataset.qgo);if(s)s.scrollIntoView({behavior:'smooth',block:'start'});return;}
+const o=t.closest('.dup-o');
+if(o){const d=o.closest('[data-cid]');state.qaSel[d.dataset.cid]=o.dataset.ck;d.querySelectorAll('.dup-o').forEach(b=>b.setAttribute('aria-checked',b===o));return;}
+const cd=t.closest('[data-cid]'),c=cd&&state.qaMap.get(cd.dataset.cid);
+if(t.closest('[data-qmerge]')&&c){doMerge(c,state.qaSel[c.id]||c.list[0].key);return;}
+if(t.closest('[data-qign]')&&c){state.dupIgnore.add(c.id);qaRefresh('لن تُعرض هذه المجموعة مجدداً');return;}
+const un=t.closest('[data-qun]');
+if(un){state.merges.delete(un.dataset.qun);qaRefresh('تم التراجع عن الدمج');return;}
+if(t.closest('[data-qunall]')){state.merges.clear();qaRefresh('أُلغي كل الدمج');return;}
+if(t.closest('[data-qri]')){state.dupIgnore.clear();qaRefresh();return;}
+const mi=t.closest('[data-qmiss]');
+if(mi){const k=mi.dataset.qmiss;state.filters=freshF();state.filters[k]=new Set([k==='user'?'':NA]);renderAll(false);toast('عُزلت الصفوف بلا '+QM[k]);return;}
+const qu=t.closest('[data-qu]');
+if(qu){isolate([{dim:'user',val:qu.dataset.qu,name:state.names.user.get(qu.dataset.qu)||qu.dataset.qu}]);return;}
+const qcn=t.closest('[data-qc]');
+if(qcn){state.filters.center=new Set([qcn.dataset.qc]);renderAll(false);toast('ضُيّق النطاق: '+qcn.dataset.qc);}});
+const FWP=[['loc','فرع ← مركز ← مستخدم ← جهة',['branch','center','user','facility']],['ucf','مستخدم ← مركز ← جهة',['user','center','facility']],['bcf','فرع ← مركز ← جهة',['branch','center','facility']],['uf','مستخدم ← جهة',['user','facility']]];
+const fwDims=()=>{const p=FWP.find(x=>x[0]===state.fw.p)||FWP[0];return p[2].filter(d=>state.avail[d]);};
+function flowSVG(rows,dims,N,live){
+const tot=dims.map(()=>new Map());
+rows.forEach(r=>dims.forEach((d,i)=>{const x=dimInfo(d,r),o=tot[i].get(x.key)||{n:0};o.n+=r.n;tot[i].set(x.key,o);}));
+const keep=tot.map(m=>new Set([...m.entries()].sort((a,b)=>b[1].n-a[1].n).slice(0,N).map(e=>e[0])));
+const OT='\u0000',cols=dims.map(()=>new Map()),links=new Map();
+rows.forEach(r=>{let pv=null;dims.forEach((d,i)=>{const x=dimInfo(d,r),k=keep[i].has(x.key)?x.key:OT;let c=cols[i].get(k);if(!c){c={id:i+'|'+k,dim:d,val:x.val,br:x.br,name:k===OT?'أخرى':x.name,n:0,other:k===OT};cols[i].set(k,c);}c.n+=r.n;if(pv){const lk=pv.id+'>'+c.id;let l=links.get(lk);if(!l){l={s:pv,t:c,n:0};links.set(lk,l);}l.n+=r.n;}pv=c;});});
+const T=rows.reduce((s,r)=>s+r.n,0)||1,W=1000,ML=180,MR=180,NW=12,PAD=8,TOP=28;
+const cs=cols.map(m=>[...m.values()].sort((a,b)=>(a.other-b.other)||b.n-a.n));
+const H=Math.max(300,Math.max(...cs.map(c=>c.length))*30),k=Math.min(...cs.map(c=>(H-PAD*(c.length-1))/T));
+const rtl=document.documentElement.dir==='rtl',step=(W-ML-MR-NW)/Math.max(1,dims.length-1),PAL=TYPE_PALETTE;
+cs.forEach((c,i)=>{const used=c.reduce((s,x)=>s+x.n*k,0)+PAD*(c.length-1);let y=TOP+(H-used)/2;const x=rtl?W-MR-NW-i*step:ML+i*step;c.forEach((nd,j)=>{nd.x=x;nd.y=y;nd.h=nd.n*k;nd.c=nd.other?'#B8AD93':PAL[j%PAL.length];nd.so=0;nd.to=0;y+=nd.h+PAD;});});
+const L=[...links.values()];
+L.sort((a,b)=>a.t.y-b.t.y).forEach(l=>{l.w=l.n*k;l.sy=l.s.y+l.s.so+l.w/2;l.s.so+=l.w;});
+L.sort((a,b)=>a.s.y-b.s.y).forEach(l=>{l.ty=l.t.y+l.t.to+l.w/2;l.t.to+=l.w;});
+const cut=s=>s.length>30?s.slice(0,29)+'…':s;
+let g='';
+dims.forEach((d,i)=>{const x=cs[i][0]?cs[i][0].x+NW/2:0;g+='<text class="fl-h" x="'+x.toFixed(1)+'" y="16" text-anchor="middle">'+DIMP[d]+'</text>';});
+L.forEach(l=>{const f=l.s.x<l.t.x,x0=f?l.s.x+NW:l.s.x,x1=f?l.t.x:l.t.x+NW,m=(x0+x1)/2;g+='<path class="fl-l" data-s="'+esc(l.s.id)+'" data-t="'+esc(l.t.id)+'" d="M'+x0.toFixed(1)+','+l.sy.toFixed(1)+'C'+m.toFixed(1)+','+l.sy.toFixed(1)+' '+m.toFixed(1)+','+l.ty.toFixed(1)+' '+x1.toFixed(1)+','+l.ty.toFixed(1)+'" stroke="'+l.s.c+'" stroke-width="'+Math.max(1,l.w).toFixed(1)+'"><title>'+esc(l.s.name+' ← '+l.t.name+' · '+fmt(l.n)+' ('+fmtPct(l.n/T)+')')+'</title></path>';});
+cs.flat().forEach(nd=>{const re=nd.x+NW>=W-MR-1,tx=re?nd.x+NW+6:nd.x-6,ty=nd.y+nd.h/2+4;g+='<g class="fl-n" data-id="'+esc(nd.id)+'"><rect x="'+nd.x.toFixed(1)+'" y="'+nd.y.toFixed(1)+'" width="'+NW+'" height="'+Math.max(1.5,nd.h).toFixed(1)+'" rx="2" fill="'+nd.c+'"><title>'+esc(DIMS[nd.dim]+': '+nd.name+' · '+fmt(nd.n)+' ('+fmtPct(nd.n/T)+')')+'</title></rect><text class="fl-t" x="'+tx.toFixed(1)+'" y="'+ty.toFixed(1)+'" text-anchor="'+(re?'start':'end')+'">'+esc(cut(nd.name))+'<tspan class="v"> '+fmt(nd.n)+'</tspan></text></g>';});
+if(live)state.fwNodes=new Map(cs.flat().map(n=>[n.id,n]));
+return{svg:'<svg viewBox="0 0 '+W+' '+(H+TOP+10)+'" style="direction:ltr" role="img" aria-label="مخطط التدفق">'+g+'</svg>',nodes:cs.flat().length,links:L.length};}
+function renderFlow(){
+const fw=state.fw,dims=fwDims(),p=(FWP.find(x=>x[0]===fw.p)||FWP[0])[0];
+$('#fw-ctl').innerHTML='<span class="cg-t">المسار</span>'+FWP.map(x=>'<button type="button" class="chip'+(x[0]===p?' on':'')+'" data-fp="'+x[0]+'">'+x[1]+'</button>').join('')+'<span class="cg-t">العقد لكل عمود</span>'+[8,12,20,30].map(n=>'<button type="button" class="chip'+(fw.n===n?' on':'')+'" data-fn="'+n+'">'+n+'</button>').join('');
+const el=$('#fw-body');
+if(dims.length<2||!state.frows.length){el.innerHTML='<div class="hintbox">'+(state.frows.length?'التدفق يحتاج عمودين على الأقل من: الفرع، المركز، المستخدم.':'لا نتائج.')+'</div>';$('#cnt-fw').textContent='';$('#fw-note').textContent='';return;}
+const r=flowSVG(state.frows,dims,fw.n,true);
+el.innerHTML=r.svg;
+$('#cnt-fw').textContent=fmt(r.nodes)+' عقدة · '+fmt(r.links)+' رابط';
+$('#fw-note').textContent='كل عمود يعرض أعلى '+fw.n+' والباقي في «أخرى». مرّر فوق عقدة لتتبّع روابطها، واضغط لعزلها في كل الشاشات.';}
+$('#fw-ctl').addEventListener('click',e=>{const a=e.target.closest('[data-fp]'),b=e.target.closest('[data-fn]');if(a)state.fw.p=a.dataset.fp;else if(b)state.fw.n=+b.dataset.fn;else return;renderFlow();saveSession();});
+function fwHover(id){
+const s=$('#fw-body svg');if(!s)return;
+s.querySelectorAll('.on').forEach(x=>x.classList.remove('on'));
+if(!id){s.classList.remove('hov');return;}
+s.classList.add('hov');
+const on=new Set([id]),ls=[...s.querySelectorAll('.fl-l')];
+const walk=(cur,a,b)=>{const q=[cur],seen=new Set([cur]);while(q.length){const n=q.shift();ls.forEach(l=>{if(l.dataset[a]===n){l.classList.add('on');const m=l.dataset[b];on.add(m);if(!seen.has(m)){seen.add(m);q.push(m);}}});}};
+walk(id,'s','t');walk(id,'t','s');
+s.querySelectorAll('.fl-n').forEach(n=>{if(on.has(n.dataset.id))n.classList.add('on');});}
+$('#fw-body').addEventListener('mouseover',e=>{const n=e.target.closest('.fl-n');fwHover(n?n.dataset.id:null);});
+$('#fw-body').addEventListener('mouseleave',()=>fwHover(null));
+$('#fw-body').addEventListener('click',e=>{const g=e.target.closest('.fl-n');if(!g)return;const n=state.fwNodes&&state.fwNodes.get(g.dataset.id);if(!n||n.other){toast('«أخرى» تجمع العقد الصغيرة — زد عدد العقد لرؤيتها');return;}isolate([{dim:n.dim,val:n.val,br:n.br,name:n.name}]);});
 function setTab(t){
 state.tab=t;
 document.querySelectorAll('.view').forEach(v=>{v.hidden=v.id!=='v-'+t;});
@@ -1293,7 +1566,9 @@ document.querySelectorAll('#tabs button').forEach(b=>{const on=b.dataset.tab===t
 const actTab=$('#tabs .on');if(actTab)actTab.scrollIntoView({inline:'nearest',block:'nearest'});
 if(t==='rp'){renderRpForm();renderReportNow();}
 if(t==='tr')renderTree();
-window.scrollTo({top:0});}
+if(t==='fw')renderFlow();
+if(t==='qa')renderQA();
+window.scrollTo({top:0});saveSession();}
 function cleanItems(pr){const r=state.report;if(!r)return[];const it=['الصفوف الخام '+fmt(r.rawRows)+' · السجلات المعتمدة '+fmt(r.kept)+(r.skipped?' · مستبعدة (بلا عدد أو جهة) '+fmt(r.skipped):''),'حذف '+fmt(r.removedTotals)+' صف إجماليات','إزالة '+fmt(r.emptyCols)+' عمود فارغ'+(r.emptyColNames.length&&!pr?': '+r.emptyColNames.map(esc).join('، '):'')];const fl=Object.keys(r.filled).map(k=>k+' ('+fmt(r.filled[k])+')');if(fl.length)it.push('تعميم الخلايا المدمجة: '+fl.join('، '));it.push('مجموع السجلات بعد التنظيف: '+fmt(r.sum));const bad=r.recon.filter(x=>!x.ok);if(r.recon.length)it.push('مطابقة الإجماليات: <span class="cr-ok">'+fmt(r.recon.length-bad.length)+' مطابق</span>'+(bad.length?' · <span class="cr-bad">'+fmt(bad.length)+' غير مطابق</span>':''));bad.slice(0,20).forEach(x=>it.push('<span class="cr-bad">غير مطابق</span> — '+esc(x.label)+': المذكور '+fmt(x.expected)+' · المحسوب '+fmt(x.got)));return it;}
 function renderCleanReport(){
 const r=state.report;
@@ -1301,29 +1576,102 @@ $('#cr-t').textContent='سجل التنظيف: '+fmt(r.kept)+' سجل من '+fmt
 $('#cr-body').innerHTML=cleanItems(false).map(t=>'<div>'+t+'</div>').join('');}
 function renderAll(animate){
 compute();
-renderFilters();renderOverview();renderTable('cl');renderTable('pe');renderLocs();renderRoutes();renderDrawer();
+renderFilters();renderViews();renderOverview();renderTable('cl');renderTable('pe');renderLocs();renderRoutes();renderDrawer();
+state.qa=qaCompute();const qb=$('#qa-badge'),qn=state.qa.issues;qb.hidden=!qn;qb.textContent=qn;
 if(state.tab==='tr')renderTree();
+if(state.tab==='fw')renderFlow();
+if(state.tab==='qa')renderQA();
 if(state.tab==='rp')renderReport();
+saveSession();
 if(animate)countUp($('#hero-num'),state.total);}
 function doAnalyze(){
 const err=$('#input-error');
 err.hidden=true;err.textContent='';
 try{
-const parsed=parseMain($('#data-input').value);
-state.rows=parsed.rows;state.report=parsed.report;
+const raw=$('#data-input').value,parsed=parseMain(raw);
+state.rows=parsed.rows;state.report=parsed.report;state.sig=sig(raw);
+if(!lsSet(DKEY,{sig:state.sig,main:raw,cls:$('#class-input').value}))try{localStorage.removeItem(DKEY);}catch(x){}
 state.classes=parseClasses($('#class-input').value);saveCls();
 state.clsCache=new Map();
-state.filters=freshF();state.q={cl:'',pe:'',lo:'',rt:''};state.openRt=new Set();buildNames();applyPreset('loc');state.tree.q='';state.onlyUnc=false;state.drawer=null;state.dstack=[];state.fopen=false;
+state.filters=freshF();state.q={cl:'',pe:'',lo:'',rt:''};state.openRt=new Set();applyPreset('loc');state.tree.q='';state.tree.cur=null;state.onlyUnc=false;state.drawer=null;state.dstack=[];state.fopen=false;state.qaSel={};
+applyMerges();
+const rtab=restoreSession(lsGet(SKEY));
 $('#q-cl').value='';$('#q-pe').value='';$('#q-lo').value='';$('#q-rt').value='';$('#q-tr').value='';sbSync();
 $('#view-input').hidden=true;$('#view-dash').hidden=false;
 renderCleanReport();renderRpForm();renderExForm();
-state.tab='ov';
-renderAll(true);setTab('ov');
-toast('تم تحليل '+fmt(state.rows.length)+' سجل');}
+state.tab=rtab||'ov';
+renderAll(true);setTab(state.tab);
+const ms=state.merges.size;
+toast(rtab?'استُؤنفت الجلسة السابقة — '+scopePlain():'تم تحليل '+fmt(state.rows.length)+' سجل'+(ms?' · '+fmt(ms)+' دمج محفوظ':''));}
 catch(ex){err.hidden=false;err.textContent=ex.message||'خطأ غير متوقع أثناء التحليل.';}}
 function loadSheetJS(){
 if(window.XLSX)return Promise.resolve(window.XLSX);
 return new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=()=>res(window.XLSX);s.onerror=()=>rej(new Error('offline'));document.head.appendChild(s);});}
+const SKEY='jawabat.session',DKEY='jawabat.data',VKEY='jawabat.views',MKEY='jawabat.merges';
+const lsGet=k=>{try{return JSON.parse(localStorage.getItem(k)||'null');}catch(e){return null;}};
+const lsSet=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}};
+const fOut=f=>{const o={};Object.keys(f).forEach(k=>{if(f[k].size)o[k]=[...f[k]];});return o;};
+function fIn(o){const f=freshF();if(o)Object.keys(f).forEach(k=>{if(Array.isArray(o[k]))f[k]=new Set(o[k]);});return f;}
+function scopePlain(){const t=document.createElement('div');t.innerHTML=scopeText();return t.textContent;}
+let ssT=null;
+function saveSession(){
+if(!state.sig||!state.rows.length)return;
+clearTimeout(ssT);
+ssT=setTimeout(()=>{const T=state.tree;lsSet(SKEY,{v:2,sig:state.sig,t:Date.now(),n:state.rows.length,sum:state.report?state.report.sum:0,scope:scopePlain(),filters:fOut(state.filters),tree:{order:T.order,off:[...T.off],open:[...T.openTr].slice(0,600)},tab:state.tab,rtMode:state.rtMode,fw:state.fw,rep:state.rep,ex:state.ex});},350);}
+function restoreSession(s){
+if(!s||s.sig!==state.sig)return false;
+const ok=k=>v=>k==='user'?state.names.user.has(v):k==='facility'?state.names.facility.has(v):true;
+const f=fIn(s.filters);Object.keys(f).forEach(k=>{f[k]=new Set([...f[k]].filter(ok(k)));});
+state.filters=f;
+if(s.tree&&Array.isArray(s.tree.order)&&s.tree.order.length===4){state.tree.order=s.tree.order.slice();state.tree.off=new Set(s.tree.off||[]);state.tree.openTr=new Set(s.tree.open||[]);state.tree.def=!state.tree.openTr.size;}
+if(s.rtMode)state.rtMode=s.rtMode;
+if(s.fw)state.fw=Object.assign(state.fw,s.fw);
+if(s.rep){const sec=Object.assign({},state.rep.sec,s.rep.sec||{});Object.assign(state.rep,s.rep);state.rep.sec=sec;}
+if(s.ex)Object.assign(state.ex,s.ex);
+return s.tab||'ov';}
+const ago=t=>{const m=Math.round((Date.now()-t)/60000);if(m<1)return'الآن';if(m<60)return'قبل '+m+' دقيقة';const h=Math.round(m/60);if(h<24)return'قبل '+h+' ساعة';return arDate(new Date(t));};
+function renderResume(){
+const s=lsGet(SKEY),d=lsGet(DKEY),el=$('#resume');
+if(!s||!d||d.sig!==s.sig||!d.main){el.hidden=true;return;}
+el.hidden=false;
+el.innerHTML='<span class="sub"><b>آخر جلسة</b> · '+esc(ago(s.t))+' · <span class="num">'+fmt(s.n)+'</span> سجل · <span class="num">'+fmt(s.sum)+'</span> خطاب<br>التحديد: '+esc(s.scope||'كل البيانات')+'</span><button type="button" class="btn dark" id="rs-go">استئناف</button><button type="button" class="linkish" id="rs-x">تجاهل</button>';}
+$('#resume').addEventListener('click',e=>{
+if(e.target.closest('#rs-go')){const d=lsGet(DKEY);if(!d)return;$('#data-input').value=d.main;if(d.cls!=null)$('#class-input').value=d.cls;syncTa();doAnalyze();}
+else if(e.target.closest('#rs-x')){try{localStorage.removeItem(SKEY);localStorage.removeItem(DKEY);}catch(x){}renderResume();}});
+state.views=lsGet(VKEY)||[];
+function viewName(){
+const f=state.filters,p=[],U={branch:'فروع',center:'مراكز',user:'مستخدمين',facility:'جهات',cls:'تصنيفات',type:'أنواع'};
+['branch','center','user','facility','cls','type'].forEach(k=>{const s=f[k];if(!s.size)return;p.push(s.size===1?labelOf(k,[...s][0]):fmt(s.size)+' '+U[k]);});
+return (p.join(' · ')||'كل البيانات')+' — '+DIMP[treeDims()[0]];}
+function renderViews(){
+const V=state.views;
+$('#views').innerHTML='<span class="cg-t">العروض المحفوظة</span>'+(V.length?V.map((v,i)=>'<span class="vchip"><button type="button" class="chip" data-vi="'+i+'" data-tip="'+esc(v.scope||'')+'">'+esc(v.name)+'</button><button type="button" class="vx" data-vx="'+i+'" aria-label="حذف العرض" data-tip="حذف">×</button></span>').join(''):'<span class="sub">لا عروض بعد.</span>')+'<span class="pk-box"><input type="text" class="pk-in" id="view-name" placeholder="'+esc(viewName())+'" autocomplete="off" style="width:220px"></span><button type="button" class="btn sm" id="view-save">حفظ العرض الحالي</button>';}
+function saveView(){
+const i=$('#view-name'),name=(i.value.trim()||viewName()).slice(0,60),T=state.tree;
+const v={name,scope:scopePlain(),filters:fOut(state.filters),tree:{order:T.order.slice(),off:[...T.off]},tab:state.tab};
+const j=state.views.findIndex(x=>x.name===name);
+if(j>=0)state.views[j]=v;else state.views.push(v);
+lsSet(VKEY,state.views);renderViews();toast('حُفظ العرض «'+name+'»');}
+function loadView(v){
+const f=fIn(v.filters);let miss=0;
+['user','facility'].forEach(k=>{const a=[...f[k]],b=a.filter(x=>state.names[k].has(x));miss+=a.length-b.length;f[k]=new Set(b);});
+state.filters=f;
+if(v.tree){state.tree.order=v.tree.order.slice();state.tree.off=new Set(v.tree.off);state.tree.openTr=new Set();state.tree.closedQ=new Set();state.tree.def=true;}
+renderAll(false);
+if(v.tab&&v.tab!==state.tab)setTab(v.tab);
+toast('عُرض «'+v.name+'»'+(miss?' — '+fmt(miss)+' اسم غير موجود في هذه البيانات':''));}
+$('#views').addEventListener('click',e=>{
+const a=e.target.closest('[data-vi]'),x=e.target.closest('[data-vx]');
+if(a)loadView(state.views[+a.dataset.vi]);
+else if(x){const v=state.views.splice(+x.dataset.vx,1)[0];lsSet(VKEY,state.views);renderViews();toast('حُذف «'+v.name+'»');}
+else if(e.target.closest('#view-save'))saveView();});
+$('#views').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='view-name'){e.preventDefault();saveView();}});
+state.merges=new Map(lsGet(MKEY)||[]);
+state.dupIgnore=new Set(lsGet(IGKEY)||[]);
+function applyMerges(){
+state.rows.forEach(r=>{const mf=state.merges.get('f:'+normAr(r.f0)),mu=r.u0?state.merges.get('u:'+normAr(r.u0)):null;r.facility=mf||r.f0;r.user=mu||r.u0;r.fk=normAr(r.facility);r.uk=normAr(r.user);});
+state.clsCache=new Map();buildNames();
+['user','facility'].forEach(k=>{state.filters[k]=new Set([...state.filters[k]].filter(v=>state.names[k].has(v)));});}
 function toggleFilter(kind,v){const s=state.filters[kind];s.has(v)?s.delete(v):s.add(v);renderAll(false);}
 function clearFilters(){state.filters=freshF();renderAll(false);}
 function saveCls(){try{localStorage.setItem('marsad.cls',JSON.stringify({t:$('#class-input').value,m:[...state.manualClasses]}));}catch(e){}}
@@ -1336,7 +1684,7 @@ $('#btn-analyze').addEventListener('click',doAnalyze);
 document.addEventListener('keydown',e=>{
 if((e.ctrlKey||e.metaKey)&&e.key==='Enter'&&!$('#view-input').hidden)doAnalyze();
 if(e.key==='Escape'&&state.drawer)closeDrawer();});
-$('#btn-reset').addEventListener('click',()=>{closeDrawer();$('#view-dash').hidden=true;$('#view-input').hidden=false;window.scrollTo({top:0});});
+$('#btn-reset').addEventListener('click',()=>{closeDrawer();$('#view-dash').hidden=true;$('#view-input').hidden=false;renderResume();window.scrollTo({top:0});});
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b)setTab(b.dataset.tab);});
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.go)));
 $('#btn-filter').addEventListener('click',()=>{state.fopen=!state.fopen;$('#fpanel').hidden=!state.fopen;});
@@ -1495,7 +1843,7 @@ const first=f[0],last=f[f.length-1],a=document.activeElement;
 if(!box.contains(a)){e.preventDefault();first.focus();}
 else if(e.shiftKey&&a===first){e.preventDefault();last.focus();}
 else if(!e.shiftKey&&a===last){e.preventDefault();first.focus();}}
-if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('tr[tabindex],.tn-r[tabindex]')){e.preventDefault();e.target.click();}});
+if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('tr[tabindex]')){e.preventDefault();e.target.click();}});
 $('#tr-pre').innerHTML='<span class="thumb"></span>'+PRESETS.map(p=>'<button type="button" data-p="'+p[0]+'">'+p[1]+'</button>').join('');
 $('#tr-pre').addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(!b)return;applyPreset(b.dataset.p);renderTree();});
 $('#tr-lvls').addEventListener('click',e=>{
@@ -1503,23 +1851,28 @@ const T=state.tree,t=e.target.closest('.lv-t'),m=e.target.closest('.lv-mv');
 if(t){const d=t.dataset.d;if(!state.avail[d])return;if(T.off.has(d))T.off.delete(d);else if(treeDims().length>1)T.off.add(d);else return;}
 else if(m){const d=m.dataset.d,i=T.order.indexOf(d),j=i+(m.dataset.mv==='prev'?-1:1);if(j<0||j>=T.order.length)return;T.order.splice(i,1);T.order.splice(j,0,d);}
 else return;
-T.openTr=new Set();T.def=true;T.hl=null;renderTree();});
+T.openTr=new Set();T.closedQ=new Set();T.def=true;T.hl=null;renderTree();});
 $('#tr-act').addEventListener('click',e=>{const b=e.target.closest('[data-dp]');if(b)openDepth(+b.dataset.dp);});
-$('#q-tr').addEventListener('input',e=>{state.tree.q=e.target.value.trim();renderTree();});
+$('#q-tr').addEventListener('input',e=>{state.tree.q=e.target.value.trim();state.tree.closedQ=new Set();$('#tr-scroll').scrollTop=0;renderTree();});
+$('#q-tr').addEventListener('keydown',e=>{if(e.key==='ArrowDown'&&state.trFlat.length){e.preventDefault();const F=state.trFlat,x=F.find(y=>state.trQ&&y.c.hs)||F[0];state.tree.cur=x.c.id;trScrollTo(F.indexOf(x),'center');paintTree();trFocusCur();}});
 $('#tr-body').addEventListener('click',e=>{
 const r=e.target.closest('.tn-r');if(!r)return;
 const n=state.trIndex.get(r.dataset.id);if(!n)return;
+state.tree.cur=n.id;
 const a=e.target.closest('[data-act]');
 if(a){if(a.dataset.act==='iso')isolate(n.path,n.id);else openDrawer(trKind(n),n.key,false);return;}
-if(n.list.length){const o=state.tree.openTr;o.has(n.id)?o.delete(n.id):o.add(n.id);state.tree.refocus=n.id;renderTree();}
-else if(trHasDet(n))openDrawer(trKind(n),n.key,false);});
+trActivate(n);});
+let trRaf=0;
+$('#tr-scroll').addEventListener('scroll',()=>{if(trRaf)return;trRaf=requestAnimationFrame(()=>{trRaf=0;paintTree();});});
+$('#tr-scroll').addEventListener('keydown',trKey);
+$('#tr-head').addEventListener('click',e=>{const b=e.target.closest('[data-tid]');if(!b)return;const j=state.trFlat.findIndex(x=>x.c.id===b.dataset.tid);if(j<0)return;state.tree.cur=b.dataset.tid;trScrollTo(j,'top');paintTree();trFocusCur();});
 $('#scope').addEventListener('click',e=>{if(e.target.closest('.ins-clear'))clearFilters();});
 $('#filters').addEventListener('input',e=>{const i=e.target.closest('.pk-in');if(i)showPk(i);});
 $('#filters').addEventListener('focusin',e=>{const i=e.target.closest('.pk-in');if(i)showPk(i);});
 $('#filters').addEventListener('click',e=>{const o=e.target.closest('.pk-o');if(o){state.pkFocus=o.dataset.kind;toggleFilter(o.dataset.kind,o.dataset.v);}});
 document.addEventListener('click',e=>{if(!e.target.closest('.pk-box'))document.querySelectorAll('.pk-list').forEach(l=>{l.hidden=true;});});
 if(/Mac|iPhone|iPad/i.test(navigator.platform||navigator.userAgent))$('#k-mod').textContent='⌘';
-syncTa();sbSync();
+syncTa();sbSync();renderResume();
 })();
 </script>
 </body>
