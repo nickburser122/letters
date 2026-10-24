@@ -401,6 +401,63 @@ body{background:#fff!important;border:none}
 }
 .sb-x svg{width:11px;height:11px}
 .ta-clear svg{width:12px;height:12px}
+.pk{position:relative}
+.pk-box{position:relative;display:inline-block}
+.pk-in{border:1px solid var(--line2);border-radius:99px;padding:.2rem .8rem;font-size:.76rem;background:var(--field);color:var(--ink);width:150px;outline:none;transition:border-color .15s,box-shadow .15s}
+.pk-in:focus{border-color:var(--clay);box-shadow:0 0 0 3px var(--clay-soft)}
+.pk-list{position:absolute;top:calc(100% + 6px);inset-inline-start:0;min-width:270px;max-height:270px;overflow-y:auto;background:var(--raised);border:1px solid var(--line2);border-radius:var(--r-m);box-shadow:var(--shadow-l);padding:.3rem;z-index:70}
+.pk-list[hidden]{display:none}
+.pk-o{display:flex;justify-content:space-between;gap:.8rem;width:100%;padding:.4rem .6rem;border-radius:6px;font-size:.82rem;text-align:start;color:var(--ink)}
+.pk-o:hover,.pk-o:focus{background:var(--hover);outline:none}
+.pk-o i{font-style:normal;color:var(--muted);font-size:.7rem}
+.seg.none .thumb{opacity:0}
+.tr-ctl{display:flex;flex-wrap:wrap;gap:.7rem 1.2rem;align-items:center;margin-bottom:.4rem}
+.lvls{display:flex;gap:.4rem;flex-wrap:wrap}
+.lv{display:inline-flex;align-items:center;border:1px solid var(--line2);border-radius:99px;background:var(--card);overflow:hidden;transition:opacity .2s,border-color .15s}
+.lv.off{opacity:.5;border-style:dashed}
+.lv-t{padding:.25rem .8rem;font-size:.8rem;font-weight:600;color:var(--ink)}
+.lv-t:hover:not(:disabled){background:var(--hover)}
+.lv.on .lv-t{color:var(--clay-ink)}
+.lv-t:disabled,.lv-mv:disabled{cursor:not-allowed;opacity:.4}
+.lv-mv{width:26px;height:26px;display:grid;place-items:center;color:var(--muted);transition:color .15s,background .15s}
+.lv-mv:hover:not(:disabled){color:var(--ink);background:var(--hover)}
+.lv-mv svg{width:12px;height:12px}
+.lv-mv.nx svg{transform:rotate(180deg)}
+.tr-act{display:flex;gap:.3rem;align-items:center;flex-wrap:wrap;margin-inline-start:auto}
+.tr-act .chip{padding:.15rem .65rem}
+.tr-path{font-size:.8rem;color:var(--ink2);margin:.2rem 0 .8rem}
+.tr-path b{color:var(--clay-ink);font-weight:600}
+.tr-path span{color:var(--faint);padding-inline:.4rem}
+.tree{background:var(--card);border:1px solid var(--line2);border-radius:var(--r-l);box-shadow:var(--shadow-s);overflow:hidden}
+.tn-r{position:relative;display:grid;grid-template-columns:22px auto minmax(0,1fr) auto 84px auto auto;gap:.6rem;align-items:center;padding:.5rem .8rem;padding-inline-start:calc(.8rem + var(--lv,0)*1.35rem);border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s}
+.tn:last-child .tn-r{border-bottom:none}
+.tn-r:hover,.tn-r:focus-visible{background:var(--hover)}
+.tn-r:focus-visible{outline-offset:-2px}
+.tn-r::before{content:'';position:absolute;inset-block:0;inset-inline-start:.8rem;width:calc(var(--lv,0)*1.35rem);background:repeating-linear-gradient(to left,transparent 0,transparent calc(1.35rem - 1px),var(--line2) calc(1.35rem - 1px),var(--line2) 1.35rem);pointer-events:none}
+.tn-c{width:22px;height:22px;display:grid;place-items:center}
+.tn-r.open .chev{transform:rotate(-135deg);margin-top:4px;border-color:var(--clay)}
+.tn-d{font-size:.66rem;font-weight:600;padding:.05rem .6rem;border-radius:99px;line-height:1.8;white-space:nowrap}
+.d-branch{background:var(--clay-soft);color:var(--clay-ink)}
+.d-center{background:var(--sage-soft);color:var(--sage)}
+.d-user{background:var(--sand-soft);color:var(--ink2)}
+.d-facility{background:light-dark(#E3EAF0,rgba(134,174,203,.16));color:var(--p5)}
+.tn-n{min-width:0;font-size:.9rem;font-weight:500;line-height:1.5;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.tn-r.hit .tn-n>span:first-child{color:var(--clay-ink);font-weight:700}
+.tn-k{font-size:.72rem;color:var(--muted);white-space:nowrap}
+.tn-b{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.tn-b i{display:block;height:100%;background:var(--ink);border-radius:3px}
+.tn-v{display:flex;flex-direction:column;align-items:flex-end;min-width:3.6rem}
+.tn-v b{font-weight:600;font-size:.9rem;line-height:1.3}
+.tn-v small{font-size:.7rem;color:var(--muted)}
+.tn-a{display:flex;gap:.25rem}
+.tn-a .ib{width:26px;height:26px}
+.tr-cap{padding:.7rem 1rem;font-size:.8rem;color:var(--muted);border-top:1px solid var(--line)}
+.dact{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.rp .rt-tree tbody tr.l0 td{background:#F1EDE2;font-weight:600}
+.rp .rt-tree tbody tr.l1 td{background:#F8F6F0}
+.rp .rt-tree tbody tr.more td{color:#7C766C;font-size:11px;background:#fff}
+.rt-tree .dn{display:inline-block;font-size:9.5px;font-weight:600;color:#7C766C}
+@media (max-width:700px){.tn-r{grid-template-columns:22px auto minmax(0,1fr) auto auto}.tn-k,.tn-b{display:none}}
 .ic{display:inline-flex}
 </style>
 </head>
@@ -438,7 +495,7 @@ body{background:#fff!important;border:none}
 <header class="hdr">
 <div class="wrap bar">
 <div class="brand"><img class="brand-ico" alt=""><span>جوابات</span></div>
-<nav class="tabs" id="tabs" role="tablist"><button type="button" role="tab" data-tab="ov" class="on">نظرة عامة</button><button type="button" role="tab" data-tab="cl">الجهات</button><button type="button" role="tab" data-tab="pe">المستخدمون</button><button type="button" role="tab" data-tab="lo">المواقع</button><button type="button" role="tab" data-tab="rt">المسارات</button><button type="button" role="tab" data-tab="rp">تقرير وتصدير</button></nav>
+<nav class="tabs" id="tabs" role="tablist"><button type="button" role="tab" data-tab="ov" class="on">نظرة عامة</button><button type="button" role="tab" data-tab="cl">الجهات</button><button type="button" role="tab" data-tab="pe">المستخدمون</button><button type="button" role="tab" data-tab="lo">المواقع</button><button type="button" role="tab" data-tab="tr">الشجرة</button><button type="button" role="tab" data-tab="rt">المسارات</button><button type="button" role="tab" data-tab="rp">تقرير وتصدير</button></nav>
 <div class="acts"><div class="seg theme-seg" data-theme-seg></div><button class="btn sm" id="btn-filter" type="button" data-i="fl">تصفية<span class="badge num" id="fcount" hidden></span></button><button class="btn sm dark" id="btn-reset" type="button">بيانات جديدة</button></div>
 </div>
 <div id="fpanel" class="fpanel" hidden><div class="wrap"><div id="filters" class="fgroups"></div><button class="linkish" id="btn-clear" type="button" hidden>مسح التصفية</button></div></div>
@@ -456,16 +513,22 @@ body{background:#fff!important;border:none}
 <div class="disc" id="clean-report"><button type="button" class="disc-b" id="cr-sum" aria-expanded="false" aria-controls="cr-body"><span id="cr-t"></span><span class="ic" data-i="ch"></span></button><div class="disc-p"><div class="disc-in" id="cr-body"></div></div></div>
 </section>
 <section id="v-cl" class="view" hidden>
-<div class="tools"><label class="searchbox" data-i="se"><input id="q-cl" type="text" autocomplete="off" placeholder="جهة أو مستخدم"><button type="button" class="sb-x" data-i="x" aria-label="مسح" hidden></button></label><button type="button" id="btn-unc" class="chip" hidden></button><button type="button" id="btn-copy-unc" class="chip" hidden>نسخ للتصنيف</button><span class="cnt" id="cnt-cl"></span></div>
+<div class="tools"><label class="searchbox" data-i="se"><input id="q-cl" type="text" autocomplete="off" placeholder="جهة أو مستخدم أو موقع"><button type="button" class="sb-x" data-i="x" aria-label="مسح" hidden></button></label><button type="button" id="btn-unc" class="chip" hidden></button><button type="button" id="btn-copy-unc" class="chip" hidden>نسخ للتصنيف</button><span class="cnt" id="cnt-cl"></span></div>
 <div class="tblwrap"><table class="tbl"><thead id="th-cl"></thead><tbody id="tb-cl"></tbody></table></div>
 </section>
 <section id="v-pe" class="view" hidden>
-<div class="tools"><label class="searchbox" data-i="se"><input id="q-pe" type="text" autocomplete="off" placeholder="مستخدم أو جهة"><button type="button" class="sb-x" data-i="x" aria-label="مسح" hidden></button></label><span class="cnt" id="cnt-pe"></span></div>
+<div class="tools"><label class="searchbox" data-i="se"><input id="q-pe" type="text" autocomplete="off" placeholder="مستخدم أو جهة أو موقع"><button type="button" class="sb-x" data-i="x" aria-label="مسح" hidden></button></label><span class="cnt" id="cnt-pe"></span></div>
 <div class="tblwrap"><table class="tbl"><thead id="th-pe"></thead><tbody id="tb-pe"></tbody></table></div>
 </section>
 <section id="v-lo" class="view" hidden>
 <div class="tools"><label class="searchbox" data-i="se"><input id="q-lo" type="text" autocomplete="off" placeholder="فرع أو مركز أو جهة"><button type="button" class="sb-x" data-i="x" aria-label="مسح" hidden></button></label><span class="cnt" id="cnt-lo"></span></div>
 <div id="lo-body"></div>
+</section>
+<section id="v-tr" class="view" hidden>
+<div class="tools"><div class="seg" id="tr-pre"></div><label class="searchbox" data-i="se"><input id="q-tr" type="text" autocomplete="off" placeholder="ابحث في الشجرة: فرع أو مركز أو مستخدم أو جهة"><button type="button" class="sb-x" data-i="x" aria-label="مسح" hidden></button></label><span class="cnt" id="cnt-tr"></span></div>
+<div class="tr-ctl"><div class="lvls" id="tr-lvls"></div><div class="tr-act" id="tr-act"></div></div>
+<p class="tr-path" id="tr-path"></p>
+<div class="tree" id="tr-body" role="tree"></div>
 </section>
 <section id="v-rt" class="view" hidden>
 <div class="tools"><div class="seg" id="rt-mode" style="--n:2"><span class="thumb"></span><button type="button" data-m="user" class="on">حسب المرسِل</button><button type="button" data-m="fac">حسب الجهة</button></div><label class="searchbox" data-i="se"><input id="q-rt" type="text" autocomplete="off" placeholder="ابحث في المسارات"><button type="button" class="sb-x" data-i="x" aria-label="مسح" hidden></button></label><button class="linkish" id="rt-all" type="button">فتح الكل</button><span class="cnt" id="cnt-rt"></span></div>
@@ -571,6 +634,7 @@ const n=toNum(r[map.count]);
 const fac=map.facility!==undefined?(r[map.facility]||'').trim():'';
 if(!isFinite(n)||!fac||n<0){if(r.some(c=>c!==''))skipped++;return;}
 rows.push({n,facility:fac,user:map.user!==undefined?(r[map.user]||'').trim():'',center:map.center!==undefined?(r[map.center]||'').trim():'',branch:map.branch!==undefined?(r[map.branch]||'').trim():''});});
+rows.forEach(r=>{r.fk=normAr(r.facility);r.uk=normAr(r.user);});
 if(!rows.length)throw new Error('لم يتبقَّ أي صف بيانات صالح بعد التنظيف — تحقّق من المحتوى الملصوق.');
 const filledNames={};
 [['facility','الجهة'],['user','اسم المستخدم'],['center','المركز'],['branch','الفرع']].forEach(pair=>{
@@ -655,9 +719,9 @@ const m=new Map();
 rows.forEach(r=>{
 const key=normAr(r.facility);
 let f=m.get(key);
-if(!f){f={key,name:r.facility,n:0,users:new Map(),centers:new Set(),branches:new Set(),cls:null,type:null,topUser:null};m.set(key,f);}
-f.n+=r.n;
-if(r.user){const uk=normAr(r.user),u=f.users.get(uk)||{key:uk,name:r.user,n:0};u.n+=r.n;f.users.set(uk,u);}
+if(!f){f={key,name:r.facility,n:0,users:new Map(),centers:new Set(),branches:new Set(),locs:new Map(),cls:null,type:null,topUser:null};m.set(key,f);}
+f.n+=r.n;addLoc(f.locs,r);
+if(r.user){const uk=normAr(r.user),u=f.users.get(uk)||{key:uk,name:r.user,n:0,locs:new Map()};u.n+=r.n;addLoc(u.locs,r);f.users.set(uk,u);}
 if(r.center)f.centers.add(r.center);
 if(r.branch)f.branches.add(r.branch);});
 const arr=[...m.values()];
@@ -669,14 +733,18 @@ f.ulist=[...f.users.values()].sort((a,b)=>b.n-a.n);
 if(f.ulist.length)f.topUser=f.ulist[0];});
 arr.sort((a,b)=>b.n-a.n);
 return arr;}
-function passFilters(r){
-const c=classify(r.facility);
-if(state.filters.cls.size){const cl=c&&c.cls?c.cls:'غير مصنّف';if(!state.filters.cls.has(cl))return false;}
-if(state.filters.type.size){const tp=c&&c.type?c.type:'غير مصنّف';if(!state.filters.type.has(tp))return false;}
-if(state.filters.branch.size&&!state.filters.branch.has(r.branch||NA))return false;
-if(state.filters.center.size&&!state.filters.center.has(r.center||NA))return false;
+function passFilters(r,skip){
+const f=state.filters;
+const wc=skip!=='cls'&&f.cls.size,wt=skip!=='type'&&f.type.size;
+if(wc||wt){const c=classify(r.facility);
+if(wc){const cl=c&&c.cls?c.cls:'غير مصنّف';if(!f.cls.has(cl))return false;}
+if(wt){const tp=c&&c.type?c.type:'غير مصنّف';if(!f.type.has(tp))return false;}}
+if(skip!=='branch'&&f.branch.size&&!f.branch.has(r.branch||NA))return false;
+if(skip!=='center'&&f.center.size&&!f.center.has(r.center||NA))return false;
+if(skip!=='user'&&f.user.size&&!f.user.has(r.uk))return false;
+if(skip!=='facility'&&f.facility.size&&!f.facility.has(r.fk))return false;
 return true;}
-const anyFilter=()=>state.filters.cls.size>0||state.filters.type.size>0||state.filters.branch.size>0||state.filters.center.size>0;
+const anyFilter=()=>Object.values(state.filters).some(s=>s.size>0);
 let toastTimer=null;
 function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2800);}
 function countUp(el,to){
@@ -685,29 +753,71 @@ if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matc
 const t0=performance.now(),dur=800;
 const step=t=>{const p=Math.min((t-t0)/dur,1);const e=1-Math.pow(1-p,3);el.textContent=fmt(to*e);if(p<1)requestAnimationFrame(step);};
 requestAnimationFrame(step);}
-const freshF=()=>({cls:new Set(),type:new Set(),branch:new Set(),center:new Set()});
-const state={rows:[],classes:new Map(),manualClasses:new Map(),clsCache:new Map(),report:null,filters:freshF(),tab:'ov',fopen:false,onlyUnc:false,q:{cl:'',pe:'',lo:'',rt:''},rtMode:'user',openRt:new Set(),locs:[],sort:{cl:{key:'n',asc:false},pe:{key:'n',asc:false}},drawer:null,dstack:[],allFacs:[],frows:[],facs:[],people:[],total:0,rep:{title:'تقرير الخطابات',by:'',charts:true,n:10,orient:'portrait',brk:false,sign:false,sec:{sum:1,ins:1,mix:1,loc:1,cl:1,pe:1,rt:0,dpe:0,dcl:0,dce:0,qa:0}},ex:{cl:1,pe:1,loc:1,pair:1,cls:0,raw:0}};
+const freshF=()=>({cls:new Set(),type:new Set(),branch:new Set(),center:new Set(),user:new Set(),facility:new Set()});
+const state={rows:[],classes:new Map(),manualClasses:new Map(),clsCache:new Map(),report:null,filters:freshF(),tab:'ov',fopen:false,onlyUnc:false,q:{cl:'',pe:'',lo:'',rt:''},rtMode:'user',openRt:new Set(),locs:[],sort:{cl:{key:'n',asc:false},pe:{key:'n',asc:false}},drawer:null,dstack:[],allFacs:[],frows:[],facs:[],people:[],total:0,names:{user:new Map(),facility:new Map()},avail:{branch:false,center:false,user:false,facility:true},pkOpts:{user:[],facility:[]},pkFocus:null,trIndex:new Map(),tree:{order:['branch','center','user','facility'],off:new Set(),openTr:new Set(),q:'',def:true,pend:null,hl:null,refocus:null},rep:{title:'تقرير الخطابات',by:'',charts:true,n:10,orient:'portrait',brk:false,sign:false,sec:{sum:1,ins:1,mix:1,loc:1,tr:1,cl:1,pe:1,rt:0,dpe:0,dcl:0,dce:0,qa:0}},ex:{cl:1,pe:1,loc:1,pair:1,tree:1,cls:0,raw:0}};
 const svg=p=>'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
 const IC={dl:svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),pr:svg('<polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>'),up:svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>'),se:svg('<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/>'),fl:svg('<polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/>'),x:svg('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'),bk:svg('<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'),ch:svg('<polyline points="6 9 12 15 18 9"/>'),mo:svg('<rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'),su:svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),mn:svg('<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>')};
-const SECS=[['sum','المؤشرات الرئيسية'],['ins','القراءة التحليلية'],['mix','التركيبة (عام/خاص، النوع)'],['loc','المواقع (فرع › مركز)'],['cl','ترتيب الجهات'],['pe','ترتيب المستخدمين'],['rt','المسارات (مرسِل ← جهة)'],['dpe','ملف كل مستخدم'],['dcl','ملف كل جهة'],['dce','ملف كل مركز'],['qa','ملحق: جودة البيانات']];
-const EXS=[['cl','الجهات'],['pe','المستخدمون'],['loc','المواقع (فرع × مركز)'],['pair','المسارات (مستخدم × جهة)'],['cls','جدول التصنيف (لإعادة اللصق)'],['raw','السجلات النظيفة']];
-const COLS={cl:[['#',''],['الجهة','name'],['العدد','n'],['الحصة',''],['التصنيف',''],['النوع',''],['المستخدمون','k'],['أعلى مستخدم','']],pe:[['#',''],['المستخدم','name'],['العدد','n'],['الحصة',''],['الجهات','k'],['أعلى جهة','']]};
+const SECS=[['sum','المؤشرات الرئيسية'],['ins','القراءة التحليلية'],['mix','التركيبة (عام/خاص، النوع)'],['loc','المواقع (فرع › مركز)'],['tr','شجرة الروابط (حسب ترتيب تبويب الشجرة)'],['cl','ترتيب الجهات'],['pe','ترتيب المستخدمين'],['rt','المسارات (مرسِل ← جهة)'],['dpe','ملف كل مستخدم'],['dcl','ملف كل جهة'],['dce','ملف كل مركز'],['qa','ملحق: جودة البيانات']];
+const EXS=[['cl','الجهات'],['pe','المستخدمون'],['loc','المواقع (فرع × مركز)'],['pair','المسارات (مستخدم × جهة × مركز)'],['tree','الشجرة (فرع × مركز × مستخدم × جهة)'],['cls','جدول التصنيف (لإعادة اللصق)'],['raw','السجلات النظيفة']];
+const COLS={cl:[['#',''],['الجهة','name'],['العدد','n'],['الحصة',''],['التصنيف',''],['النوع',''],['المستخدمون','k'],['أعلى مستخدم',''],['الموقع','']],pe:[['#',''],['المستخدم','name'],['العدد','n'],['الحصة',''],['الجهات','k'],['أعلى جهة',''],['الموقع','']]};
 const pc=(a,b)=>b?Math.round(a/b*1000)/10:0;
 const tagCls=c=>c?'<span class="tag '+(c==='عام'?'tag-pub':c==='خاص'?'tag-priv':'tag-other')+'">'+esc(c)+'</span>':'<span class="tag tag-none">غير مصنّف</span>';
 const tagType=t=>t?'<span class="tag">'+esc(t)+'</span>':'';
 const incomplete=f=>!f.cls||!f.type;
+const DIMS={branch:'فرع',center:'مركز',user:'مستخدم',facility:'جهة'};
+const DIMP={branch:'الفرع',center:'المركز',user:'المستخدم',facility:'الجهة'};
+const PRESETS=[['loc','من الفرع',['branch','center','user','facility'],[]],['fac','من الجهة',['facility','user','center','branch'],[]],['usr','من المرسِل',['user','center','facility','branch'],['branch']],['cen','من المركز',['center','user','facility','branch'],['branch']]];
+const locLabel=x=>[x.branch,x.center].filter(v=>v!==NA).join(' › ')||NA;
+function addLoc(map,r){if(!r.branch&&!r.center)return;const b=r.branch||NA,c=r.center||NA,k=b+' › '+c,x=map.get(k);if(x)x.n+=r.n;else map.set(k,{key:k,branch:b,center:c,n:r.n});}
+const locList=m=>m?[...m.values()].sort((a,b)=>b.n-a.n):[];
+function locPlain(m){const a=locList(m);if(!a.length)return '—';return locLabel(a[0])+(a.length>1?' +'+(a.length-1):'');}
+function locFull(m){return locList(m).map(x=>locLabel(x)+' ('+fmt(x.n)+')').join('، ');}
+function locCell(m){const a=locList(m);if(!a.length)return '—';return '<span'+(a.length>1?' data-tip="'+esc(a.map(x=>locLabel(x)+' ('+fmt(x.n)+')').join(' | '))+'"':'')+'>'+esc(locLabel(a[0]))+(a.length>1?' <span class="sub num">+'+(a.length-1)+'</span>':'')+'</span>';}
+const locHay=m=>normAr(locList(m).map(x=>x.branch+' '+x.center).join(' '));
+const locTag=m=>{const a=locList(m);return a.length?'<span class="tag">'+esc(locLabel(a[0]))+(a.length>1?' +'+(a.length-1):'')+'</span>':'';};
+const locCenters=m=>[...new Set(locList(m).map(x=>x.center).filter(v=>v!==NA))].join('، ');
+const locBranches=m=>[...new Set(locList(m).map(x=>x.branch).filter(v=>v!==NA))].join('، ');
+function buildNames(){
+const u=new Map(),f=new Map();
+state.rows.forEach(r=>{if(!u.has(r.uk))u.set(r.uk,r.user||NA);if(!f.has(r.fk))f.set(r.fk,r.facility);});
+state.names={user:u,facility:f};
+state.avail={branch:state.rows.some(r=>r.branch),center:state.rows.some(r=>r.center),user:state.rows.some(r=>r.user),facility:true};}
+const labelOf=(k,v)=>(k==='user'||k==='facility')?(state.names[k].get(v)||v||NA):v;
+const treeDims=()=>{const d=state.tree.order.filter(x=>!state.tree.off.has(x)&&state.avail[x]);return d.length?d:['facility'];};
+const presetDims=p=>p[2].filter(d=>!p[3].includes(d)&&state.avail[d]).join();
+function curPreset(){const c=treeDims().join(),p=PRESETS.find(x=>presetDims(x)===c);return p?p[0]:'custom';}
+function applyPreset(id){const p=PRESETS.find(x=>x[0]===id);if(!p)return;state.tree.order=p[2].slice();state.tree.off=new Set(p[3]);state.tree.openTr=new Set();state.tree.def=true;state.tree.pend=null;state.tree.hl=null;}
+function dimInfo(d,r){
+if(d==='branch'){const v=r.branch||NA;return{key:v,name:v,val:v};}
+if(d==='center'){const b=r.branch||NA,c=r.center||NA;return{key:b+' › '+c,name:c,val:c,br:b};}
+if(d==='user')return{key:r.uk,name:r.user||NA,val:r.uk};
+return{key:r.fk,name:r.facility,val:r.fk};}
+function buildTree(rows,dims){
+const root={id:'',n:0,m:new Map(),path:[],depth:-1};
+rows.forEach(r=>{
+root.n+=r.n;let cur=root;
+dims.forEach((d,i)=>{
+const x=dimInfo(d,r);
+let c=cur.m.get(x.key);
+if(!c){c={id:cur.id+'/'+d+':'+x.key,dim:d,key:x.key,name:x.name,val:x.val,br:x.br,depth:i,n:0,m:new Map(),path:cur.path.concat([{dim:d,val:x.val,br:x.br,name:x.name,key:x.key}])};cur.m.set(x.key,c);}
+c.n+=r.n;cur=c;});});
+const idx=new Map();
+const fin=node=>{node.list=[...node.m.values()].sort((a,b)=>b.n-a.n);node.m=null;node.list.forEach(c=>{c.parent=node;c.nk=normAr(c.name+' '+(c.dim==='center'&&c.br?c.br:''));idx.set(c.id,c);fin(c);});};
+fin(root);
+return{root,idx,dims};}
+const trSub=c=>c.dim==='center'&&c.br&&c.br!==NA&&!c.path.some(p=>p.dim==='branch')?c.br:'';
 function buildPeople(rows){
 const m=new Map();
 rows.forEach(r=>{
 if(!r.user)return;
 const uk=normAr(r.user);
 let p=m.get(uk);
-if(!p){p={key:uk,name:r.user,n:0,facs:new Map(),centers:new Set(),branches:new Set()};m.set(uk,p);}
-p.n+=r.n;
+if(!p){p={key:uk,name:r.user,n:0,facs:new Map(),centers:new Set(),branches:new Set(),locs:new Map()};m.set(uk,p);}
+p.n+=r.n;addLoc(p.locs,r);
 const k=normAr(r.facility);
 let f=p.facs.get(k);
-if(!f){f={key:k,name:r.facility,n:0};p.facs.set(k,f);}
-f.n+=r.n;
+if(!f){f={key:k,name:r.facility,n:0,locs:new Map()};p.facs.set(k,f);}
+f.n+=r.n;addLoc(f.locs,r);
 if(r.center)p.centers.add(r.center);
 if(r.branch)p.branches.add(r.branch);});
 const a=[...m.values()];
@@ -715,7 +825,7 @@ a.forEach(p=>{p.list=[...p.facs.values()].sort((x,y)=>y.n-x.n);});
 return a.sort((x,y)=>y.n-x.n);}
 function compute(){
 state.allFacs=buildFacilities(state.rows);
-state.frows=state.rows.filter(passFilters);
+state.frows=state.rows.filter(r=>passFilters(r));
 state.facs=state.frows.length===state.rows.length?state.allFacs:buildFacilities(state.frows);
 state.people=buildPeople(state.frows);
 state.locs=buildLocs(state.frows);
@@ -730,7 +840,10 @@ if(m.has('غير مصنّف'))keys.push('غير مصنّف');
 return keys.map((l,i)=>({label:l,n:m.get(l),color:l==='غير مصنّف'?'#B8AD93':k==='cls'?(CLS_COLORS[l]||'#6E5E7E'):TYPE_PALETTE[i%TYPE_PALETTE.length],ui:l==='غير مصنّف'?'var(--pn)':k==='cls'?(CLS_UI[l]||'var(--p4)'):TYPE_UI[i%TYPE_UI.length]}));}
 function scopeText(){
 const p=[];
-[['cls','التصنيف'],['type','النوع'],['branch','الفرع'],['center','المركز']].forEach(x=>{if(state.filters[x[0]].size)p.push(x[1]+': '+[...state.filters[x[0]]].map(esc).join('، '));});
+[['cls','التصنيف'],['type','النوع'],['branch','الفرع'],['center','المركز'],['user','المستخدم'],['facility','الجهة']].forEach(x=>{
+const s=state.filters[x[0]];if(!s.size)return;
+const a=[...s].map(v=>labelOf(x[0],v));
+p.push(x[1]+': '+a.slice(0,3).map(esc).join('، ')+(a.length>3?' +'+(a.length-3):''));});
 return p.length?p.join(' · '):'كل البيانات';}
 function kpiItems(){
 const F=state.frows,T=state.total,cov=state.facs.filter(f=>f.cls).reduce((s,f)=>s+f.n,0);
@@ -760,21 +873,43 @@ if(!list.length)return '<div class="empty">لا نتائج.</div>';
 const mx=list[0].n||1,d=den||1;
 return list.map((e,i)=>'<button type="button" class="rr'+(top&&!i?' first':'')+'" data-kind="'+kind+'" data-key="'+esc(e.key)+'"><span class="rk num">'+(i+1)+'</span><span class="rm"><span class="rn">'+esc(e.name)+(e.tag||'')+'</span><span class="rb"><i style="width:'+(e.n/mx*100).toFixed(1)+'%"></i></span></span><span class="rv"><b class="num">'+fmt(e.n)+'</b><small class="num">'+fmtPct(e.n/d)+'</small></span></button>').join('');}
 function chipGroup(title,kind,vals){
-if(!vals||vals.length<2)return '';
-return '<div class="cg"><span class="cg-t">'+title+'</span>'+vals.map(o=>'<button type="button" class="chip'+(state.filters[kind].has(o.label)?' on':'')+'" data-kind="'+kind+'" data-v="'+esc(o.label)+'">'+esc(o.label)+'<i class="num">'+fmt(o.n)+'</i></button>').join('')+'</div>';}
+if(!vals)return '';
+const on=state.filters[kind],v=vals.filter(o=>o.n>0||on.has(o.label));
+on.forEach(l=>{if(!v.some(o=>o.label===l))v.push({label:l,n:0});});
+if(v.length<2&&!on.size)return '';
+return '<div class="cg"><span class="cg-t">'+title+'</span>'+v.map(o=>'<button type="button" class="chip'+(on.has(o.label)?' on':'')+'" data-kind="'+kind+'" data-v="'+esc(o.label)+'">'+esc(o.label)+'<i class="num">'+fmt(o.n)+'</i></button>').join('')+'</div>';}
+const facetRows=k=>state.rows.filter(r=>passFilters(r,k));
+function pickOpts(kind){
+const m=new Map();
+facetRows(kind).forEach(r=>{const k=kind==='user'?r.uk:r.fk,x=m.get(k);if(x)x.n+=r.n;else m.set(k,{key:k,label:labelOf(kind,k),n:r.n});});
+const a=[...m.values()].sort((x,y)=>y.n-x.n);
+a.forEach(o=>{o.nk=normAr(o.label);});
+return a;}
+function pickGroup(title,kind){
+if(kind==='user'&&!state.avail.user)return '';
+state.pkOpts[kind]=pickOpts(kind);
+const chips=[...state.filters[kind]].map(k=>'<button type="button" class="chip on" data-kind="'+kind+'" data-v="'+esc(k)+'">'+esc(labelOf(kind,k))+'<i class="num">×</i></button>').join('');
+return '<div class="cg pk"><span class="cg-t">'+title+'</span>'+chips+'<span class="pk-box"><input type="text" class="pk-in" data-pk="'+kind+'" placeholder="ابحث وأضف…" autocomplete="off"><div class="pk-list" hidden></div></span></div>';}
+function showPk(i){
+const kind=i.dataset.pk,q=normAr(i.value),on=state.filters[kind],list=i.parentElement.querySelector('.pk-list');
+const a=state.pkOpts[kind].filter(o=>!on.has(o.key)&&(!q||o.nk.includes(q))).slice(0,12);
+list.innerHTML=a.map(o=>'<button type="button" class="pk-o" data-kind="'+kind+'" data-v="'+esc(o.key)+'"><span>'+esc(o.label)+'</span><i class="num">'+fmt(o.n)+'</i></button>').join('');
+list.hidden=!a.length;}
 function renderFilters(){
-const g=[chipGroup('التصنيف','cls',tally(state.allFacs,'cls')),chipGroup('النوع','type',tally(state.allFacs,'type'))];
+const g=[chipGroup('التصنيف','cls',tally(buildFacilities(facetRows('cls')),'cls')),chipGroup('النوع','type',tally(buildFacilities(facetRows('type')),'type'))];
 [['branch','الفرع'],['center','المركز']].forEach(p=>{
 const m=new Map();
-if(!state.rows.some(r=>r[p[0]]))return;
-state.rows.forEach(r=>{const v=r[p[0]]||NA;m.set(v,(m.get(v)||0)+r.n);});
+if(!state.avail[p[0]])return;
+facetRows(p[0]).forEach(r=>{const v=r[p[0]]||NA;m.set(v,(m.get(v)||0)+r.n);});
 g.push(chipGroup(p[1],p[0],[...m.entries()].sort((a,c)=>c[1]-a[1]).map(e=>({label:e[0],n:e[1]}))));});
+g.push(pickGroup('المستخدم','user'),pickGroup('الجهة','facility'));
 $('#filters').innerHTML=g.join('');
 const n=Object.values(state.filters).reduce((s,x)=>s+x.size,0);
 $('#fcount').hidden=!n;$('#fcount').textContent=n;
 $('#btn-clear').hidden=!n;
 $('#fpanel').hidden=!state.fopen;
-$('#scope').innerHTML='التحديد: '+scopeText();}
+$('#scope').innerHTML='التحديد: '+scopeText()+(n?' <button type="button" class="linkish ins-clear">مسح التصفية</button>':'');
+if(state.pkFocus){const i=$('#filters .pk-in[data-pk="'+state.pkFocus+'"]');state.pkFocus=null;if(i){i.focus();showPk(i);}}}
 function mixBlock(title,kind,g){
 const tot=g.reduce((s,x)=>s+x.n,0)||1;
 return '<div><h3 class="mix-t">'+title+'</h3>'+pbar(g)+'<div class="legend">'+g.map(x=>'<button type="button" class="lg'+(state.filters[kind].has(x.label)?' on':'')+'" data-kind="'+kind+'" data-v="'+esc(x.label)+'"><span class="sw" style="background:'+x.ui+'"></span>'+esc(x.label)+'<b class="num">'+fmt(x.n)+'</b><small class="num">'+fmtPct(x.n/tot)+'</small></button>').join('')+'</div></div>';}
@@ -791,15 +926,15 @@ function renderTable(kind){
 const cl=kind==='cl',so=state.sort[kind],q=normAr(state.q[kind]),all=cl?state.facs:state.people,T=state.total||1;
 let a=all.slice();
 if(cl&&state.onlyUnc)a=a.filter(incomplete);
-if(q)a=a.filter(e=>normAr(e.name).includes(q)||(cl?e.ulist.some(u=>u.key.includes(q)):e.list.some(f=>f.key.includes(q))));
+if(q)a=a.filter(e=>normAr(e.name).includes(q)||locHay(e.locs).includes(q)||(cl?e.ulist.some(u=>u.key.includes(q)):e.list.some(f=>f.key.includes(q))));
 const kc=e=>cl?e.users.size:e.list.length,dir=so.asc?1:-1;
 a.sort((x,y)=>so.key==='n'?(x.n-y.n)*dir:so.key==='k'?(kc(x)-kc(y))*dir:x.name.localeCompare(y.name,'ar')*dir);
 $('#th-'+kind).innerHTML='<tr>'+COLS[kind].map(c=>'<th'+(c[1]?' class="s'+(so.key===c[1]?(so.asc?' a':' d'):'')+'" data-sort="'+c[1]+'"':'')+'>'+c[0]+'</th>').join('')+'</tr>';
 const mx=a.length?Math.max(...a.map(e=>e.n))||1:1;
 $('#tb-'+kind).innerHTML=a.length?a.map((e,i)=>{
 const bar='<td class="num"><span class="mb"><i style="width:'+(e.n/mx*100).toFixed(1)+'%"></i></span><b>'+fmt(e.n)+'</b></td><td class="num">'+fmtPct(e.n/T)+'</td>';
-if(cl)return '<tr tabindex="0" data-key="'+esc(e.key)+'"><td class="num c-i">'+(i+1)+'</td><td class="c-f">'+esc(e.name)+'</td>'+bar+'<td>'+tagCls(e.cls)+'</td><td>'+(e.type?esc(e.type):'—')+'</td><td class="num">'+e.users.size+'</td><td>'+(e.topUser?esc(e.topUser.name)+' <span class="sub num">'+fmtPct(e.topUser.n/e.n)+'</span>':'—')+'</td></tr>';
-return '<tr tabindex="0" data-key="'+esc(e.key)+'"><td class="num c-i">'+(i+1)+'</td><td class="c-f">'+esc(e.name)+'</td>'+bar+'<td class="num">'+e.list.length+'</td><td>'+esc(e.list[0].name)+' <span class="sub num">'+fmtPct(e.list[0].n/e.n)+'</span></td></tr>';}).join(''):'<tr><td colspan="9" class="empty">لا نتائج.</td></tr>';
+if(cl)return '<tr tabindex="0" data-key="'+esc(e.key)+'"><td class="num c-i">'+(i+1)+'</td><td class="c-f">'+esc(e.name)+'</td>'+bar+'<td>'+tagCls(e.cls)+'</td><td>'+(e.type?esc(e.type):'—')+'</td><td class="num">'+e.users.size+'</td><td>'+(e.topUser?esc(e.topUser.name)+' <span class="sub num">'+fmtPct(e.topUser.n/e.n)+'</span>':'—')+'</td><td>'+locCell(e.locs)+'</td></tr>';
+return '<tr tabindex="0" data-key="'+esc(e.key)+'"><td class="num c-i">'+(i+1)+'</td><td class="c-f">'+esc(e.name)+'</td>'+bar+'<td class="num">'+e.list.length+'</td><td>'+esc(e.list[0].name)+' <span class="sub num">'+fmtPct(e.list[0].n/e.n)+'</span></td><td>'+locCell(e.locs)+'</td></tr>';}).join(''):'<tr><td colspan="9" class="empty">لا نتائج.</td></tr>';
 $('#cnt-'+kind).textContent=fmt(a.length)+' من '+fmt(all.length);
 if(cl){const u=state.facs.filter(incomplete).length,bt=$('#btn-unc');bt.hidden=!u;$('#btn-copy-unc').hidden=!u;bt.textContent='ناقصة التصنيف · '+fmt(u);bt.classList.toggle('on',state.onlyUnc);}}
 function entity(kind,key){if(kind==='cl')return state.facs.find(f=>f.key===key);if(kind==='ce'){for(const B of state.locs){const C=B.clist.find(c=>c.key===key);if(C)return C;}return null;}return state.people.find(p=>p.key===key);}
@@ -876,11 +1011,12 @@ rows.forEach(r=>{
 const b=r.branch||NA,c=r.center||NA;
 let B=m.get(b);if(!B){B={name:b,n:0,centers:new Map(),facs:new Set(),users:new Set()};m.set(b,B);}
 B.n+=r.n;B.facs.add(normAr(r.facility));if(r.user)B.users.add(normAr(r.user));
-let C=B.centers.get(c);if(!C){C={key:b+' › '+c,name:c,branch:b,n:0,facs:new Map(),users:new Map(),centers:new Set([c]),branches:new Set([b])};B.centers.set(c,C);}
+let C=B.centers.get(c);if(!C){C={key:b+' › '+c,name:c,branch:b,n:0,facs:new Map(),users:new Map(),pairs:new Map(),centers:new Set([c]),branches:new Set([b])};B.centers.set(c,C);}
 C.n+=r.n;
+const pk=(r.uk||'')+'\u001f'+r.fk,pp=C.pairs.get(pk)||{user:r.user||NA,facility:r.facility,uk:r.uk,fk:r.fk,n:0};pp.n+=r.n;C.pairs.set(pk,pp);
 const fk=normAr(r.facility),f=C.facs.get(fk)||{key:fk,name:r.facility,n:0};f.n+=r.n;C.facs.set(fk,f);
 if(r.user){const uk=normAr(r.user),u=C.users.get(uk)||{key:uk,name:r.user,n:0};u.n+=r.n;C.users.set(uk,u);}});
-return srt([...m.values()].map(B=>{B.clist=srt([...B.centers.values()].map(C=>{C.list=srt([...C.facs.values()]);C.ulist=srt([...C.users.values()]);return C;}));return B;}));}
+return srt([...m.values()].map(B=>{B.clist=srt([...B.centers.values()].map(C=>{C.list=srt([...C.facs.values()]);C.ulist=srt([...C.users.values()]);C.plist=srt([...C.pairs.values()]);return C;}));return B;}));}
 function renderLocs(){
 const q=normAr(state.q.lo),T=state.total||1,el=$('#lo-body');
 let L=state.locs.map(B=>{const cs=q&&!normAr(B.name).includes(q)?B.clist.filter(C=>normAr(C.name).includes(q)||C.list.some(f=>f.key.includes(q))||C.ulist.some(u=>u.key.includes(q))):B.clist;return{B,cs};}).filter(x=>x.cs.length);
@@ -889,7 +1025,7 @@ if(!L.length){el.innerHTML='<div class="empty">لا نتائج.</div>';return;}
 el.innerHTML=L.map(({B,cs})=>{const mx=B.clist[0].n||1;
 return '<section class="loc"><div class="loc-h"><div><h3>'+esc(B.name)+'</h3><span class="sub num">'+fmt(B.clist.length)+' مركز · '+fmt(B.facs.size)+' جهة · '+fmt(B.users.size)+' مستخدم</span></div><span class="rv"><b class="num">'+fmt(B.n)+'</b><small class="num">'+fmtPct(B.n/T)+'</small></span></div><div class="tblwrap"><table class="tbl"><thead><tr><th>#</th><th>المركز</th><th>العدد</th><th>من الفرع</th><th>من الإجمالي</th><th>الجهات</th><th>المستخدمون</th><th>أعلى جهة</th></tr></thead><tbody>'
 +cs.map((C,i)=>'<tr tabindex="0" data-ce="'+esc(C.key)+'"><td class="num c-i">'+(i+1)+'</td><td class="c-f">'+esc(C.name)+'</td><td class="num"><span class="mb"><i style="width:'+(C.n/mx*100).toFixed(1)+'%"></i></span><b>'+fmt(C.n)+'</b></td><td class="num">'+fmtPct(C.n/(B.n||1))+'</td><td class="num">'+fmtPct(C.n/T)+'</td><td class="num">'+C.list.length+'</td><td class="num">'+C.ulist.length+'</td><td>'+(C.list[0]?esc(C.list[0].name)+' <span class="sub num">'+fmtPct(C.list[0].n/C.n)+'</span>':'—')+'</td></tr>').join('')+'</tbody></table></div></section>';}).join('');}
-function routeData(){return state.rtMode==='user'?state.people.map(p=>({key:'u:'+p.key,ek:p.key,kind:'pe',tk:'cl',name:p.name,n:p.n,list:p.list})):state.facs.filter(f=>f.ulist.length).map(f=>({key:'f:'+f.key,ek:f.key,kind:'cl',tk:'pe',name:f.name,n:f.n,list:f.ulist}));}
+function routeData(){return state.rtMode==='user'?state.people.map(p=>({key:'u:'+p.key,ek:p.key,kind:'pe',tk:'cl',name:p.name,n:p.n,locs:p.locs,list:p.list})):state.facs.filter(f=>f.ulist.length).map(f=>({key:'f:'+f.key,ek:f.key,kind:'cl',tk:'pe',name:f.name,n:f.n,locs:f.locs,list:f.ulist}));}
 function renderRoutes(){
 document.querySelectorAll('#rt-mode button').forEach(b=>b.classList.toggle('on',b.dataset.m===state.rtMode));
 syncSeg($('#rt-mode'));
@@ -902,8 +1038,95 @@ if(!all){el.innerHTML='<div class="hintbox">لا أسماء مستخدمين ف�
 if(!R.length){el.innerHTML='<div class="empty">لا نتائج.</div>';return;}
 const mx=R[0].n||1;
 el.innerHTML=R.map((r,i)=>{const open=state.openRt.has(r.key)||(q&&R.length<=5);
-return '<div class="route'+(open?' open':'')+'" data-rk="'+esc(r.key)+'"><button type="button" class="route-h"><span class="rk num">'+(i+1)+'</span><span class="rm"><span class="rn">'+esc(r.name)+'</span><span class="rb"><i style="width:'+(r.n/mx*100).toFixed(1)+'%"></i></span></span><span class="route-meta num">'+fmt(r.list.length)+' '+(u?'جهة':'مرسِل')+'</span><span class="rv"><b class="num">'+fmt(r.n)+'</b><small class="num">'+fmtPct(r.n/T)+'</small></span><span class="chev"></span></button>'
-+(open?'<div class="route-b"><table class="rt2"><thead><tr><th>#</th><th>المسار</th><th>العدد</th><th>% من '+(u?'المرسِل':'الجهة')+'</th><th>% من '+(u?'الجهة':'المرسِل')+'</th></tr></thead><tbody>'+r.list.map((x,j)=>{const o=entity(r.tk,x.key);return '<tr tabindex="0" class="rr-link" data-kind="'+r.tk+'" data-key="'+esc(x.key)+'"><td class="num c-i">'+(j+1)+'</td><td>'+(u?esc(r.name)+'<span class="arrow">←</span><b>'+esc(x.name)+'</b>':'<b>'+esc(x.name)+'</b><span class="arrow">←</span>'+esc(r.name))+'</td><td class="num"><b>'+fmt(x.n)+'</b></td><td class="num">'+fmtPct(x.n/r.n)+'</td><td class="num sub">'+(o?fmtPct(x.n/o.n):'—')+'</td></tr>';}).join('')+'</tbody></table><div class="more"><button type="button" class="linkish rt-open" data-kind="'+r.kind+'" data-key="'+esc(r.ek)+'">ملف '+(u?'المستخدم':'الجهة')+' الكامل</button></div></div>':'')+'</div>';}).join('');}
+return '<div class="route'+(open?' open':'')+'" data-rk="'+esc(r.key)+'"><button type="button" class="route-h"><span class="rk num">'+(i+1)+'</span><span class="rm"><span class="rn">'+esc(r.name)+'<span class="sub">'+locCell(r.locs)+'</span></span><span class="rb"><i style="width:'+(r.n/mx*100).toFixed(1)+'%"></i></span></span><span class="route-meta num">'+fmt(r.list.length)+' '+(u?'جهة':'مرسِل')+'</span><span class="rv"><b class="num">'+fmt(r.n)+'</b><small class="num">'+fmtPct(r.n/T)+'</small></span><span class="chev"></span></button>'
++(open?'<div class="route-b"><table class="rt2"><thead><tr><th>#</th><th>المسار</th><th>العدد</th><th>% من '+(u?'المرسِل':'الجهة')+'</th><th>% من '+(u?'الجهة':'المرسِل')+'</th><th>الموقع</th></tr></thead><tbody>'+r.list.map((x,j)=>{const o=entity(r.tk,x.key);return '<tr tabindex="0" class="rr-link" data-kind="'+r.tk+'" data-key="'+esc(x.key)+'"><td class="num c-i">'+(j+1)+'</td><td>'+(u?esc(r.name)+'<span class="arrow">←</span><b>'+esc(x.name)+'</b>':'<b>'+esc(x.name)+'</b><span class="arrow">←</span>'+esc(r.name))+'</td><td class="num"><b>'+fmt(x.n)+'</b></td><td class="num">'+fmtPct(x.n/r.n)+'</td><td class="num sub">'+(o?fmtPct(x.n/o.n):'—')+'</td><td class="sub">'+locCell(x.locs)+'</td></tr>';}).join('')+'</tbody></table><div class="more"><button type="button" class="linkish rt-open" data-kind="'+r.kind+'" data-key="'+esc(r.ek)+'">ملف '+(u?'المستخدم':'الجهة')+' الكامل</button></div></div>':'')+'</div>';}).join('');}
+const trKind=n=>n.dim==='facility'?'cl':n.dim==='user'?'pe':'ce';
+const trHasDet=n=>n.dim==='facility'||n.dim==='center'||(n.dim==='user'&&!!n.key);
+function renderLevels(){
+const T=state.tree,dims=treeDims(),cur=curPreset();
+$('#tr-lvls').innerHTML=T.order.map((d,i)=>{const on=dims.includes(d),av=state.avail[d];
+return '<span class="lv'+(on?' on':' off')+'"><button type="button" class="lv-mv" data-mv="prev" data-d="'+d+'" aria-label="تقديم" data-tip="تقديم"'+(i?'':' disabled')+'>'+IC.bk+'</button><button type="button" class="lv-t" data-d="'+d+'" aria-pressed="'+on+'"'+(av?'':' disabled')+'>'+DIMP[d]+'</button><button type="button" class="lv-mv nx" data-mv="next" data-d="'+d+'" aria-label="تأخير" data-tip="تأخير"'+(i<T.order.length-1?'':' disabled')+'>'+IC.bk+'</button></span>';}).join('');
+$('#tr-act').innerHTML='<span class="cg-t">افتح حتى</span>'+dims.map((d,i)=>'<button type="button" class="chip" data-dp="'+(i+1)+'">'+DIMP[d]+'</button>').join('');
+$('#tr-path').innerHTML='<b>'+dims.map(d=>DIMP[d]).join('</b><span>←</span><b>')+'</b>';
+document.querySelectorAll('#tr-pre button').forEach(b=>b.classList.toggle('on',b.dataset.p===cur));
+const seg=$('#tr-pre');seg.classList.toggle('none',cur==='custom');syncSeg(seg);}
+function trRow(c,pn,mx,open,kids,q,dims){
+const sub=trSub(c);
+return '<div class="tn" role="treeitem" aria-level="'+(c.depth+1)+'"'+(kids?' aria-expanded="'+open+'"':'')+'><div class="tn-r'+(open?' open':'')+((q&&c.hs)||state.tree.hl===c.id?' hit':'')+'" tabindex="0" data-id="'+esc(c.id)+'" style="--lv:'+c.depth+'">'
++'<span class="tn-c">'+(kids?'<span class="chev"></span>':'')+'</span>'
++'<span class="tn-d d-'+c.dim+'">'+DIMS[c.dim]+'</span>'
++'<span class="tn-n"><span>'+esc(c.name)+'</span>'+(sub?'<span class="tag">'+esc(sub)+'</span>':'')+'</span>'
++'<span class="tn-k num">'+(kids?fmt(kids)+' '+DIMS[dims[c.depth+1]]:'')+'</span>'
++'<span class="tn-b"><i style="width:'+(c.n/mx*100).toFixed(1)+'%"></i></span>'
++'<span class="tn-v"><b class="num">'+fmt(c.n)+'</b><small class="num">'+fmtPct(c.n/pn)+'</small></span>'
++'<span class="tn-a"><button type="button" class="ib" data-act="iso" data-tip="اعزل هذا المسار في كل الشاشات" aria-label="اعزل هذا المسار">'+IC.fl+'</button>'+(trHasDet(c)?'<button type="button" class="ib" data-act="det" data-tip="افتح الملف" aria-label="افتح الملف">'+IC.bk+'</button>':'')+'</span></div></div>';}
+function renderTree(){
+const T=state.tree,el=$('#tr-body'),dims=treeDims(),tr=buildTree(state.frows,dims);
+state.trIndex=tr.idx;
+if(T.def){T.def=false;T.openTr=new Set();if(tr.root.list[0])T.openTr.add(tr.root.list[0].id);}
+if(T.pend){
+const nd=tr.idx.get(T.pend.id);
+if(nd){T.hl=nd.id;T.openTr=new Set();let lv=[nd];
+for(let p=nd.parent;p&&p.id;p=p.parent)T.openTr.add(p.id);
+for(let k=0;k<T.pend.depth&&lv.length;k++){const nx=[];lv.forEach(x=>{if(x.list.length){T.openTr.add(x.id);nx.push(...x.list);}});lv=nx;}
+T.scroll=nd.id;}
+T.pend=null;}
+const q=normAr(T.q);
+if(q){const mark=(n,anc)=>{n.hs=!!n.nk&&n.nk.includes(q);n.an=anc;let d=false;n.list.forEach(c=>{if(mark(c,anc||n.hs))d=true;});n.hd=d;return n.hs||d;};mark(tr.root,false);}
+renderLevels();
+$('#cnt-tr').textContent=fmt(tr.idx.size)+' عقدة';
+if(!state.frows.length){el.innerHTML='<div class="empty" style="padding:1rem">لا نتائج.</div>';return;}
+const out=[];let cnt=0,cap=false;
+const walk=n=>{
+const mx=n.list.length?n.list[0].n||1:1;
+n.list.forEach(c=>{
+if(cap)return;
+if(q&&!(c.hs||c.hd||c.an))return;
+if(cnt>=3000){cap=true;return;}
+cnt++;
+const kids=c.list.length,open=!!kids&&(T.openTr.has(c.id)||!!(q&&c.hd));
+out.push(trRow(c,n.n||1,mx,open,kids,q,dims));
+if(open)walk(c);});};
+walk(tr.root);
+el.innerHTML=out.length?out.join('')+(cap?'<div class="tr-cap">اقتُصر العرض على أول 3000 صف — ضيّق النتائج بالبحث أو التصفية.</div>':''):'<div class="empty" style="padding:1rem">لا نتائج.</div>';
+const want=T.refocus||T.scroll;
+if(want){const r=[...el.querySelectorAll('.tn-r')].find(x=>x.dataset.id===want);if(r){if(T.refocus)r.focus({preventScroll:true});else r.scrollIntoView({block:'center'});}}
+T.refocus=null;T.scroll=null;}
+function openDepth(k){
+const T=state.tree;T.openTr=new Set();
+state.trIndex.forEach(n=>{if(n.depth<k-1&&n.list.length)T.openTr.add(n.id);});
+renderTree();}
+function isolate(path,id){
+const f=state.filters;
+path.forEach(p=>{
+if(p.dim==='center'){f.center=new Set([p.val]);if(p.br)f.branch=new Set([p.br]);}
+else f[p.dim]=new Set([p.val]);});
+if(id)state.tree.pend={id,depth:8};
+renderAll(false);
+toast('ضُيّق النطاق: '+path.map(p=>p.name).join(' ← '));}
+function isolateEntity(kind,en){
+closeDrawer();
+isolate(kind==='cl'?[{dim:'facility',val:en.key,name:en.name}]:kind==='pe'?[{dim:'user',val:en.key,name:en.name}]:[{dim:'center',val:en.name,br:en.branch,name:en.name}]);}
+function focusTree(kind,en){
+applyPreset(kind==='cl'?'fac':kind==='pe'?'usr':'cen');
+const d=kind==='cl'?'facility':kind==='pe'?'user':'center';
+state.tree.q='';$('#q-tr').value='';sbSync();
+state.tree.pend={id:'/'+d+':'+en.key,depth:2};
+closeDrawer();setTab('tr');}
+function treeReport(N,ch){
+const dims=treeDims(),tr=buildTree(state.frows,dims),T=state.total||1,MAXR=700,rows=[];
+let cut=false;
+const walk=(n,pn)=>{
+const L=n.list,sh=L.slice(0,N);
+sh.forEach(c=>{if(rows.length>=MAXR){cut=true;return;}rows.push({c,pn});walk(c,c.n);});
+if(L.length>sh.length&&rows.length<MAXR){const rest=L.slice(sh.length);rows.push({more:rest.length,n:rest.reduce((s,x)=>s+x.n,0),pn,depth:L[0].depth,dim:L[0].dim});}};
+walk(tr.root,tr.root.n||T);
+const head='<tr><th>المستوى</th><th>الاسم</th><th class="n">العدد</th><th class="n">% من الأصل</th><th class="n">% من الإجمالي</th>'+(ch?'<th class="bh"></th>':'')+'</tr>';
+const body=rows.map(x=>{
+if(x.more)return '<tr class="more"><td></td><td style="padding-inline-start:'+(x.depth*14+6)+'px">+ '+fmt(x.more)+' '+DIMS[x.dim]+' أخرى</td><td class="n">'+fmt(x.n)+'</td><td class="n">'+fmtPct(x.n/x.pn)+'</td><td class="n">'+fmtPct(x.n/T)+'</td>'+(ch?'<td></td>':'')+'</tr>';
+const c=x.c,sub=trSub(c);
+return '<tr class="l'+Math.min(c.depth,2)+'"><td><span class="dn">'+DIMS[c.dim]+'</span></td><td style="padding-inline-start:'+(c.depth*14+6)+'px">'+esc(c.name)+(sub?' <small style="color:#7C766C">'+esc(sub)+'</small>':'')+'</td><td class="n">'+fmt(c.n)+'</td><td class="n">'+fmtPct(c.n/x.pn)+'</td><td class="n">'+fmtPct(c.n/T)+'</td>'+(ch?'<td class="bc"><i style="width:'+(c.n/x.pn*100).toFixed(1)+'%"></i></td>':'')+'</tr>';}).join('');
+return '<p class="rp-meta">'+dims.map(d=>DIMP[d]).join(' ← ')+(N<Infinity?' · أعلى '+N+' في كل مستوى':'')+'</p><table class="rt rt-tree"><thead>'+head+'</thead><tbody>'+body+'</tbody></table>'+(cut?'<p class="rp-meta">اختُصر الجدول عند '+MAXR+' صفاً — قلّل «الصفوف» أو ضيّق التصفية.</p>':'');}
 let lastFocus=null;
 function openDrawer(kind,key,from){
 if(from&&state.drawer)state.dstack.push(state.drawer);else state.dstack=[];
@@ -918,13 +1141,13 @@ const cl=d.kind==='cl',ce=d.kind==='ce',rows=breakdown(d.kind,e),all=cl?state.fa
 if(!ce&&e.centers.size)meta.push('المركز: '+[...e.centers].map(esc).join('، '));
 if(!ce&&e.branches.size)meta.push('الفرع: '+[...e.branches].map(esc).join('، '));
 let byC='';
-if(!cl&&!ce){const cc=new Map();let has=false;state.frows.forEach(r=>{if(normAr(r.user)!==e.key)return;if(r.branch||r.center)has=true;const b=r.branch||NA,c=r.center||NA,k=b+' › '+c,x=cc.get(k)||{key:k,name:c,n:0,tag:'<span class="tag">'+esc(b)+'</span>'};x.n+=r.n;cc.set(k,x);});if(has)byC='<h3 class="dt" style="margin-top:1.2rem">حسب المركز</h3>'+rankRows('ce',[...cc.values()].sort((x,y)=>y.n-x.n),e.n,false);}
+if(!ce){const cc=new Map();let has=false;state.frows.forEach(r=>{if((cl?r.fk:r.uk)!==e.key)return;if(r.branch||r.center)has=true;const b=r.branch||NA,c=r.center||NA,k=b+' › '+c,x=cc.get(k)||{key:k,name:c,n:0,tag:'<span class="tag">'+esc(b)+'</span>'};x.n+=r.n;cc.set(k,x);});if(has)byC='<h3 class="dt" style="margin-top:1.2rem">'+(cl?'مصدر الخطابات حسب المركز':'حسب المركز')+'</h3>'+rankRows('ce',[...cc.values()].sort((x,y)=>y.n-x.n),e.n,false);}
 box.innerHTML='<div class="dh"><div><small>'+(cl?'جهة':ce?'مركز · '+esc(e.branch):'مستخدم')+'</small><h2 class="display">'+esc(e.name)+'</h2>'+(cl?'<div class="tags">'+tagCls(e.cls)+tagType(e.type)+'</div>':'')+'</div><div class="hb">'+(state.dstack.length?'<button class="ib" id="d-back" type="button" aria-label="رجوع" data-tip="رجوع">'+IC.bk+'</button>':'')+'<button class="ib" id="d-close" type="button" aria-label="إغلاق" data-tip="إغلاق">'+IC.x+'</button></div></div>'
 +'<div class="dk"><div><b class="num">'+fmt(e.n)+'</b><span>خطاب</span></div><div><b class="num">'+fmtPct(e.n/T)+'</b><span>من الإجمالي</span></div><div><b class="num">'+(all.indexOf(e)+1)+'</b><span>الترتيب</span></div><div><b class="num">'+rows.length+'</b><span>'+(cl?'مستخدم':'جهة')+'</span></div>'+(ce?'<div><b class="num">'+e.ulist.length+'</b><span>مستخدم</span></div>':'')+'</div>'
-+'<div class="dbody">'+(meta.length?'<p class="dm">'+meta.join(' · ')+'</p>':'')
++'<div class="dbody">'+(meta.length?'<p class="dm">'+meta.join(' · ')+'</p>':'')+'<div class="dact"><button class="btn sm" data-act="tree" type="button">افتح في الشجرة</button><button class="btn sm" data-act="iso" type="button">'+IC.fl+'اعزل في كل الشاشات</button></div>'
 +(cl?'<div class="dsel"><div>التصنيف'+dd('d-cls',[['','—'],['عام','عام'],['خاص','خاص']],cur.cls||e.cls||'','—')+'</div><div>النوع'+dd('d-type',[['','—'],...TYPE_OPTS.map(t=>[t,t])],cur.type||e.type||'','—')+'</div></div>':'')
 +(ce?'<div class="dsec"><h3 class="dt">الجهات</h3>'+rankRows('cl',e.list.map(r=>({name:r.name,key:r.key,n:r.n,tag:tagCls((classify(r.name)||{}).cls)})),e.n,false)+'</div><div class="dsec"><h3 class="dt">المستخدمون</h3>'+rankRows('pe',e.ulist.map(r=>({name:r.name,key:r.key,n:r.n})),e.n,false)+'</div>':'<h3 class="dt">'+(cl?'المستخدمون المرسِلون':'الجهات الموجَّه إليها')+'</h3>'
-+rankRows(tk,rows.map(r=>({name:r.name,key:r.key,n:r.n,tag:tk==='cl'?tagCls((classify(r.name)||{}).cls):''})),e.n,false))+byC+'</div>'
++rankRows(tk,rows.map(r=>({name:r.name,key:r.key,n:r.n,tag:tk==='cl'?tagCls((classify(r.name)||{}).cls):locTag(r.locs)})),e.n,false))+byC+'</div>'
 +'<div class="df"><button class="btn sm" data-d="xlsx" type="button">'+IC.dl+'Excel</button><button class="btn sm" data-d="csv" type="button">'+IC.dl+'CSV</button><button class="btn sm dark" data-d="pr" type="button">'+IC.pr+'طباعة</button></div>';
 const was=box.classList.contains('open');
 if(!was)lastFocus=document.activeElement;
@@ -959,58 +1182,61 @@ const bmx=state.locs[0].n||1;
 x+='<h3>ملخص الفروع</h3>'+rtbl([['الفرع',''],['المراكز','n'],['الجهات','n'],['المستخدمون','n'],['العدد','n'],['الحصة','n']],state.locs.map(B=>[esc(B.name),B.clist.length,B.facs.size,B.users.size,fmt(B.n),fmtPct(B.n/T)]),state.locs.map(B=>B.n/bmx),ch);
 state.locs.forEach(B=>{const mx=B.clist[0].n||1;x+='<section class="rp-ent" style="margin-top:.8rem"><h3><span>'+esc(B.name)+'</span><span class="num">'+fmt(B.n)+' · '+fmtPct(B.n/T)+'</span></h3>'+rtbl([['المركز',''],['الجهات','n'],['المستخدمون','n'],['العدد','n'],['% من الفرع','n'],['% من الإجمالي','n']],B.clist.map(C=>[esc(C.name),C.list.length,C.ulist.length,fmt(C.n),fmtPct(C.n/B.n),fmtPct(C.n/T)]),B.clist.map(C=>C.n/mx),ch)+'</section>';});
 S(x);}
+if(s.tr&&state.frows.some(r=>r.user||r.branch||r.center))S(H('شجرة الروابط')+treeReport(N,ch));
 if(s.cl){
 const a=state.facs.slice(0,N),mx=a[0].n||1;
-h+='<section class="rsec">'+H('ترتيب الجهات'+cp(a,state.facs.length))+rtbl([['#','n'],['الجهة',''],['التصنيف',''],['النوع',''],['المستخدمون','n'],['العدد','n'],['الحصة','n']],a.map((f,i)=>[i+1,esc(f.name),esc(f.cls||'—'),esc(f.type||'—'),f.ulist.length,fmt(f.n),fmtPct(f.n/T)]),a.map(f=>f.n/mx),ch)+'</section>';}
+h+='<section class="rsec">'+H('ترتيب الجهات'+cp(a,state.facs.length))+rtbl([['#','n'],['الجهة',''],['التصنيف',''],['النوع',''],['الموقع',''],['المستخدمون','n'],['العدد','n'],['الحصة','n']],a.map((f,i)=>[i+1,esc(f.name),esc(f.cls||'—'),esc(f.type||'—'),esc(locPlain(f.locs)),f.ulist.length,fmt(f.n),fmtPct(f.n/T)]),a.map(f=>f.n/mx),ch)+'</section>';}
 if(s.pe&&state.people.length){
 const a=state.people.slice(0,N),mx=a[0].n||1;
-S(H('ترتيب المستخدمين'+cp(a,state.people.length))+rtbl([['#','n'],['المستخدم',''],['الجهات','n'],['أعلى جهة',''],['العدد','n'],['الحصة','n']],a.map((p,i)=>[i+1,esc(p.name),p.list.length,esc(p.list[0].name),fmt(p.n),fmtPct(p.n/T)]),a.map(p=>p.n/mx),ch));}
+S(H('ترتيب المستخدمين'+cp(a,state.people.length))+rtbl([['#','n'],['المستخدم',''],['الموقع',''],['الجهات','n'],['أعلى جهة',''],['العدد','n'],['الحصة','n']],a.map((p,i)=>[i+1,esc(p.name),esc(locPlain(p.locs)),p.list.length,esc(p.list[0].name),fmt(p.n),fmtPct(p.n/T)]),a.map(p=>p.n/mx),ch));}
 if(s.rt&&state.people.length){
 const a=state.people.slice(0,N),fm=new Map(state.facs.map(f=>[f.key,f.n]));let x=H('المسارات: من يوجّه إلى أين'+cp(a,state.people.length));
-a.forEach(p=>{const mx=p.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(p.name)+' ← '+fmt(p.list.length)+' جهة</span><span class="num">'+fmt(p.n)+' · '+fmtPct(p.n/T)+'</span></h3>'+rtbl([['الجهة',''],['العدد','n'],['% من المرسِل','n'],['% من الجهة','n']],p.list.map(f=>[esc(f.name),fmt(f.n),fmtPct(f.n/p.n),fmtPct(f.n/(fm.get(f.key)||1))]),p.list.map(f=>f.n/mx),ch)+'</section>';});
+a.forEach(p=>{const mx=p.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(p.name)+' ← '+fmt(p.list.length)+' جهة</span><span class="num">'+fmt(p.n)+' · '+fmtPct(p.n/T)+'</span></h3>'+(p.locs.size?'<p class="rp-meta">الموقع: '+esc(locFull(p.locs))+'</p>':'')+rtbl([['الجهة',''],['المركز',''],['العدد','n'],['% من المرسِل','n'],['% من الجهة','n']],p.list.map(f=>[esc(f.name),esc(locPlain(f.locs)),fmt(f.n),fmtPct(f.n/p.n),fmtPct(f.n/(fm.get(f.key)||1))]),p.list.map(f=>f.n/mx),ch)+'</section>';});
 S(x);}
 if(s.dpe&&state.people.length){
 const a=state.people.slice(0,N);let x=H('ملف كل مستخدم'+cp(a,state.people.length));
-a.forEach(p=>{const mx=p.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(p.name)+'</span><span class="num">'+fmt(p.n)+' · '+fmtPct(p.n/T)+'</span></h3><p class="rp-meta">'+[[...p.branches].join('، '),[...p.centers].join('، ')].filter(Boolean).map(esc).join(' · ')+'</p>'+rtbl([['الجهة',''],['التصنيف',''],['العدد','n'],['% من المستخدم','n']],p.list.map(f=>[esc(f.name),esc((classify(f.name)||{}).cls||'—'),fmt(f.n),fmtPct(f.n/p.n)]),p.list.map(f=>f.n/mx),ch)+'</section>';});
+a.forEach(p=>{const mx=p.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(p.name)+'</span><span class="num">'+fmt(p.n)+' · '+fmtPct(p.n/T)+'</span></h3><p class="rp-meta">'+esc(locFull(p.locs))+'</p>'+rtbl([['الجهة',''],['الموقع',''],['التصنيف',''],['العدد','n'],['% من المستخدم','n']],p.list.map(f=>[esc(f.name),esc(locPlain(f.locs)),esc((classify(f.name)||{}).cls||'—'),fmt(f.n),fmtPct(f.n/p.n)]),p.list.map(f=>f.n/mx),ch)+'</section>';});
 S(x);}
 if(s.dcl){
 const a=state.facs.slice(0,N);let x=H('ملف كل جهة'+cp(a,state.facs.length));
-a.forEach(f=>{const u=f.ulist,mx=u.length?u[0].n||1:1;if(!u.length)return;x+='<section class="rp-ent"><h3><span>'+esc(f.name)+' <small style="font-weight:400;color:#7C766C">'+esc([f.cls,f.type].filter(Boolean).join(' · '))+'</small></span><span class="num">'+fmt(f.n)+' · '+fmtPct(f.n/T)+'</span></h3>'+rtbl([['المستخدم',''],['العدد','n'],['% من الجهة','n']],u.map(y=>[esc(y.name),fmt(y.n),fmtPct(y.n/f.n)]),u.map(y=>y.n/mx),ch)+'</section>';});
+a.forEach(f=>{const u=f.ulist,mx=u.length?u[0].n||1:1;if(!u.length)return;x+='<section class="rp-ent"><h3><span>'+esc(f.name)+' <small style="font-weight:400;color:#7C766C">'+esc([f.cls,f.type].filter(Boolean).join(' · '))+'</small></span><span class="num">'+fmt(f.n)+' · '+fmtPct(f.n/T)+'</span></h3>'+(f.locs.size?'<p class="rp-meta">الموقع: '+esc(locFull(f.locs))+'</p>':'')+rtbl([['المستخدم',''],['الموقع',''],['العدد','n'],['% من الجهة','n']],u.map(y=>[esc(y.name),esc(locPlain(y.locs)),fmt(y.n),fmtPct(y.n/f.n)]),u.map(y=>y.n/mx),ch)+'</section>';});
 S(x);}
 if(s.dce&&state.frows.some(r=>r.branch||r.center)){
 let x=H('ملف كل مركز');
-state.locs.forEach(B=>B.clist.forEach(C=>{const mx=C.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(C.name)+' <small style="font-weight:400;color:#7C766C">'+esc(B.name)+'</small></span><span class="num">'+fmt(C.n)+' · '+fmtPct(C.n/T)+'</span></h3><div class="rmix"><div>'+rtbl([['الجهة',''],['العدد','n'],['%','n']],C.list.slice(0,N).map(f=>[esc(f.name),fmt(f.n),fmtPct(f.n/C.n)]),C.list.slice(0,N).map(f=>f.n/mx),ch)+'</div><div>'+rtbl([['المستخدم',''],['العدد','n'],['%','n']],C.ulist.slice(0,N).map(u=>[esc(u.name),fmt(u.n),fmtPct(u.n/C.n)]),null,false)+'</div></div></section>';}));
+state.locs.forEach(B=>B.clist.forEach(C=>{const mx=C.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(C.name)+' <small style="font-weight:400;color:#7C766C">'+esc(B.name)+'</small></span><span class="num">'+fmt(C.n)+' · '+fmtPct(C.n/T)+'</span></h3><div class="rmix"><div>'+rtbl([['الجهة',''],['العدد','n'],['%','n']],C.list.slice(0,N).map(f=>[esc(f.name),fmt(f.n),fmtPct(f.n/C.n)]),C.list.slice(0,N).map(f=>f.n/mx),ch)+'</div><div>'+rtbl([['المستخدم',''],['العدد','n'],['%','n']],C.ulist.slice(0,N).map(u=>[esc(u.name),fmt(u.n),fmtPct(u.n/C.n)]),null,false)+'</div></div>'+(C.plist.some(p=>p.uk)?'<div style="margin-top:.5rem">'+rtbl([['المرسِل',''],['الجهة',''],['العدد','n'],['% من المركز','n']],C.plist.slice(0,N).map(p=>[esc(p.user),esc(p.facility),fmt(p.n),fmtPct(p.n/C.n)]),null,false)+'</div>':'')+'</section>';}));
 S(x);}
 if(s.qa)S(H('ملحق: جودة البيانات')+'<ul class="rins">'+cleanItems(true).map(t=>'<li>'+t+'</li>').join('')+'</ul>');
 return repWrap(o.title,'تقرير تحليلي · '+(anyFilter()?'نطاق مُصفّى':'كامل البيانات'),h||'<p>لم تُحدَّد أقسام.</p>',o);}
 function entityHTML(kind,e){
 const cl=kind==='cl',ce=kind==='ce',T=state.total||1,ch=state.rep.charts;
 const all=cl?state.facs:ce?state.locs.flatMap(B=>B.clist).sort((a,b)=>b.n-a.n):state.people;
-const fT=(l,pl)=>{const mx=l[0]?l[0].n:1;return rtbl([['#','n'],['الجهة',''],['التصنيف',''],['النوع',''],['العدد','n'],[pl,'n']],l.map((r,i)=>{const c=classify(r.name)||{};return[i+1,esc(r.name),esc(c.cls||'—'),esc(c.type||'—'),fmt(r.n),fmtPct(r.n/e.n)];}),l.map(r=>r.n/mx),ch);};
-const uT=(l,pl)=>{const mx=l[0]?l[0].n:1;return rtbl([['#','n'],['المستخدم',''],['العدد','n'],[pl,'n']],l.map((r,i)=>[i+1,esc(r.name),fmt(r.n),fmtPct(r.n/e.n)]),l.map(r=>r.n/mx),ch);};
+const fT=(l,pl)=>{const mx=l[0]?l[0].n:1,hl=l.some(r=>r.locs&&r.locs.size);return rtbl([['#','n'],['الجهة','']].concat(hl?[['الموقع','']]:[],[['التصنيف',''],['النوع',''],['العدد','n'],[pl,'n']]),l.map((r,i)=>{const c=classify(r.name)||{};return[i+1,esc(r.name)].concat(hl?[esc(locPlain(r.locs))]:[],[esc(c.cls||'—'),esc(c.type||'—'),fmt(r.n),fmtPct(r.n/e.n)]);}),l.map(r=>r.n/mx),ch);};
+const uT=(l,pl)=>{const mx=l[0]?l[0].n:1,hl=l.some(r=>r.locs&&r.locs.size);return rtbl([['#','n'],['المستخدم','']].concat(hl?[['الموقع','']]:[],[['العدد','n'],[pl,'n']]),l.map((r,i)=>[i+1,esc(r.name)].concat(hl?[esc(locPlain(r.locs))]:[],[fmt(r.n),fmtPct(r.n/e.n)])),l.map(r=>r.n/mx),ch);};
 const k=[[fmt(e.n),'خطاب'],[fmtPct(e.n/T),'من الإجمالي'],['#'+(all.indexOf(e)+1),'الترتيب']];
 if(cl)k.push([e.ulist.length,'مستخدم']);else{k.push([e.list.length,'جهة']);if(ce)k.push([e.ulist.length,'مستخدم']);}
 const sub=cl?'جهة · '+esc(e.cls||'غير مصنّف')+(e.type?' · '+esc(e.type):''):ce?'مركز · '+esc(e.branch):'مستخدم';
 const body='<div class="rk2">'+k.map(x=>'<div><b class="num">'+x[0]+'</b><span>'+x[1]+'</span></div>').join('')+'</div>'+(cl?'<h2>المستخدمون المرسِلون</h2>'+uT(e.ulist,'% من الجهة'):ce?'<h2>الجهات</h2>'+fT(e.list,'% من المركز')+'<h2>المستخدمون</h2>'+uT(e.ulist,'% من المركز'):'<h2>الجهات الموجَّه إليها</h2>'+fT(e.list,'% من المستخدم'));
-return repWrap(e.name,sub,body,{by:state.rep.by,sign:state.rep.sign});}
+const lc=e.locs&&e.locs.size?'<h2>حسب الموقع</h2>'+rtbl([['الفرع',''],['المركز',''],['العدد','n'],['%','n']],locList(e.locs).map(x=>[esc(x.branch),esc(x.center),fmt(x.n),fmtPct(x.n/e.n)]),null,false):'';
+return repWrap(e.name,sub,body+lc,{by:state.rep.by,sign:state.rep.sign});}
 let rpT=null;
 function renderReport(){clearTimeout(rpT);rpT=setTimeout(renderReportNow,70);}
 function renderReportNow(){if(state.tab==='rp')$('#preview').innerHTML=buildReport(state.rep);}
 function renderRpForm(){
-const r=state.rep,hasU=state.rows.some(x=>x.user),hasL=state.rows.some(x=>x.branch||x.center),off={pe:!hasU,rt:!hasU,dpe:!hasU,loc:!hasL,dce:!hasL};
+const r=state.rep,hasU=state.rows.some(x=>x.user),hasL=state.rows.some(x=>x.branch||x.center),off={pe:!hasU,rt:!hasU,dpe:!hasU,loc:!hasL,dce:!hasL,tr:!(hasU||hasL)};
 const sw=swb;
 $('#rp-form').innerHTML='<label class="fl">العنوان<input id="rp-title" type="text" autocomplete="off" value="'+esc(r.title)+'"></label><label class="fl">أُعدّ بواسطة<input id="rp-by" type="text" autocomplete="off" value="'+esc(r.by)+'"></label>'
 +sw('rp-charts','الرسوم البيانية',r.charts)+sw('rp-brk','كل قسم في صفحة جديدة',r.brk)+sw('rp-sign','خانات التوقيع',r.sign)
 +'<div class="fl" style="flex-direction:row;justify-content:space-between;align-items:center"><span>الأقسام</span><span><button type="button" class="linkish" id="rp-all">تحديد الكل</button> · <button type="button" class="linkish" id="rp-none">إلغاء الكل</button></span></div>'
 +'<div class="checks">'+SECS.map(s=>ckb('data-sec="'+s[0]+'"',s[1],!off[s[0]]&&r.sec[s[0]],off[s[0]])).join('')+'</div>'
 +(Object.values(off).some(Boolean)?'<p class="note">الأقسام المعطّلة تحتاج أسماء مستخدمين أو فروعاً أو مراكز غير موجودة في البيانات.</p>':'')
-+'<div class="g2"><div class="fl">الصفوف'+dd('rp-n',[[10,'10'],[20,'20'],[50,'50'],[0,'الكل']],r.n,'',true)+'</div><div class="fl">الاتجاه'+dd('rp-or',[['portrait','عمودي'],['landscape','أفقي']],r.orient,'',true)+'</div></div>';}
++'<div class="g2"><div class="fl">الصفوف'+dd('rp-n',[[10,'10'],[20,'20'],[50,'50'],[0,'الكل']],r.n,'',true)+'</div><div class="fl">الاتجاه'+dd('rp-or',[['portrait','عمودي'],['landscape','أفقي']],r.orient,'',true)+'</div></div>'+'<div class="fl">ترتيب الشجرة'+dd('rp-tr',PRESETS.map(p=>[p[0],p[1]]).concat([['custom','مخصص (من تبويب الشجرة)']]),curPreset(),'',true)+'</div>';}
 function renderExForm(){
 $('#ex-form').innerHTML='<div class="checks">'+EXS.map(x=>ckb('data-ex="'+x[0]+'"',x[1],state.ex[x[0]],false)).join('')+'</div>';}
 function readRp(){
 const r=state.rep;
 r.title=$('#rp-title').value;r.by=$('#rp-by').value;r.charts=isOn($('#rp-charts'));r.brk=isOn($('#rp-brk'));r.sign=isOn($('#rp-sign'));
 r.n=+$('#rp-n').dataset.v;r.orient=$('#rp-or').dataset.v;
+const pv=$('#rp-tr').dataset.v;if(pv!=='custom'&&pv!==curPreset())applyPreset(pv);
 document.querySelectorAll('[data-sec]').forEach(c=>{r.sec[c.dataset.sec]=isOn(c)?1:0;});
 renderReport();}
 function printHTML(html,orient){
@@ -1038,12 +1264,13 @@ return true;}).catch(()=>{toast('تعذّر تحميل مكتبة Excel. جرّ�
 function exAoa(k){
 const T=state.total||1;
 if(k==='cl')return[['#','الجهة','العدد','الحصة %','التصنيف','النوع','المركز','الفرع','عدد المستخدمين','أعلى مستخدم'],...state.facs.map((f,i)=>[i+1,f.name,f.n,pc(f.n,T),f.cls||'',f.type||'',[...f.centers].join('، '),[...f.branches].join('، '),f.users.size,f.topUser?f.topUser.name:''])];
-if(k==='pe')return[['#','المستخدم','العدد','الحصة %','عدد الجهات','أعلى جهة'],...state.people.map((p,i)=>[i+1,p.name,p.n,pc(p.n,T),p.list.length,p.list[0].name])];
+if(k==='pe')return[['#','المستخدم','العدد','الحصة %','عدد الجهات','أعلى جهة','المركز','الفرع'],...state.people.map((p,i)=>[i+1,p.name,p.n,pc(p.n,T),p.list.length,p.list[0].name,locCenters(p.locs),locBranches(p.locs)])];
 if(k==='pair'){
-const fm=new Map(state.facs.map(f=>[f.key,f.n])),o=[['الجهة','المستخدم','العدد','% من الجهة','% من المستخدم']];
-state.people.forEach(p=>p.list.forEach(f=>o.push([f.name,p.name,f.n,pc(f.n,fm.get(f.key)),pc(f.n,p.n)])));
+const fm=new Map(state.facs.map(f=>[f.key,f.n])),o=[['الجهة','المستخدم','العدد','% من الجهة','% من المستخدم','المركز','الفرع']];
+state.people.forEach(p=>p.list.forEach(f=>o.push([f.name,p.name,f.n,pc(f.n,fm.get(f.key)),pc(f.n,p.n),locCenters(f.locs),locBranches(f.locs)])));
 return o;}
 if(k==='loc'){const o=[['الفرع','المركز','العدد','% من الفرع','% من الإجمالي','عدد الجهات','عدد المستخدمين','أعلى جهة']];state.locs.forEach(B=>B.clist.forEach(C=>o.push([B.name,C.name,C.n,pc(C.n,B.n),pc(C.n,T),C.list.length,C.ulist.length,C.list[0]?C.list[0].name:''])));return o;}
+if(k==='tree'){const t=buildTree(state.frows,['branch','center','user','facility']),o=[['الفرع','المركز','المستخدم','الجهة','التصنيف','النوع','العدد','% من الإجمالي']],nz=v=>v===NA?'':v;const W=n=>n.list.forEach(c=>{if(c.dim==='facility'){const p=c.path,cl=classify(c.name)||{};o.push([nz(p[0].name),nz(p[1].name),nz(p[2].name),c.name,cl.cls||'',cl.type||'',c.n,pc(c.n,T)]);}else W(c);});W(t.root);return o;}
 if(k==='cls')return[['الجهة','التصنيف','النوع'],...state.allFacs.map(f=>[f.name,f.cls||'',f.type||''])];
 return[['عدد الجوابات','الجهة','التصنيف','النوع','اسم المستخدم','المركز','الفرع'],...state.frows.map(r=>{const c=classify(r.facility)||{};return[r.n,r.facility,c.cls||'',c.type||'',r.user,r.center,r.branch];})];}
 function entAoa(kind,e){
@@ -1064,7 +1291,8 @@ state.tab=t;
 document.querySelectorAll('.view').forEach(v=>{v.hidden=v.id!=='v-'+t;});
 document.querySelectorAll('#tabs button').forEach(b=>{const on=b.dataset.tab===t;b.classList.toggle('on',on);b.setAttribute('aria-selected',on);});
 const actTab=$('#tabs .on');if(actTab)actTab.scrollIntoView({inline:'nearest',block:'nearest'});
-if(t==='rp')renderReportNow();
+if(t==='rp'){renderRpForm();renderReportNow();}
+if(t==='tr')renderTree();
 window.scrollTo({top:0});}
 function cleanItems(pr){const r=state.report;if(!r)return[];const it=['الصفوف الخام '+fmt(r.rawRows)+' · السجلات المعتمدة '+fmt(r.kept)+(r.skipped?' · مستبعدة (بلا عدد أو جهة) '+fmt(r.skipped):''),'حذف '+fmt(r.removedTotals)+' صف إجماليات','إزالة '+fmt(r.emptyCols)+' عمود فارغ'+(r.emptyColNames.length&&!pr?': '+r.emptyColNames.map(esc).join('، '):'')];const fl=Object.keys(r.filled).map(k=>k+' ('+fmt(r.filled[k])+')');if(fl.length)it.push('تعميم الخلايا المدمجة: '+fl.join('، '));it.push('مجموع السجلات بعد التنظيف: '+fmt(r.sum));const bad=r.recon.filter(x=>!x.ok);if(r.recon.length)it.push('مطابقة الإجماليات: <span class="cr-ok">'+fmt(r.recon.length-bad.length)+' مطابق</span>'+(bad.length?' · <span class="cr-bad">'+fmt(bad.length)+' غير مطابق</span>':''));bad.slice(0,20).forEach(x=>it.push('<span class="cr-bad">غير مطابق</span> — '+esc(x.label)+': المذكور '+fmt(x.expected)+' · المحسوب '+fmt(x.got)));return it;}
 function renderCleanReport(){
@@ -1074,6 +1302,7 @@ $('#cr-body').innerHTML=cleanItems(false).map(t=>'<div>'+t+'</div>').join('');}
 function renderAll(animate){
 compute();
 renderFilters();renderOverview();renderTable('cl');renderTable('pe');renderLocs();renderRoutes();renderDrawer();
+if(state.tab==='tr')renderTree();
 if(state.tab==='rp')renderReport();
 if(animate)countUp($('#hero-num'),state.total);}
 function doAnalyze(){
@@ -1084,8 +1313,8 @@ const parsed=parseMain($('#data-input').value);
 state.rows=parsed.rows;state.report=parsed.report;
 state.classes=parseClasses($('#class-input').value);saveCls();
 state.clsCache=new Map();
-state.filters=freshF();state.q={cl:'',pe:'',lo:'',rt:''};state.openRt=new Set();state.onlyUnc=false;state.drawer=null;state.dstack=[];state.fopen=false;
-$('#q-cl').value='';$('#q-pe').value='';$('#q-lo').value='';$('#q-rt').value='';sbSync();
+state.filters=freshF();state.q={cl:'',pe:'',lo:'',rt:''};state.openRt=new Set();buildNames();applyPreset('loc');state.tree.q='';state.onlyUnc=false;state.drawer=null;state.dstack=[];state.fopen=false;
+$('#q-cl').value='';$('#q-pe').value='';$('#q-lo').value='';$('#q-rt').value='';$('#q-tr').value='';sbSync();
 $('#view-input').hidden=true;$('#view-dash').hidden=false;
 renderCleanReport();renderRpForm();renderExForm();
 state.tab='ov';
@@ -1137,6 +1366,8 @@ $('#scrim').addEventListener('click',closeDrawer);
 $('#drawer').addEventListener('click',e=>{
 if(e.target.closest('#d-close')){closeDrawer();return;}
 if(e.target.closest('#d-back')){state.drawer=state.dstack.pop();renderDrawer();return;}
+const ac=e.target.closest('[data-act]');
+if(ac&&state.drawer){const en0=entity(state.drawer.kind,state.drawer.key);if(!en0)return;if(ac.dataset.act==='tree')focusTree(state.drawer.kind,en0);else isolateEntity(state.drawer.kind,en0);return;}
 const b=e.target.closest('[data-d]');
 if(!b||!state.drawer)return;
 const dr=state.drawer,en=entity(dr.kind,dr.key);
@@ -1264,7 +1495,29 @@ const first=f[0],last=f[f.length-1],a=document.activeElement;
 if(!box.contains(a)){e.preventDefault();first.focus();}
 else if(e.shiftKey&&a===first){e.preventDefault();last.focus();}
 else if(!e.shiftKey&&a===last){e.preventDefault();first.focus();}}
-if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('tr[tabindex]')){e.preventDefault();e.target.click();}});
+if((e.key==='Enter'||e.key===' ')&&e.target.matches&&e.target.matches('tr[tabindex],.tn-r[tabindex]')){e.preventDefault();e.target.click();}});
+$('#tr-pre').innerHTML='<span class="thumb"></span>'+PRESETS.map(p=>'<button type="button" data-p="'+p[0]+'">'+p[1]+'</button>').join('');
+$('#tr-pre').addEventListener('click',e=>{const b=e.target.closest('[data-p]');if(!b)return;applyPreset(b.dataset.p);renderTree();});
+$('#tr-lvls').addEventListener('click',e=>{
+const T=state.tree,t=e.target.closest('.lv-t'),m=e.target.closest('.lv-mv');
+if(t){const d=t.dataset.d;if(!state.avail[d])return;if(T.off.has(d))T.off.delete(d);else if(treeDims().length>1)T.off.add(d);else return;}
+else if(m){const d=m.dataset.d,i=T.order.indexOf(d),j=i+(m.dataset.mv==='prev'?-1:1);if(j<0||j>=T.order.length)return;T.order.splice(i,1);T.order.splice(j,0,d);}
+else return;
+T.openTr=new Set();T.def=true;T.hl=null;renderTree();});
+$('#tr-act').addEventListener('click',e=>{const b=e.target.closest('[data-dp]');if(b)openDepth(+b.dataset.dp);});
+$('#q-tr').addEventListener('input',e=>{state.tree.q=e.target.value.trim();renderTree();});
+$('#tr-body').addEventListener('click',e=>{
+const r=e.target.closest('.tn-r');if(!r)return;
+const n=state.trIndex.get(r.dataset.id);if(!n)return;
+const a=e.target.closest('[data-act]');
+if(a){if(a.dataset.act==='iso')isolate(n.path,n.id);else openDrawer(trKind(n),n.key,false);return;}
+if(n.list.length){const o=state.tree.openTr;o.has(n.id)?o.delete(n.id):o.add(n.id);state.tree.refocus=n.id;renderTree();}
+else if(trHasDet(n))openDrawer(trKind(n),n.key,false);});
+$('#scope').addEventListener('click',e=>{if(e.target.closest('.ins-clear'))clearFilters();});
+$('#filters').addEventListener('input',e=>{const i=e.target.closest('.pk-in');if(i)showPk(i);});
+$('#filters').addEventListener('focusin',e=>{const i=e.target.closest('.pk-in');if(i)showPk(i);});
+$('#filters').addEventListener('click',e=>{const o=e.target.closest('.pk-o');if(o){state.pkFocus=o.dataset.kind;toggleFilter(o.dataset.kind,o.dataset.v);}});
+document.addEventListener('click',e=>{if(!e.target.closest('.pk-box'))document.querySelectorAll('.pk-list').forEach(l=>{l.hidden=true;});});
 if(/Mac|iPhone|iPad/i.test(navigator.platform||navigator.userAgent))$('#k-mod').textContent='⌘';
 syncTa();sbSync();
 })();
