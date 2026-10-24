@@ -137,6 +137,9 @@ textarea::placeholder,input::placeholder{color:var(--faint)}
 .brand img{width:28px;height:28px;border-radius:7px}
 .tabs{display:flex;gap:.15rem;flex:1;overflow-x:auto;scrollbar-width:none;padding:2px}
 .tabs::-webkit-scrollbar{display:none}
+.bar.wrapt{flex-wrap:wrap}
+.bar.wrapt .tabs{order:3;flex-basis:100%}
+.bar.wrapt .acts{margin-inline-start:auto}
 .tabs button{padding:.4rem .95rem;font-size:.86rem;font-weight:500;color:var(--ink2);border-radius:99px;white-space:nowrap;transition:background .18s,color .18s}
 .tabs button:hover{background:var(--hover);color:var(--ink)}
 .tabs button.on{background:var(--clay-soft);color:var(--clay-ink);font-weight:600}
@@ -464,6 +467,7 @@ mark{background:var(--clay-soft);color:var(--clay-ink);border-radius:3px;padding
 .tr-path{display:flex;flex-wrap:wrap;gap:.3rem 1rem;align-items:center}
 .tr-keys{margin-inline-start:auto;font-size:.72rem;color:var(--muted);display:inline-flex;gap:.6rem;flex-wrap:wrap}
 .tr-keys kbd{font-size:.64rem}
+@media (hover:none){.tr-keys{display:none}}
 .tr-head{display:flex;flex-wrap:wrap;align-items:center;gap:.35rem 1rem;padding:.45rem .8rem;border-bottom:1px solid var(--line2);background:var(--sand-soft);font-size:.75rem;color:var(--muted);min-height:40px}
 .th-lv{display:flex;gap:.3rem;flex-wrap:wrap}
 .th-cr{display:flex;align-items:center;gap:.25rem;flex:1;min-width:0;overflow:hidden;white-space:nowrap}
@@ -839,7 +843,7 @@ const state={rows:[],classes:new Map(),manualClasses:new Map(),clsCache:new Map(
 const svg=p=>'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
 const IC={dl:svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),pr:svg('<polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>'),up:svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>'),se:svg('<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/>'),fl:svg('<polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/>'),x:svg('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'),bk:svg('<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'),ch:svg('<polyline points="6 9 12 15 18 9"/>'),mo:svg('<rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'),su:svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),mn:svg('<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>')};
 const SECS=[['sum','المؤشرات الرئيسية'],['ins','القراءة التحليلية'],['mix','التركيبة (عام/خاص، النوع)'],['loc','المواقع (فرع › مركز)'],['tr','شجرة الروابط (حسب ترتيب تبويب الشجرة)'],['fw','مخطط التدفق'],['cl','ترتيب الجهات'],['pe','ترتيب المستخدمين'],['rt','المسارات (مرسِل ← جهة)'],['dpe','ملف كل مستخدم'],['dcl','ملف كل جهة'],['dce','ملف كل مركز'],['qa','ملحق: جودة البيانات']];
-const EXS=[['cl','الجهات'],['pe','المستخدمون'],['loc','المواقع (فرع × مركز)'],['pair','المسارات (مستخدم × جهة × مركز)'],['tree','الشجرة (فرع × مركز × مستخدم × جهة)'],['treeg','الشجرة بمجموعات قابلة للطي (Excel)'],['cls','جدول التصنيف (لإعادة اللصق)'],['raw','السجلات النظيفة']];
+const EXS=[['cl','الجهات'],['pe','المستخدمون'],['loc','المواقع (فرع × مركز)'],['pair','المسارات (مستخدم × جهة × مركز)'],['tree','الشجرة (فرع×مركز×مستخدم×جهة)'],['treeg','الشجرة بمجموعات قابلة للطي (Excel)'],['cls','جدول التصنيف (لإعادة اللصق)'],['raw','السجلات النظيفة']];
 const COLS={cl:[['#',''],['الجهة','name'],['العدد','n'],['الحصة',''],['التصنيف',''],['النوع',''],['المستخدمون','k'],['أعلى مستخدم',''],['الموقع','']],pe:[['#',''],['المستخدم','name'],['العدد','n'],['الحصة',''],['الجهات','k'],['أعلى جهة',''],['الموقع','']]};
 const pc=(a,b)=>b?Math.round(a/b*1000)/10:0;
 const tagCls=c=>c?'<span class="tag '+(c==='عام'?'tag-pub':c==='خاص'?'tag-priv':'tag-other')+'">'+esc(c)+'</span>':'<span class="tag tag-none">غير مصنّف</span>';
@@ -1874,6 +1878,17 @@ document.addEventListener('click',e=>{if(!e.target.closest('.pk-box'))document.q
 if(/Mac|iPhone|iPad/i.test(navigator.platform||navigator.userAgent))$('#k-mod').textContent='⌘';
 syncTa();sbSync();renderResume();
 })();
+function fitTabs(){
+const bar=document.querySelector('.bar'),t=document.getElementById('tabs');
+if(!bar||!t)return;
+bar.classList.remove('wrapt');
+if(t.scrollWidth>t.clientWidth+1)bar.classList.add('wrapt');}
+let fitRaf=0;
+const fitSoon=()=>{cancelAnimationFrame(fitRaf);fitRaf=requestAnimationFrame(fitTabs);};
+window.addEventListener('resize',fitSoon);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSoon);
+if('ResizeObserver' in window)new ResizeObserver(fitSoon).observe(document.getElementById('tabs'));
+fitTabs();
 </script>
 </body>
 </html>
