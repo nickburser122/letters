@@ -1,4 +1,4 @@
-# جوابات
+# letters
 
 A single-file Arabic (RTL) app that analyses letter counts by facility, user, center and branch. Everything runs locally in the browser. Data is kept only in localStorage.
 
@@ -42,7 +42,3 @@ A single-file Arabic (RTL) app that analyses letter counts by facility, user, ce
 
 ## Storage keys
 `jawabat.theme`, `jawabat.session`, `jawabat.data` (now also keeps the previous-period text), `jawabat.views`, `jawabat.merges`, `jawabat.dupign`, `marsad.cls`, `jawabat.copy` (last-used copy format and options)
-
-## Remaining / to verify
-- Manual browser check of printing (landscape named pages, TOC links in PDF) and of how outline groups look when the file is opened in Excel
-- Fuzzy grouping compares names within 3-letter prefix and suffix buckets and skips buckets larger than 500 names
