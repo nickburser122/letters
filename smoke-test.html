@@ -107,7 +107,7 @@ ok('Selection range',d.querySelectorAll('#tb-cl tr.sel').length===3,String(d.que
 ok('Selection label',d.querySelector('#v-cl .cp-main').textContent.includes('(3)'),d.querySelector('#v-cl .cp-main').textContent);
 ok('Plain click not blocked by selection',!d.getElementById('drawer').classList.contains('open'),'');
 cap='';d.dispatchEvent(new KeyboardEvent('keydown',{key:'c',ctrlKey:true,bubbles:true}));await s(300);
-ok('Ctrl+C copies selected TSV',cap.split('\n').length===4&&cap.split('\n')[0].split('\t').length===10,cap.split('\n').length+'');
+ok('Ctrl+C copies selected TSV',cap.split('\n').length===4&&cap.split('\n')[0].split('\t').length===J.TABLES.cl.cols.length,cap.split('\n').length+'');
 d.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true}));await s(200);
 ok('Esc clears selection',d.querySelectorAll('#tb-cl tr.sel').length===0,'');
 d.querySelector('#v-cl .cp-more').click();await s(300);
@@ -196,6 +196,26 @@ ok('Compare totals row',+tl2[2]===S.total,tl2.join('|'));
 d.getElementById('btn-reset').click();await s(400);
 d.getElementById('prev-input').value='';d.getElementById('data-input').value=main;d.getElementById('btn-analyze').click();await s(2500);
 ok('Compare tab hidden again',d.querySelector('#tabs [data-tab="cmp"]').hidden&&S.prev===null,'');
+d.getElementById('btn-reset').click();await s(400);
+d.getElementById('data-input').value=main;
+d.getElementById('class-input').value=['الجهة\tالتصنيف\tالنوع','مركز الاشعة\tخاص\tاشعة','معمل البرج\tخاص\tمعمل','رمد طنطا\t\tمستشفي','مستشفى دمنهور\tعام\tمستشفي'].join('\n');
+d.getElementById('btn-analyze').click();await s(2500);
+const sumBy=k=>{const m=new Map();S.facs.forEach(f=>{const g=f.g[k];if(g)m.set(g.label,(m.get(g.label)||0)+g.share);});return[...m.values()];};
+ok('Group: every facility has a main group',S.facs.length>0&&S.facs.every(f=>f.g.main),String(S.facs.length));
+ok('Group: main shares sum to 100% per group',sumBy('main').length>=3&&sumBy('main').every(v=>Math.abs(v-1)<1e-9),sumBy('main').join(','));
+ok('Group: sub shares sum to 100% per group',sumBy('sub').length>=2&&sumBy('sub').every(v=>Math.abs(v-1)<1e-9),sumBy('sub').join(','));
+const f0=S.facs.find(f=>f.g.sub),peers=S.facs.filter(f=>f.type===f0.type&&f.cls===f0.cls),pt=peers.reduce((a,f)=>a+f.n,0);
+ok('Group: sub share equals count over peers',Math.abs(f0.g.sub.share-f0.n/pt)<1e-9&&f0.g.sub.c===peers.length,f0.name);
+ok('Group: partial classification has no sub group',S.facs.filter(f=>!f.cls).length>0&&S.facs.filter(f=>!f.cls).every(f=>f.g.main&&!f.g.sub),'');
+ok('Group: export columns',J.TABLES.cl.cols.slice(3,6).map(c=>c.l).join('|')==='% من النوع|% من النوع + التصنيف|% من الإجمالي',J.TABLES.cl.cols.map(c=>c.l).join('|'));
+const gr=J.tableOf('cl',{visibleOnly:true}).rows;
+ok('Group: export values match model',gr.every(r=>{const f=S.facs.find(x=>x.name===r[1]);return f&&(f.g.main?Math.abs(r[3]-Math.round(f.g.main.share*1000)/10)<1e-9:r[3]===null)&&(f.g.sub?Math.abs(r[4]-Math.round(f.g.sub.share*1000)/10)<1e-9:r[4]===null);}),'');
+d.querySelector('[data-tab="cl"]').click();await s(300);
+const ghead=[...d.querySelectorAll('#th-cl th')].map(x=>x.textContent);
+ok('Group: table shows both shares and total',ghead.includes('من النوع')&&ghead.includes('من النوع + التصنيف')&&ghead.includes('من الإجمالي')&&d.querySelectorAll('#tb-cl tr:first-child td').length===ghead.length,ghead.join('|'));
+d.querySelector('#th-cl [data-sort="ss"]').click();await s(300);
+const svals=[...d.querySelectorAll('#tb-cl tr')].map(r=>r.children[6].textContent.trim()),ni=svals.indexOf('—');
+ok('Group: sort by sub share puts empty last',ni<0||svals.slice(ni).every(v=>v==='—'),svals.slice(0,4).join(','));
 console.log('RESULT '+P+' passed, '+F+' failed');
 }
 </script></body></html>
