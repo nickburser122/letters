@@ -216,6 +216,49 @@ ok('Group: table shows both shares and total',ghead.includes('من النوع')&
 d.querySelector('#th-cl [data-sort="ss"]').click();await s(300);
 const svals=[...d.querySelectorAll('#tb-cl tr')].map(r=>r.children[6].textContent.trim()),ni=svals.indexOf('—');
 ok('Group: sort by sub share puts empty last',ni<0||svals.slice(ni).every(v=>v==='—'),svals.slice(0,4).join(','));
+{
+const fh=['عدد الجوابات','الجهه','اسم المستخدم','المركز'],sh=(name,aoa)=>({file:'t.xlsx',name,hidden:false,aoa});
+const raw=sh('الاصلي',[fh,[10,'مستشفى أ','علي','م1'],[5,'معمل ب','',''],[20,'مستشفى أ','سعيد','م2'],[30,'مركز ج','سعيد','']]);
+const dview=sh('مستخدمين',[['النوع','الجهه','اسم المستخدم','عدد اجوبة المستخدم بالجهة'],['مستشفي','مستشفى أ','علي',9],['مستشفي','مستشفى أ','سعيد',18]]);
+J.pickSheets([dview,raw],'main');
+ok('Import: raw sheet kept, derived view skipped',raw.on&&!dview.on&&dview.sub&&dview.dupOf===raw,[raw.on,dview.on,dview.sub].join());
+const b1=sh('فرع أ',[fh,[10,'مستشفى أ','علي','م1'],[5,'معمل ب','علي','م1']]),b2=sh('فرع ب',[fh,[7,'مستشفى أ','سعيد','م2'],[3,'مركز ج','سعيد','م2']]);
+J.pickSheets([b1,b2],'main');
+ok('Import: per-branch sheets are merged',b1.on&&b2.on,[b1.on,b2.on].join());
+const m1=sh('يناير',[fh,[10,'مستشفى أ','علي','م1'],[5,'معمل ب','علي','م1']]),m2=sh('فبراير',[fh,[12,'مستشفى أ','علي','م1'],[6,'معمل ب','علي','م1']]),m3=sh('نسخة',[fh,[10,'مستشفى أ','علي','م1'],[5,'معمل ب','علي','م1']]);
+J.pickSheets([m1,m2,m3],'main');
+ok('Import: per-period sheets are merged',m1.on&&m2.on,[m1.on,m2.on].join());
+ok('Import: identical copy flagged as duplicate',m3.dup&&!m3.on,[m3.dup,m3.on].join());
+const ct=sh('التصنيف',[['الجهة','التصنيف','النوع'],['مستشفى أ','عام','مستشفي'],['معمل ب','خاص','معمل']]);
+const cu=sh('مستخدمين',[['النوع','الجهه','اسم المستخدم','النسبة لتصنيف الجهة للمستخدم'],['مستشفي','مستشفى أ','علي',.7]]);
+const cr=sh('نسب',[['الجهه','النوع','نسبة الجهة من اجمالي النوع'],['مستشفى أ','مستشفي',.5]]);
+J.pickSheets([cu,cr,ct,raw],'cls');
+ok('Import: classification box takes only the classification sheet',ct.on&&!cu.on&&!cr.on&&!raw.on,[ct.on,cu.on,cr.on,raw.on].join());
+ok('Import: data sheet is not usable as classification',!cu.info.ok&&!raw.info.ok,'');
+ok('Import: type-only sheet is listed but not ticked',cr.info.ok&&cr.info.tags.join()==='نوع',JSON.stringify(cr.info.tags));
+ok('Import: numeric class column is dropped',J.sheetInfo([['الجهة','التصنيف','النوع'],['أ',.5,'م'],['ب',.6,'م']],'cls').tags.join()==='نوع','');
+d.querySelector('[data-tab="rp"]').click();await s(600);
+const onSecs=()=>[...d.querySelectorAll('[data-sec]')].filter(c=>c.getAttribute('aria-checked')==='true').map(c=>c.dataset.sec).sort().join();
+d.querySelector('[data-set="places"]').click();await s(400);
+ok('Report set: places',onSecs()==='dce,loc,sum',onSecs());
+ok('Report set: group headings in order',[...d.querySelectorAll('#preview .rp-grp')].map(h=>h.textContent).join('|')==='نظرة عامة|الأماكن',[...d.querySelectorAll('#preview .rp-grp')].map(h=>h.textContent).join('|'));
+ok('Report set: chip marked active',[...d.querySelectorAll('[data-set].on')].map(c=>c.dataset.set).join()==='places','');
+d.querySelector('[data-set="people"]').click();await s(200);
+ok('Report set: people',onSecs()==='dpe,pe,sum',onSecs());
+d.querySelector('[data-set="dest"]').click();await s(200);
+ok('Report set: destinations',onSecs()==='cl,dcl,sum',onSecs());
+d.querySelector('[data-set="people"]').click();d.querySelector('[data-grp="dest"]').click();await s(200);
+ok('Report group toggle adds a group',onSecs()==='cl,dcl,dpe,pe,sum'&&d.querySelectorAll('[data-set].on').length===0,onSecs());
+d.querySelector('[data-grp="dest"]').click();await s(200);
+ok('Report group toggle removes a group',onSecs()==='dpe,pe,sum',onSecs());
+d.querySelector('[data-set="ov"]').click();await s(400);
+ok('Report single group has no group headings',d.querySelectorAll('#preview .rp-grp').length===0,'');
+d.getElementById('rp-none').click();await s(200);
+ok('Report clear all',onSecs()==='','');
+const rbar=d.getElementById('rp-bar');
+ok('Report actions bar is sticky and holds print',w.getComputedStyle(rbar).position==='sticky'&&rbar.contains(d.getElementById('rp-print')),w.getComputedStyle(rbar).position);
+ok('Report buttons stay inside their containers',[...d.querySelectorAll('.rp-side .btn,.rp-bar .btn')].filter(b=>b.offsetParent).every(b=>{const c=b.closest('.card,.rp-bar').getBoundingClientRect(),r=b.getBoundingClientRect();return r.left>=c.left-1&&r.right<=c.right+1;}),'');
+}
 console.log('RESULT '+P+' passed, '+F+' failed');
 }
 </script></body></html>

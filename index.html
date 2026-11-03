@@ -295,8 +295,36 @@ td:has(>.mb){white-space:nowrap}
 .dsel>div{font-size:.74rem;color:var(--muted);display:flex;flex-direction:column;gap:.2rem}
 .dt{font-size:.85rem;font-weight:600;margin-bottom:.4rem}
 .df{display:flex;gap:.5rem;padding:.9rem 1.3rem;border-top:1px solid var(--line2);flex-wrap:wrap}
-.rp-grid{display:grid;grid-template-columns:310px 1fr;gap:1.6rem;align-items:start}
-.rp-side{display:flex;flex-direction:column;gap:1rem;position:sticky;top:76px}
+.rp-grid{display:grid;grid-template-columns:310px minmax(0,1fr);gap:1.6rem;align-items:start}
+.rp-side{display:flex;flex-direction:column;gap:1rem;position:sticky;top:calc(var(--hh,76px) + 4.6rem);max-height:calc(100vh - var(--hh,76px) - 5.6rem);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:.2rem .3rem .5rem;margin:-.2rem -.3rem}
+.rp-bar{position:sticky;top:var(--hh,76px);z-index:40;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;padding:.55rem .8rem;margin-bottom:1rem;background:var(--glass);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border:1px solid var(--line2);border-radius:var(--r-l);box-shadow:var(--shadow-s)}
+.rp-info{margin-inline-start:auto;font-size:.76rem;color:var(--muted);font-weight:600}
+@media(max-width:560px){.rp-bar{flex-wrap:nowrap;gap:.4rem;padding:.4rem .5rem}.rp-bar .btn{flex:1 1 auto;min-width:0;padding:.4rem .5rem;font-size:.74rem;gap:.3rem}.rp-info{display:none}}
+.fold>summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:0}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary::after{content:"";flex:none;width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin-top:-3px;transition:transform .2s var(--ease)}
+.fold[open]>summary::after{transform:rotate(-135deg);margin-top:3px}
+.fold[open]>summary{margin-bottom:.8rem}
+.fold.sub{border-top:1px solid var(--line);padding-top:.7rem;margin-top:.3rem}
+.fold.sub>summary{font-size:.8rem;font-weight:700;color:var(--ink)}
+.sets{margin-bottom:.9rem}
+.sets-h{display:flex;justify-content:space-between;align-items:center;font-size:.76rem;color:var(--muted);font-weight:600;margin-bottom:.45rem}
+.sets-h .linkish{font-size:.76rem}
+.chip:disabled{opacity:.4;cursor:not-allowed}
+.sg{margin-bottom:.35rem}
+.sg-h{display:flex;align-items:center;gap:.6rem;width:100%;font-size:.82rem;font-weight:700;color:var(--ink);padding:.35rem .35rem;border-radius:var(--r-s);transition:background .15s}
+.sg-h:hover{background:var(--hover)}
+.sg-h .box{width:18px;height:18px;border-radius:6px;border:1.5px solid var(--line2);background:var(--field);display:grid;place-items:center;flex:none;transition:background .18s,border-color .18s}
+.sg-h .box svg{width:12px;height:12px;stroke:var(--on-clay);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;fill:none;opacity:0;transition:opacity .15s}
+.sg-h[aria-checked=true] .box{background:var(--clay);border-color:var(--clay)}
+.sg-h[aria-checked=true] .box svg{opacity:1}
+.sg-h[aria-checked=mixed] .box{border-color:var(--clay);background:linear-gradient(var(--clay),var(--clay)) center/8px 2px no-repeat var(--field)}
+.sg-h[aria-disabled=true]{opacity:.4;cursor:not-allowed}
+.sg-n{margin-inline-start:auto;font-size:.7rem;font-weight:500;color:var(--muted)}
+.sg-c{margin-inline-start:1.45rem;padding-inline-start:.5rem;border-inline-start:1px solid var(--line)}
+.sg-c .cb{font-size:.8rem}
+.g2>*{min-width:0}
+.g2 .btn{white-space:normal;line-height:1.3;padding-inline:.7rem}
 .card{background:var(--card);border:1px solid var(--line2);border-radius:var(--r-l);padding:1.1rem 1.2rem;box-shadow:var(--shadow-s)}
 .ct{font-family:var(--display);font-size:1.2rem;margin-bottom:.7rem}
 .fl{display:flex;flex-direction:column;gap:.3rem;font-size:.76rem;color:var(--muted);font-weight:600;margin-bottom:.8rem}
@@ -418,7 +446,7 @@ input:-webkit-autofill{-webkit-box-shadow:0 0 0 100px var(--field) inset;-webkit
 #print-root{display:none}
 @media (max-width:880px){
 .in-grid,.rp-grid{grid-template-columns:1fr}
-.rp-side{position:static}
+.rp-side{position:static;max-height:none;overflow:visible;padding:0;margin:0}
 .brand span{display:none}
 .in-top .brand span{display:inline}
 .kpis>div{padding-inline:1rem}
@@ -574,7 +602,9 @@ button.qc:hover{border-color:var(--ink);box-shadow:var(--shadow-m)}
 .rp-toc a{display:flex;justify-content:space-between;gap:1rem;color:inherit;text-decoration:none;border-bottom:1px dotted #D8D2C3;padding:.2rem 0}
 .rp-toc .t0 a{font-weight:700;margin-top:.4rem}
 .rp-toc .t1 a{padding-inline-start:1.2rem}
+.rp-toc .t2 a{padding-inline-start:2.4rem}
 .rp-toc .sn{color:#A63D28;font-weight:700;margin-inline-end:.5rem}
+.rp .rp-grp{font-family:var(--display);font-size:18px;color:#A63D28;border-bottom:1px solid #A63D28;padding-bottom:.15rem;margin:.2rem 0 1rem}
 .rp-brh{font-family:var(--display);font-size:22px;border-bottom:3px solid #A63D28;padding-bottom:.2rem;margin:1.2rem 0 .4rem}
 .rp-br{break-before:page}
 .rsec.wide{page:wide}
@@ -688,10 +718,11 @@ button.qc:hover{border-color:var(--ink);box-shadow:var(--shadow-m)}
 <div id="rt-body"></div>
 </section>
 <section id="v-rp" class="view" hidden>
+<div class="rp-bar" id="rp-bar"><button class="btn dark" id="rp-print" type="button" data-i="pr">طباعة / PDF</button><button class="btn" id="rp-md" type="button">نسخ Markdown</button><button class="btn" id="rp-txt" type="button">نسخ كنص</button><span class="rp-info" id="rp-info"></span></div>
 <div class="rp-grid">
 <aside class="rp-side">
-<div class="card"><h2 class="ct">التقرير</h2><div id="rp-form"></div><button class="btn dark big full" id="rp-print" type="button" data-i="pr">طباعة / PDF</button><div class="g2" style="margin-top:.6rem"><button class="btn" id="rp-md" type="button">نسخ التقرير كـ Markdown</button><button class="btn" id="rp-txt" type="button">نسخ التقرير كنص</button></div></div>
-<div class="card"><h2 class="ct">تصدير البيانات</h2><div id="ex-form"></div><div class="g2"><button class="btn" id="ex-xlsx" type="button" data-i="dl">Excel</button><button class="btn" id="ex-csv" type="button" data-i="dl">CSV</button><button class="btn" id="ex-txt" type="button" data-i="dl">TXT</button><button class="btn" id="ex-md" type="button" data-i="dl">MD</button><button class="btn full" id="ex-copy" type="button" style="grid-column:1/-1">نسخ كجدول للصق في Excel</button></div><p class="note">التقرير والتصدير يتبعان التصفية الحالية.</p></div>
+<div class="card"><h2 class="ct">محتوى التقرير</h2><div id="rp-form"></div></div>
+<details class="card fold" id="ex-card"><summary class="ct">تصدير البيانات</summary><div id="ex-form"></div><div class="g2"><button class="btn" id="ex-xlsx" type="button" data-i="dl">Excel</button><button class="btn" id="ex-csv" type="button" data-i="dl">CSV</button><button class="btn" id="ex-txt" type="button" data-i="dl">TXT</button><button class="btn" id="ex-md" type="button" data-i="dl">MD</button><button class="btn full" id="ex-copy" type="button" style="grid-column:1/-1">نسخ كجدول للصق في Excel</button></div><p class="note">التقرير والتصدير يتبعان التصفية الحالية.</p></details>
 </aside>
 <div class="paper" id="preview"></div>
 </div>
@@ -947,6 +978,8 @@ const state={rows:[],classes:new Map(),manualClasses:new Map(),clsCache:new Map(
 const svg=p=>'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+p+'</svg>';
 const IC={dl:svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>'),pr:svg('<polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>'),up:svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>'),se:svg('<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/>'),fl:svg('<polygon points="22 3 2 3 10 12.5 10 19 14 21 14 12.5 22 3"/>'),x:svg('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'),bk:svg('<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>'),ch:svg('<polyline points="6 9 12 15 18 9"/>'),mo:svg('<rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>'),su:svg('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>'),mn:svg('<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>')};
 const SECS=[['sum','المؤشرات الرئيسية'],['ins','القراءة التحليلية'],['mix','التركيبة (عام/خاص، النوع)'],['loc','المواقع (فرع › مركز)'],['tr','شجرة الروابط (حسب ترتيب تبويب الشجرة)'],['fw','مخطط التدفق'],['cl','ترتيب الجهات'],['pe','ترتيب المستخدمين'],['rt','المسارات (مرسِل ← جهة)'],['dpe','ملف كل مستخدم'],['dcl','ملف كل جهة'],['dce','ملف كل مركز'],['qa','ملحق: جودة البيانات']];
+const SGRP=[['ov','نظرة عامة',['sum','ins','mix']],['places','الأماكن',['loc','dce']],['people','الأشخاص',['pe','dpe']],['dest','الوجهات',['cl','dcl']],['links','الروابط والمسارات',['rt','tr','fw']],['qa','ملحق',['qa']]];
+const SSETS=[['all','الكل',null],['places','الأماكن',['sum','loc','dce']],['people','الأشخاص',['sum','pe','dpe']],['dest','الوجهات',['sum','cl','dcl']],['ov','ملخص',['sum','ins','mix']]];
 const EXS=[['cl','الجهات'],['pe','المستخدمون'],['loc','المواقع (فرع × مركز)'],['pair','المسارات (مستخدم × جهة × مركز)'],['tree','الشجرة (فرع×مركز×مستخدم×جهة)'],['treeg','الشجرة بمجموعات قابلة للطي (Excel)'],['cls','جدول التصنيف (لإعادة اللصق)'],['raw','السجلات النظيفة']];
 const COLS={cl:[['#',''],['الجهة','name'],['العدد','n'],['التصنيف',''],['النوع',''],['من النوع','sm'],['من النوع + التصنيف','ss'],['من الإجمالي',''],['المستخدمون','k'],['أعلى مستخدم',''],['الموقع','']],pe:[['#',''],['المستخدم','name'],['العدد','n'],['الحصة',''],['الجهات','k'],['أعلى جهة',''],['الموقع','']]};
 const pc=(a,b)=>b?Math.round(a/b*1000)/10:0;
@@ -1445,51 +1478,51 @@ if(!state.facs.length)return repWrap(o.title,'تقرير تحليلي','<p>لا 
 const hasB=state.avail.branch&&state.locs.length>1;
 if(!(o.brEach&&hasB)){const r=reportBody(o,'s');return repWrap(o.title,'تقرير تحليلي · '+(anyFilter()?'نطاق مُصفّى':'كامل البيانات'),r.h?(o.toc?tocHTML(r.toc):'')+r.h:'<p>لم تُحدَّد أقسام.</p>',o);}
 const f0=state.filters.branch,names=state.locs.map(B=>B.name),parts=[],toc=[];
-try{names.forEach((b,i)=>{state.filters.branch=new Set([b]);compute();const r=reportBody(o,'b'+i);toc.push({t:b,id:'b'+i,lv:0});r.toc.forEach(x=>toc.push(Object.assign({},x,{lv:1})));parts.push('<section class="'+(i?'rp-br':'')+'" id="b'+i+'"><h2 class="rp-brh">'+esc(b)+' <small class="num" style="font-size:13px;color:#7C766C">'+fmt(state.total)+' '+plural(state.total)+'</small></h2>'+(r.h||'<p>لم تُحدَّد أقسام.</p>')+'</section>');});}
+try{names.forEach((b,i)=>{state.filters.branch=new Set([b]);compute();const r=reportBody(o,'b'+i);toc.push({t:b,id:'b'+i,lv:0});r.toc.forEach(x=>toc.push(Object.assign({},x,{lv:(x.lv||0)+1})));parts.push('<section class="'+(i?'rp-br':'')+'" id="b'+i+'"><h2 class="rp-brh">'+esc(b)+' <small class="num" style="font-size:13px;color:#7C766C">'+fmt(state.total)+' '+plural(state.total)+'</small></h2>'+(r.h||'<p>لم تُحدَّد أقسام.</p>')+'</section>');});}
 finally{state.filters.branch=f0;compute();}
 return repWrap(o.title,'تقرير لكل فرع · '+fmt(names.length)+' فرع',(o.toc?tocHTML(toc):'')+parts.join(''),o);}
 function tocHTML(t){return t.length?'<nav class="rp-toc"><h2>المحتويات</h2><ol>'+t.map(x=>'<li class="t'+(x.lv||0)+'"><a href="#'+x.id+'"><span>'+(x.sn?'<span class="sn num">'+x.sn+'</span>':'')+esc(x.t)+'</span></a></li>').join('')+'</ol></nav>':'';}
 function reportBody(o,pfx){
 const s=o.sec,ch=o.charts,N=o.n||Infinity,T=state.total||1,cp=(a,all)=>a.length<all?' — أعلى '+a.length+' من '+all:'',toc=[];
 if(!state.facs.length)return{h:'<p>لا بيانات ضمن التحديد.</p>',toc};
-let h='',sn=0,wide=false;const H=t=>{sn++;const n=String(sn).padStart(2,'0'),id=pfx+'-'+sn;toc.push({t:t.replace(/<[^>]+>/g,''),sn:n,id});return '<h2 id="'+id+'"><span class="sn num">'+n+'</span>'+t+'</h2>';};
-const S=x=>{if(x)h+='<section class="rsec'+(wide?' wide':'')+'">'+x+'</section>';wide=false;};
-if(s.sum)S(H('المؤشرات الرئيسية')+'<div class="rk2">'+kpiItems().map(k=>'<div><b class="num">'+k[0]+'</b><span>'+k[1]+'</span></div>').join('')+'</div>');
-if(s.ins)S(H('القراءة التحليلية')+'<ul class="rins">'+insightLines(true).map(t=>'<li>'+t+'</li>').join('')+'</ul>');
-if(s.mix){
+let h='',sn=0,wide=false,gh='',gc=null,gp=null;const gm=new Set(SGRP.filter(g=>g[0]!=='qa'&&g[2].some(k=>s[k])).map(g=>g[0])).size>1,G=id=>{gp=id;},H=t=>{if(gm&&gp&&gp!=='qa'&&gp!==gc){gc=gp;const g=SGRP.find(z=>z[0]===gp),gid=pfx+'-g-'+gp;toc.push({t:g[1],id:gid,lv:0});gh='<h2 class="rp-grp" id="'+gid+'">'+g[1]+'</h2>';}sn++;const n=String(sn).padStart(2,'0'),id=pfx+'-'+sn;toc.push({t:t.replace(/<[^>]+>/g,''),sn:n,id,lv:gm&&gp!=='qa'?1:0});return '<h2 id="'+id+'"><span class="sn num">'+n+'</span>'+t+'</h2>';};
+const S=x=>{if(x)h+='<section class="rsec'+(wide?' wide':'')+'">'+gh+x+'</section>';gh='';wide=false;};
+G('ov');if(s.sum)S(H('المؤشرات الرئيسية')+'<div class="rk2">'+kpiItems().map(k=>'<div><b class="num">'+k[0]+'</b><span>'+k[1]+'</span></div>').join('')+'</div>');
+G('ov');if(s.ins)S(H('القراءة التحليلية')+'<ul class="rins">'+insightLines(true).map(t=>'<li>'+t+'</li>').join('')+'</ul>');
+G('ov');if(s.mix){
 const mg=[['التصنيف',tally(state.facs,'cls')],['النوع',tally(state.facs,'type')]].filter(g=>g[1].some(x=>x.label!=='غير مصنّف'));
 if(mg.length)S(H('التركيبة')+'<div class="rmix">'+mg.map(g=>{const t=g[1].reduce((a,x)=>a+x.n,0)||1;return '<div><h3>'+g[0]+'</h3>'+(ch?'<div class="donut-wrap">'+donut(g[1])+'<div style="flex:1">':'<div><div>')+rtbl([[g[0],''],['العدد','n'],['الحصة','n']],g[1].map(x=>[(ch?'<i class="sw" style="background:'+x.color+';margin-inline-end:.4rem"></i>':'')+esc(x.label),fmt(x.n),fmtPct(x.n/t)]),null,false)+'</div></div></div>';}).join('')+'</div>');}
-if(s.loc&&state.frows.some(r=>r.branch||r.center)){
+G('places');if(s.loc&&state.frows.some(r=>r.branch||r.center)){
 let x=H('المواقع: الفروع والمراكز');
 const bmx=state.locs[0].n||1;
 x+='<h3>ملخص الفروع</h3>'+rtbl([['الفرع',''],['المراكز','n'],['الجهات','n'],['المستخدمون','n'],['العدد','n'],['الحصة','n']],state.locs.map(B=>[esc(B.name),B.clist.length,B.facs.size,B.users.size,fmt(B.n),fmtPct(B.n/T)]),state.locs.map(B=>B.n/bmx),ch);
 state.locs.forEach((B,bi)=>{const mx=B.clist[0].n||1;x+='<section class="rp-ent'+(o.brPage&&state.locs.length>1?' rp-br':'')+'" style="margin-top:.8rem">'+(o.brPage&&state.locs.length>1?'<h3 class="rp-brh">'+esc(B.name)+'</h3>':'')+'<h3><span>'+esc(B.name)+'</span><span class="num">'+fmt(B.n)+' · '+fmtPct(B.n/T)+'</span></h3>'+rtbl([['المركز',''],['الجهات','n'],['المستخدمون','n'],['العدد','n'],['% من الفرع','n'],['% من الإجمالي','n']],B.clist.map(C=>[esc(C.name),C.list.length,C.ulist.length,fmt(C.n),fmtPct(C.n/B.n),fmtPct(C.n/T)]),B.clist.map(C=>C.n/mx),ch)+'</section>';});
 S(x);}
-if(s.tr&&state.frows.some(r=>r.user||r.branch||r.center)){wide=!!o.trWide;S(H('شجرة الروابط')+treeReport(N,ch));}
-if(s.fw&&fwDims().length>1){const f=flowSVG(state.frows,fwDims(),Math.min(state.fw.n,15),false,fwOpt());wide=true;S(H('مخطط التدفق')+'<p class="rp-meta">'+fwDims().map(d=>DIMP[d]).join(' ← ')+'</p><div class="rp-fl">'+f.svg+'</div>');}
-if(s.cl){
-const a=state.facs.slice(0,N),mx=a[0].n||1;
-h+='<section class="rsec">'+H('ترتيب الجهات'+cp(a,state.facs.length))+rtbl([['#','n'],['الجهة',''],['التصنيف',''],['النوع',''],['العدد','n'],['من النوع','n'],['من النوع + التصنيف',''],['من الإجمالي','n'],['المستخدمون','n'],['الموقع','']],a.map((f,i)=>[i+1,esc(f.name),esc(f.cls||'—'),esc(f.type||'—'),fmt(f.n),grpPct(f.g.main),grpPct(f.g.sub),fmtPct(f.n/T),f.ulist.length,esc(locPlain(f.locs))]),a.map(f=>f.n/mx),ch)+'</section>';}
-if(s.pe&&state.people.length){
-const a=state.people.slice(0,N),mx=a[0].n||1;
-S(H('ترتيب المستخدمين'+cp(a,state.people.length))+rtbl([['#','n'],['المستخدم',''],['الموقع',''],['الجهات','n'],['أعلى جهة',''],['العدد','n'],['الحصة','n']],a.map((p,i)=>[i+1,esc(p.name),esc(locPlain(p.locs)),p.list.length,esc(p.list[0].name),fmt(p.n),fmtPct(p.n/T)]),a.map(p=>p.n/mx),ch));}
-if(s.rt&&state.people.length){
-const a=state.people.slice(0,N),fm=new Map(state.facs.map(f=>[f.key,f.n]));let x=H('المسارات: من يوجّه إلى أين'+cp(a,state.people.length));
-a.forEach(p=>{const mx=p.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(p.name)+' ← '+fmt(p.list.length)+' جهة</span><span class="num">'+fmt(p.n)+' · '+fmtPct(p.n/T)+'</span></h3>'+(p.locs.size?'<p class="rp-meta">الموقع: '+esc(locFull(p.locs))+'</p>':'')+rtbl([['الجهة',''],['المركز',''],['العدد','n'],['% من المرسِل','n'],['% من الجهة','n']],p.list.map(f=>[esc(f.name),esc(locPlain(f.locs)),fmt(f.n),fmtPct(f.n/p.n),fmtPct(f.n/(fm.get(f.key)||1))]),p.list.map(f=>f.n/mx),ch)+'</section>';});
-S(x);}
-if(s.dpe&&state.people.length){
-const a=state.people.slice(0,N);let x=H('ملف كل مستخدم'+cp(a,state.people.length));
-a.forEach(p=>{const mx=p.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(p.name)+'</span><span class="num">'+fmt(p.n)+' · '+fmtPct(p.n/T)+'</span></h3><p class="rp-meta">'+esc(locFull(p.locs))+'</p>'+rtbl([['الجهة',''],['الموقع',''],['التصنيف',''],['العدد','n'],['% من المستخدم','n']],p.list.map(f=>[esc(f.name),esc(locPlain(f.locs)),esc((classify(f.name)||{}).cls||'—'),fmt(f.n),fmtPct(f.n/p.n)]),p.list.map(f=>f.n/mx),ch)+'</section>';});
-S(x);}
-if(s.dcl){
-const a=state.facs.slice(0,N);let x=H('ملف كل جهة'+cp(a,state.facs.length));
-a.forEach(f=>{const u=f.ulist,mx=u.length?u[0].n||1:1;if(!u.length)return;x+='<section class="rp-ent"><h3><span>'+esc(f.name)+' <small style="font-weight:400;color:#7C766C">'+esc([f.cls,f.type].filter(Boolean).join(' · '))+'</small></span><span class="num">'+fmt(f.n)+'</span></h3>'+shareLine(f,T)+(f.locs.size?'<p class="rp-meta">الموقع: '+esc(locFull(f.locs))+'</p>':'')+rtbl([['المستخدم',''],['الموقع',''],['العدد','n'],['% من الجهة','n']],u.map(y=>[esc(y.name),esc(locPlain(y.locs)),fmt(y.n),fmtPct(y.n/f.n)]),u.map(y=>y.n/mx),ch)+'</section>';});
-S(x);}
-if(s.dce&&state.frows.some(r=>r.branch||r.center)){
+G('places');if(s.dce&&state.frows.some(r=>r.branch||r.center)){
 let x=H('ملف كل مركز');
 state.locs.forEach(B=>B.clist.forEach(C=>{const mx=C.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(C.name)+' <small style="font-weight:400;color:#7C766C">'+esc(B.name)+'</small></span><span class="num">'+fmt(C.n)+' · '+fmtPct(C.n/T)+'</span></h3><div class="rmix"><div>'+rtbl([['الجهة',''],['العدد','n'],['%','n']],C.list.slice(0,N).map(f=>[esc(f.name),fmt(f.n),fmtPct(f.n/C.n)]),C.list.slice(0,N).map(f=>f.n/mx),ch)+'</div><div>'+rtbl([['المستخدم',''],['العدد','n'],['%','n']],C.ulist.slice(0,N).map(u=>[esc(u.name),fmt(u.n),fmtPct(u.n/C.n)]),null,false)+'</div></div>'+(C.plist.some(p=>p.uk)?'<div style="margin-top:.5rem">'+rtbl([['المرسِل',''],['الجهة',''],['العدد','n'],['% من المركز','n']],C.plist.slice(0,N).map(p=>[esc(p.user),esc(p.facility),fmt(p.n),fmtPct(p.n/C.n)]),null,false)+'</div>':'')+'</section>';}));
 S(x);}
-if(s.qa)S(H('ملحق: جودة البيانات')+'<ul class="rins">'+cleanItems(true).concat(qaLines()).map(t=>'<li>'+t+'</li>').join('')+'</ul>');
+G('people');if(s.pe&&state.people.length){
+const a=state.people.slice(0,N),mx=a[0].n||1;
+S(H('ترتيب المستخدمين'+cp(a,state.people.length))+rtbl([['#','n'],['المستخدم',''],['الموقع',''],['الجهات','n'],['أعلى جهة',''],['العدد','n'],['الحصة','n']],a.map((p,i)=>[i+1,esc(p.name),esc(locPlain(p.locs)),p.list.length,esc(p.list[0].name),fmt(p.n),fmtPct(p.n/T)]),a.map(p=>p.n/mx),ch));}
+G('people');if(s.dpe&&state.people.length){
+const a=state.people.slice(0,N);let x=H('ملف كل مستخدم'+cp(a,state.people.length));
+a.forEach(p=>{const mx=p.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(p.name)+'</span><span class="num">'+fmt(p.n)+' · '+fmtPct(p.n/T)+'</span></h3><p class="rp-meta">'+esc(locFull(p.locs))+'</p>'+rtbl([['الجهة',''],['الموقع',''],['التصنيف',''],['العدد','n'],['% من المستخدم','n']],p.list.map(f=>[esc(f.name),esc(locPlain(f.locs)),esc((classify(f.name)||{}).cls||'—'),fmt(f.n),fmtPct(f.n/p.n)]),p.list.map(f=>f.n/mx),ch)+'</section>';});
+S(x);}
+G('dest');if(s.cl){
+const a=state.facs.slice(0,N),mx=a[0].n||1;
+S(H('ترتيب الجهات'+cp(a,state.facs.length))+rtbl([['#','n'],['الجهة',''],['التصنيف',''],['النوع',''],['العدد','n'],['من النوع','n'],['من النوع + التصنيف',''],['من الإجمالي','n'],['المستخدمون','n'],['الموقع','']],a.map((f,i)=>[i+1,esc(f.name),esc(f.cls||'—'),esc(f.type||'—'),fmt(f.n),grpPct(f.g.main),grpPct(f.g.sub),fmtPct(f.n/T),f.ulist.length,esc(locPlain(f.locs))]),a.map(f=>f.n/mx),ch));}
+G('dest');if(s.dcl){
+const a=state.facs.slice(0,N);let x=H('ملف كل جهة'+cp(a,state.facs.length));
+a.forEach(f=>{const u=f.ulist,mx=u.length?u[0].n||1:1;if(!u.length)return;x+='<section class="rp-ent"><h3><span>'+esc(f.name)+' <small style="font-weight:400;color:#7C766C">'+esc([f.cls,f.type].filter(Boolean).join(' · '))+'</small></span><span class="num">'+fmt(f.n)+'</span></h3>'+shareLine(f,T)+(f.locs.size?'<p class="rp-meta">الموقع: '+esc(locFull(f.locs))+'</p>':'')+rtbl([['المستخدم',''],['الموقع',''],['العدد','n'],['% من الجهة','n']],u.map(y=>[esc(y.name),esc(locPlain(y.locs)),fmt(y.n),fmtPct(y.n/f.n)]),u.map(y=>y.n/mx),ch)+'</section>';});
+S(x);}
+G('links');if(s.rt&&state.people.length){
+const a=state.people.slice(0,N),fm=new Map(state.facs.map(f=>[f.key,f.n]));let x=H('المسارات: من يوجّه إلى أين'+cp(a,state.people.length));
+a.forEach(p=>{const mx=p.list[0].n||1;x+='<section class="rp-ent"><h3><span>'+esc(p.name)+' ← '+fmt(p.list.length)+' جهة</span><span class="num">'+fmt(p.n)+' · '+fmtPct(p.n/T)+'</span></h3>'+(p.locs.size?'<p class="rp-meta">الموقع: '+esc(locFull(p.locs))+'</p>':'')+rtbl([['الجهة',''],['المركز',''],['العدد','n'],['% من المرسِل','n'],['% من الجهة','n']],p.list.map(f=>[esc(f.name),esc(locPlain(f.locs)),fmt(f.n),fmtPct(f.n/p.n),fmtPct(f.n/(fm.get(f.key)||1))]),p.list.map(f=>f.n/mx),ch)+'</section>';});
+S(x);}
+G('links');if(s.tr&&state.frows.some(r=>r.user||r.branch||r.center)){wide=!!o.trWide;S(H('شجرة الروابط')+treeReport(N,ch));}
+G('links');if(s.fw&&fwDims().length>1){const f=flowSVG(state.frows,fwDims(),Math.min(state.fw.n,15),false,fwOpt());wide=true;S(H('مخطط التدفق')+'<p class="rp-meta">'+fwDims().map(d=>DIMP[d]).join(' ← ')+'</p><div class="rp-fl">'+f.svg+'</div>');}
+G('qa');if(s.qa)S(H('ملحق: جودة البيانات')+'<ul class="rins">'+cleanItems(true).concat(qaLines()).map(t=>'<li>'+t+'</li>').join('')+'</ul>');
 return{h,toc};}
 function entityHTML(kind,e){
 const cl=kind==='cl',ce=kind==='ce',T=state.total||1,ch=state.rep.charts;
@@ -1507,13 +1540,28 @@ function renderReport(){clearTimeout(rpT);rpT=setTimeout(renderReportNow,70);}
 function renderReportNow(){if(state.tab==='rp')$('#preview').innerHTML=buildReport(state.rep);}
 function renderRpForm(){
 const r=state.rep,hasU=state.rows.some(x=>x.user),hasL=state.rows.some(x=>x.branch||x.center),off={pe:!hasU,rt:!hasU,dpe:!hasU,loc:!hasL,dce:!hasL,tr:!(hasU||hasL),fw:!(hasU||hasL)};
-const sw=swb;
-$('#rp-form').innerHTML='<label class="fl">العنوان<input id="rp-title" type="text" autocomplete="off" value="'+esc(r.title)+'"></label><label class="fl">أُعدّ بواسطة<input id="rp-by" type="text" autocomplete="off" value="'+esc(r.by)+'"></label>'
-+sw('rp-charts','الرسوم البيانية',r.charts)+sw('rp-brk','كل قسم في صفحة جديدة',r.brk)+sw('rp-sign','خانات التوقيع',r.sign)+sw('rp-toc','جدول محتويات',r.toc)+(hasL?sw('rp-bre','تقرير مستقل لكل فرع',r.brEach)+sw('rp-brp','صفحة لكل فرع في قسم المواقع',r.brPage):'')+sw('rp-trw','الشجرة والتدفق بصفحات أفقية',r.trWide)
-+'<div class="fl" style="flex-direction:row;justify-content:space-between;align-items:center"><span>الأقسام</span><span><button type="button" class="linkish" id="rp-all">تحديد الكل</button> · <button type="button" class="linkish" id="rp-none">إلغاء الكل</button></span></div>'
-+'<div class="checks">'+SECS.map(s=>ckb('data-sec="'+s[0]+'"',s[1],!off[s[0]]&&r.sec[s[0]],off[s[0]])).join('')+'</div>'
+const sw=swb,ui=state.rpUi||(state.rpUi={page:false}),av=k=>!off[k];
+const chips=SSETS.map(d=>{const ids=(d[2]||SECS.map(z=>z[0])).filter(av);return'<button type="button" class="chip" data-set="'+d[0]+'"'+(ids.some(k=>k!=='sum')?'':' disabled')+'>'+d[1]+'</button>';}).join('');
+const groups=SGRP.map(g=>'<div class="sg"><button type="button" class="sg-h" role="checkbox" data-grp="'+g[0]+'" aria-checked="false"><span class="box">'+CK+'</span><span class="lbl">'+g[1]+'</span><span class="sg-n num"></span></button><div class="sg-c">'+g[2].map(k=>ckb('data-sec="'+k+'"',SL[k],av(k)&&r.sec[k],off[k])).join('')+'</div></div>').join('');
+$('#rp-form').innerHTML='<div class="sets"><div class="sets-h"><span>مجموعات جاهزة</span><button type="button" class="linkish" id="rp-none">إلغاء الكل</button></div><div class="cg" id="rp-sets">'+chips+'</div></div>'
++groups
 +(Object.values(off).some(Boolean)?'<p class="note">الأقسام المعطّلة تحتاج أسماء مستخدمين أو فروعاً أو مراكز غير موجودة في البيانات.</p>':'')
-+'<div class="g2"><div class="fl">الصفوف'+dd('rp-n',[[10,'10'],[20,'20'],[50,'50'],[0,'الكل']],r.n,'',true)+'</div><div class="fl">الاتجاه'+dd('rp-or',[['portrait','عمودي'],['landscape','أفقي']],r.orient,'',true)+'</div></div>'+'<div class="fl">ترتيب الشجرة'+dd('rp-tr',PRESETS.map(p=>[p[0],p[1]]).concat([['custom','مخصص (من تبويب الشجرة)']]),curPreset(),'',true)+'</div>';}
++'<div class="g2" style="margin-top:.8rem"><div class="fl">الصفوف'+dd('rp-n',[[10,'10'],[20,'20'],[50,'50'],[0,'الكل']],r.n,'',true)+'</div><div class="fl">ترتيب الشجرة'+dd('rp-tr',PRESETS.map(p=>[p[0],p[1]]).concat([['custom','مخصص (من تبويب الشجرة)']]),curPreset(),'',true)+'</div></div>'
++'<details class="fold sub" id="rp-page"'+(ui.page?' open':'')+'><summary>الغلاف والصفحة</summary><label class="fl">العنوان<input id="rp-title" type="text" autocomplete="off" value="'+esc(r.title)+'"></label><label class="fl">أُعدّ بواسطة<input id="rp-by" type="text" autocomplete="off" value="'+esc(r.by)+'"></label><div class="fl">الاتجاه'+dd('rp-or',[['portrait','عمودي'],['landscape','أفقي']],r.orient,'',true)+'</div>'
++sw('rp-charts','الرسوم البيانية',r.charts)+sw('rp-brk','كل قسم في صفحة جديدة',r.brk)+sw('rp-sign','خانات التوقيع',r.sign)+sw('rp-toc','جدول محتويات',r.toc)+(hasL?sw('rp-bre','تقرير مستقل لكل فرع',r.brEach)+sw('rp-brp','صفحة لكل فرع في قسم المواقع',r.brPage):'')+sw('rp-trw','الشجرة والتدفق بصفحات أفقية',r.trWide)+'</details>';
+syncRpUi();}
+function syncRpUi(){
+const cs=[...document.querySelectorAll('[data-sec]')],ok=c=>c.getAttribute('aria-disabled')!=='true',av=new Set(cs.filter(ok).map(c=>c.dataset.sec)),on=new Set(cs.filter(c=>ok(c)&&isOn(c)).map(c=>c.dataset.sec));
+document.querySelectorAll('[data-grp]').forEach(h=>{
+const ids=SGRP.find(z=>z[0]===h.dataset.grp)[2].filter(k=>av.has(k)),n=ids.filter(k=>on.has(k)).length;
+h.setAttribute('aria-checked',!ids.length?'false':n===ids.length?'true':n?'mixed':'false');
+if(ids.length)h.removeAttribute('aria-disabled');else h.setAttribute('aria-disabled','true');
+h.querySelector('.sg-n').textContent=n+'/'+ids.length;});
+document.querySelectorAll('[data-set]').forEach(b=>{
+const d=SSETS.find(z=>z[0]===b.dataset.set),ids=(d[2]||SECS.map(z=>z[0])).filter(k=>av.has(k));
+b.classList.toggle('on',ids.length===on.size&&ids.every(k=>on.has(k)));});
+const i=$('#rp-info'),n=on.size;
+if(i)i.textContent=!n?'لم تُحدَّد أقسام':n===1?'قسم واحد':n===2?'قسمان':n<=10?fmt(n)+' أقسام':fmt(n)+' قسماً';}
 function renderExForm(){
 const p=cpPrefs();
 $('#ex-form').innerHTML='<div class="checks">'+EXS.map(x=>ckb('data-ex="'+x[0]+'"',x[1],state.ex[x[0]],false)).join('')+'</div><div class="fl" style="margin-top:.7rem">صيغة النسخ<div class="seg" id="ex-fmt"><span class="thumb"></span>'+CPF.map(x=>'<button type="button" data-f="'+x[0]+'"'+(x[0]===p.fmt?' class="on"':'')+'>'+x[1]+'</button>').join('')+'</div></div>';
@@ -1524,7 +1572,7 @@ r.title=$('#rp-title').value;r.by=$('#rp-by').value;r.charts=isOn($('#rp-charts'
 r.n=+$('#rp-n').dataset.v;r.orient=$('#rp-or').dataset.v;
 const pv=$('#rp-tr').dataset.v;if(pv!=='custom'&&pv!==curPreset())applyPreset(pv);
 document.querySelectorAll('[data-sec]').forEach(c=>{r.sec[c.dataset.sec]=isOn(c)?1:0;});
-renderReport();}
+syncRpUi();renderReport();}
 function printHTML(html,orient){
 $('#print-root').innerHTML=html;
 $('#pg').textContent='@page{size:A4 '+(orient||'portrait')+';margin:14mm}@page wide{size:A4 landscape;margin:12mm}';
@@ -2050,7 +2098,21 @@ state.clsCache.clear();saveCls();renderAll(false);toast('تم حفظ التصن�
 $('#rp-form').addEventListener('input',readRp);
 $('#rp-form').addEventListener('cbchange',readRp);
 $('#rp-form').addEventListener('ddchange',readRp);
-$('#rp-form').addEventListener('click',e=>{const a=e.target.closest('#rp-all,#rp-none');if(!a)return;document.querySelectorAll('[data-sec]:not([aria-disabled=true])').forEach(c=>c.setAttribute('aria-checked',a.id==='rp-all'));readRp();});
+$('#rp-form').addEventListener('click',e=>{
+const none=e.target.closest('#rp-none'),set=e.target.closest('[data-set]'),grp=e.target.closest('[data-grp]');
+if(!none&&!set&&!grp)return;
+const cs=[...document.querySelectorAll('[data-sec]:not([aria-disabled=true])')];
+if(none)cs.forEach(c=>c.setAttribute('aria-checked','false'));
+else if(set){
+if(set.disabled)return;
+const d=SSETS.find(z=>z[0]===set.dataset.set),ids=d[2]||SECS.map(z=>z[0]);
+cs.forEach(c=>c.setAttribute('aria-checked',String(ids.includes(c.dataset.sec))));}
+else{
+if(grp.getAttribute('aria-disabled')==='true')return;
+const ids=SGRP.find(z=>z[0]===grp.dataset.grp)[2],gs=cs.filter(c=>ids.includes(c.dataset.sec)),all=gs.length>0&&gs.every(isOn);
+gs.forEach(c=>c.setAttribute('aria-checked',String(!all)));}
+readRp();});
+$('#rp-form').addEventListener('toggle',e=>{if(e.target.id==='rp-page')(state.rpUi||(state.rpUi={})).page=e.target.open;},true);
 $('#ex-form').addEventListener('cbchange',e=>{const c=e.target.closest('[data-ex]');if(c)state.ex[c.dataset.ex]=isOn(c)?1:0;});
 $('#rp-print').addEventListener('click',()=>printHTML(buildReport(state.rep),state.rep.orient));
 function copyText(t){
@@ -2205,14 +2267,14 @@ if(s.sum)add('sum',['kpi']);
 if(s.ins)add('ins',['ins']);
 if(s.mix){const m=[];if(tally(state.facs,'cls').some(x=>x.label!=='غير مصنّف'))m.push('mixc');if(tally(state.facs,'type').some(x=>x.label!=='غير مصنّف'))m.push('mixt');add('mix',m);}
 if(s.loc&&hasL)add('loc',['loc']);
+if(s.dce&&hasL)add('dce',entList('ce',state.locs.flatMap(B=>B.clist)),1);
+if(s.pe&&hasU)add('pe',[{key:'pe',o:{limit:N}}]);
+if(s.dpe&&hasU)add('dpe',entList('pe',state.people.slice(0,lim)),1);
+if(s.cl)add('cl',[{key:'cl',o:{limit:N}}]);
+if(s.dcl)add('dcl',entList('cl',state.facs.slice(0,lim).filter(f=>f.ulist.length)),1);
+if(s.rt&&hasU)add('rt',[{key:'pair',o:{top:N}}]);
 if(s.tr&&state.frows.some(r=>r.user||r.branch||r.center))add('tr',[{key:'treei',o:{limit:N}}]);
 if(s.fw&&fwDims().length>1)add('fw',['flow']);
-if(s.cl)add('cl',[{key:'cl',o:{limit:N}}]);
-if(s.pe&&hasU)add('pe',[{key:'pe',o:{limit:N}}]);
-if(s.rt&&hasU)add('rt',[{key:'pair',o:{top:N}}]);
-if(s.dpe&&hasU)add('dpe',entList('pe',state.people.slice(0,lim)),1);
-if(s.dcl)add('dcl',entList('cl',state.facs.slice(0,lim).filter(f=>f.ulist.length)),1);
-if(s.dce&&hasL)add('dce',entList('ce',state.locs.flatMap(B=>B.clist)),1);
 if(s.qa)add('qa',['qaMiss','qaMultiU','qaMultiC','qaDup']);
 return out;}
 function reportSections(r,f){
@@ -2417,6 +2479,7 @@ $('#ex-csv').addEventListener('click',()=>runExport('csv'));
 const IMPK={main:{ta:'data-input',kind:'main'},cls:{ta:'class-input',kind:'cls'},prev:{ta:'prev-input',kind:'main'}};
 const IMPS={};
 const SKIPSHEET=/ملخص|اجمال|إجمال|summary|total|pivot|محوري|chart|رسم|غلاف|cover/i;
+const CLSNAME=/تصنيف|class|categor/i;
 const NUMRE=/[0-9٠-٩۰-۹][0-9٠-٩۰-۹,٬،.٫]*/;
 function cleanCell(v){
 if(v==null)return'';
@@ -2466,15 +2529,22 @@ if(!aoa.length)return{ok:false,reason:'ورقة فارغة'};
 const lim=Math.min(aoa.length,40),TOT=/اجمال/;
 if(kind==='cls'){
 for(let hi=0;hi<lim;hi++){
-const m=looseMap(aoa[hi]);
-if(m.fac!==undefined&&(m.cls!==undefined||m.type!==undefined)){
-let n=0;
-for(let r=hi+1;r<aoa.length;r++){const row=aoa[r];if(row[m.fac]&&!row.some(c=>TOT.test(normAr(c))))n++;}
-return n?{ok:true,hi,m,rows:n,sum:0,bad:0}:{ok:false,reason:'عناوين التصنيف موجودة بلا صفوف'};}}
+const row=aoa[hi],m=looseMap(row);
+if(m.fac===undefined||(m.cls===undefined&&m.type===undefined))continue;
+if(m.user!==undefined||m.count!==undefined)return{ok:false,reason:'جدول بيانات خطابات وليس جدول تصنيف'};
+const body=aoa.slice(hi+1).filter(r=>r[m.fac]&&!r.some(c=>TOT.test(normAr(c))));
+['cls','type'].forEach(k=>{
+if(m[k]===undefined)return;
+const vs=body.map(r=>r[m[k]]).filter(c=>c!==undefined&&c!=='');
+if(vs.length&&vs.filter(c=>isFinite(numOf(c))).length/vs.length>.5)delete m[k];});
+if(m.cls===undefined&&m.type===undefined)return{ok:false,reason:'عمودا التصنيف والنوع يحويان أرقاماً لا نصوصاً'};
+if(!body.length)return{ok:false,reason:'عناوين التصنيف موجودة بلا صفوف'};
+const extra=row.filter((c,i)=>c!==''&&!Object.values(m).includes(i)).length,both=m.cls!==undefined&&m.type!==undefined;
+return{ok:true,hi,m,rows:body.length,sum:0,bad:0,tags:[m.cls!==undefined?'تصنيف':'',m.type!==undefined?'نوع':''].filter(Boolean),score:(both?7:m.cls!==undefined?3:2)-extra*.7};}
 if(aoa[0].length>=2&&!aoa.slice(0,20).some(r=>r.some(c=>c!==''&&isFinite(toNum(c))))){
 const m={fac:0,cls:1,type:aoa[0].length>2?2:undefined};
 const n=aoa.filter(row=>row[0]&&!row.some(c=>TOT.test(normAr(c)))).length;
-return n?{ok:true,hi:-1,m,rows:n,sum:0,bad:0}:{ok:false,reason:'لا صفوف'};}
+return n?{ok:true,hi:-1,m,rows:n,sum:0,bad:0,tags:m.type!==undefined?['تصنيف','نوع']:['تصنيف'],score:1}:{ok:false,reason:'لا صفوف'};}
 return{ok:false,reason:'لا يوجد صف عناوين «الجهة / التصنيف / النوع»'};}
 for(let hi=0;hi<lim;hi++){
 const row=aoa[hi],m=looseMap(row);
@@ -2489,18 +2559,34 @@ for(let r=hi+1;r<aoa.length;r++){const c=aoa[r][i];if(c!==undefined&&c!==''){ne+
 if(ne&&nn/ne>=.6&&nn>bn){bn=nn;best=i;}});
 if(best<0)return{ok:false,reason:'لا يوجد عمود عدد'};
 m.count=best;}
-let n=0,sum=0,bad=0;
+let n=0,sum=0,bad=0,lu='',lc='';
+const fp={F:new Set(),Fu:new Set(),Fc:new Set(),U:new Set(),C:new Set()};
 for(let r=hi+1;r<aoa.length;r++){
 const x=aoa[r];
 if(!x.some(c=>c!==''))continue;
 if(x.some(c=>TOT.test(normAr(c)))||isHdrRow(x))continue;
+if(m.user!==undefined&&x[m.user])lu=normAr(x[m.user]);
+if(m.center!==undefined&&x[m.center])lc=normAr(x[m.center]);
 const v=numOf(x[m.count]),f=(x[m.fac]||'').trim();
-if(isFinite(v)&&v>=0&&f){n++;sum+=v;}else if(f||isFinite(v))bad++;}
+if(isFinite(v)&&v>=0&&f){
+n++;sum+=v;
+const nf=normAr(f);
+fp.F.add(nf);
+if(m.user!==undefined){fp.U.add(lu);fp.Fu.add(nf+'|'+lu);}
+if(m.center!==undefined){fp.C.add(lc);fp.Fc.add(nf+'|'+lc);}
+}else if(f||isFinite(v))bad++;}
 if(!n)return{ok:false,reason:'لا صفوف بيانات صالحة بعد صف العناوين'};
 const hm=headerMap(row),pi=aoa.findIndex(isHdrRow);
 const exact=pi===hi&&hm.map.facility!==undefined&&hm.map.count!==undefined;
-return{ok:true,hi,m,exact,rows:n,sum,bad};}
+return{ok:true,hi,m,exact,rows:n,sum,bad,fp,hsig:row.map(normAr).filter(Boolean).join('|')};}
 return{ok:false,reason:'لا يوجد صف عناوين فيه «عدد الجوابات» و«الجهة»'};}
+function sheetOverlap(x,y){
+const a=x.info.fp,b=y.info.fp,k=a.U.size&&b.U.size?'Fu':a.C.size&&b.C.size?'Fc':'F',s=a[k],t=b[k];
+if(!s.size)return 0;
+let c=0;
+s.forEach(v=>{if(t.has(v))c++;});
+return c/s.size;}
+const shName=x=>x.name||x.file;
 function buildMain(sel){
 if(sel.length===1&&sel[0].info.exact)return aoaTsv(sel[0].aoa);
 const any=k=>sel.some(x=>x.info.m[k]!==undefined);
@@ -2532,7 +2618,7 @@ if(!S){el.hidden=true;el.innerHTML='';return;}
 const rows=S.sheets.map(x=>{
 const i=x.info,lab=(S.files.length>1?x.file+' · ':'')+(x.name?'«'+x.name+'»':'الملف');
 if(!i.ok)return'<div class="imp-r bad"><span class="imp-n">'+esc(lab)+'</span><span class="imp-m">'+esc(i.reason)+'</span></div>';
-return ckb('data-imp="'+key+'" data-sid="'+x.id+'"','<span class="imp-n">'+esc(lab)+'</span> <span class="imp-m num">'+fmt(i.rows)+' صف'+(i.sum?' · مجموع '+fmt(i.sum):'')+(i.bad?' · <b class="warn">'+fmt(i.bad)+' صف مستبعد</b>':'')+(x.dup?' · مكررة':'')+(x.hidden?' · مخفية':'')+'</span>',x.on);}).join('');
+return ckb('data-imp="'+key+'" data-sid="'+x.id+'"','<span class="imp-n">'+esc(lab)+'</span> <span class="imp-m num">'+fmt(i.rows)+' صف'+(i.tags?' · '+i.tags.join(' + '):'')+(i.sum?' · مجموع '+fmt(i.sum):'')+(i.bad?' · <b class="warn">'+fmt(i.bad)+' صف مستبعد</b>':'')+(x.dup?' · مكررة لـ «'+esc(shName(x.dupOf))+'»':'')+(x.sub?' · ملخّص أو نسخة جزئية من «'+esc(shName(x.dupOf))+'»':'')+(x.hidden?' · مخفية':'')+'</span>',x.on);}).join('');
 el.innerHTML='<div class="imp-h">'+esc(S.files.join('، '))+(S.sheets.length>1?' · '+fmt(S.sheets.length)+' ورقة':'')+'</div>'+rows+(S.fails.length?'<div class="imp-r bad"><span class="imp-n">تعذّرت قراءة: '+esc(S.fails.join('، '))+'</span></div>':'');
 el.hidden=false;}
 function impApply(key,quiet){
@@ -2541,15 +2627,30 @@ $('#'+cfg.ta).value=sel.length?(cfg.kind==='cls'?buildCls(sel):buildMain(sel)):'
 syncTa();
 if(cfg.ta==='class-input')saveCls();
 impNote(key);
-if(!quiet)toast(sel.length?'تم تحميل '+fmt(sel.length)+(sel.length>1?' أوراق':' ورقة')+'. اضغط «تحليل»':'لم تُحدَّد أي ورقة');}
+const skip=S.sheets.filter(x=>x.info.ok&&!x.on).length;
+if(!quiet)toast(sel.length?'تم تحميل '+fmt(sel.length)+(sel.length>1?' أوراق':' ورقة')+(skip?' وتخطّي '+fmt(skip)+' لا تلزم':'')+'. اضغط «تحليل»':'لم تُحدَّد أي ورقة');}
+function pickSheets(sheets,kind){
+sheets.forEach((x,i)=>{x.id=i;x.info=sheetInfo(x.aoa,kind);x.on=false;x.dup=false;x.sub=false;if(x.info.ok&&kind==='cls'&&CLSNAME.test(x.name))x.info.score+=3;});
+const usable=sheets.filter(x=>x.info.ok),pref=usable.filter(x=>!SKIPSHEET.test(x.name)&&!x.hidden),pool=pref.length?pref:usable;
+if(!pool.length)return usable;
+if(kind==='cls'){
+const best=Math.max(...pool.map(x=>x.info.score));
+pool.forEach(x=>{if(x.info.score===best)x.on=true;});
+}else{
+const chosen=[];
+pool.slice().sort((a,b)=>(+!!b.info.exact)-(+!!a.info.exact)||b.info.rows-a.info.rows||b.info.sum-a.info.sum).forEach(x=>{
+const same=chosen.find(y=>y.info.rows===x.info.rows&&y.info.sum===x.info.sum);
+if(same){x.dup=true;x.dupOf=same;return;}
+const par=chosen.find(y=>y.info.hsig!==x.info.hsig&&x.info.sum<=y.info.sum&&sheetOverlap(x,y)>=.5);
+if(par){x.sub=true;x.dupOf=par;return;}
+x.on=true;chosen.push(x);});}
+return usable;}
 async function importFiles(key,files){
 const cfg=IMPK[key],list=[...files].filter(Boolean);
 if(!list.length)return;
 const sheets=[],fails=[];
 for(const f of list){try{(await readSheets(f)).forEach(x=>sheets.push(x));}catch(e){fails.push(f.name);}}
-sheets.forEach((x,i)=>{x.id=i;x.info=sheetInfo(x.aoa,cfg.kind);x.on=false;});
-const usable=sheets.filter(x=>x.info.ok),pref=usable.filter(x=>!SKIPSHEET.test(x.name)&&!x.hidden),seen=new Set();
-(pref.length?pref:usable).forEach(x=>{const sg=x.info.rows+':'+x.info.sum;if(seen.has(sg)){x.dup=true;return;}seen.add(sg);x.on=true;});
+const usable=pickSheets(sheets,cfg.kind);
 IMPS[key]={sheets,fails,files:list.map(f=>f.name)};
 if(!usable.length){
 if(sheets.length===1&&sheets[0].aoa.length){$('#'+cfg.ta).value=aoaTsv(sheets[0].aoa);syncTa();}
@@ -2681,7 +2782,7 @@ $('#filters').addEventListener('click',e=>{const o=e.target.closest('.pk-o');if(
 document.addEventListener('click',e=>{if(!e.target.closest('.pk-box'))document.querySelectorAll('.pk-list').forEach(l=>{l.hidden=true;});});
 if(/Mac|iPhone|iPad/i.test(navigator.platform||navigator.userAgent))$('#k-mod').textContent='⌘';
 syncTa();sbSync();renderResume();
-if(/[?&]test\b/.test(location.search))window.__jw={TABLES,serialize,serializeX,tableOf,copyOut,buildReportText,tabItems,copyTab,openCopyPanel,cpPrefs,visibleFacs,visiblePeople,visibleLocs,visibleRoutes,exAoa,entAoa,entSpecs,treeGroupSheet,state};
+if(/[?&]test\b/.test(location.search))window.__jw={pickSheets,sheetInfo,TABLES,serialize,serializeX,tableOf,copyOut,buildReportText,tabItems,copyTab,openCopyPanel,cpPrefs,visibleFacs,visiblePeople,visibleLocs,visibleRoutes,exAoa,entAoa,entSpecs,treeGroupSheet,state};
 })();
 function fitTabs(){
 const bar=document.querySelector('.bar'),t=document.getElementById('tabs');
@@ -2694,6 +2795,10 @@ window.addEventListener('resize',fitSoon);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSoon);
 if('ResizeObserver' in window)new ResizeObserver(fitSoon).observe(document.getElementById('tabs'));
 fitTabs();
+const hdrEl=document.querySelector('.hdr'),setHH=()=>document.documentElement.style.setProperty('--hh',hdrEl.offsetHeight+'px');
+if('ResizeObserver' in window)new ResizeObserver(setHH).observe(hdrEl);
+window.addEventListener('resize',setHH);
+setHH();
 </script>
 </body>
 </html>
